@@ -1,0 +1,202 @@
+media:
+  input: public/images
+  output: /images
+content:
+- name: zones
+  label: Zones (rapports)
+  type: collection
+  path: src/content/zones
+  format: yaml
+  filename: '{fields.region}-{fields.nom}.yml'
+  view:
+    primary: nom
+    fields:
+    - nom
+    - region
+    - statut
+    - rapport
+    sort:
+    - region
+    - nom
+  fields:
+  - name: nom
+    label: Nom de la zone
+    type: string
+    required: true
+  - name: region
+    label: Région
+    type: select
+    required: true
+    options:
+      values:
+      - Incarnam
+      - Astrub
+      - Amakna
+      - Bonta
+      - Brâkmar
+      - Île des Wabbits
+      - Plaines de Cania
+      - Montagne des Koalaks
+      - Île d'Otomaï
+      - Île de Frigost
+      - Île de Pandala
+      - Saharach
+      creatable: true
+    description: Doit correspondre exactement à une région de l'atlas (fichier Régions).
+  - name: niveau
+    label: Niveau
+    type: string
+    default: 0-20
+    description: 'Format : 0-20'
+  - name: statut
+    label: Statut
+    type: select
+    default: wip
+    options:
+      values:
+      - value: mesuree
+        label: Mesurée (rapport publié)
+      - value: wip
+        label: WIP (épisode pas encore sorti)
+  - name: rapport
+    label: N° du rapport
+    type: number
+  - name: monstres
+    label: Monstres
+    type: string
+    list: true
+  - name: video
+    label: Lien de l'épisode YouTube
+    type: string
+  - name: mosaique
+    label: Mosaïque de la zone (image)
+    type: image
+  - name: date_prix
+    label: Date du relevé des prix HDV
+    type: date
+  - name: anomalie
+    label: "% d'anomalie"
+    type: number
+    description: Pourcentage d'anomalie de la zone au moment du farm.
+  - name: combats
+    label: Nombre de combats
+    type: number
+    default: 100
+  - name: sessions
+    label: Sessions (durée en minutes)
+    type: number
+    list: true
+  - name: kamas_combats
+    label: Kamas ramassés en combat (total)
+    type: number
+    default: 0
+  - name: prospection
+    label: Prospection des 8 persos pendant ce rapport (facultatif)
+    type: number
+    list: true
+    description: Dans l'ordre de la team. Laisser vide = prospection actuelle de la team.
+  - name: drops
+    label: Drops
+    type: object
+    list: true
+    fields:
+    - name: ressource
+      label: Ressource
+      type: string
+      required: true
+    - name: monstres
+      label: Droppée par
+      type: string
+    - name: taux_base
+      label: Taux de base DofusDB (%)
+      type: number
+    - name: quantite
+      label: Quantité droppée (sur les combats)
+      type: number
+    - name: prix
+      label: Prix unitaire HDV (kamas)
+      type: number
+    - name: ventes_30j
+      label: Ventes sur 30 jours
+      type: number
+- name: team
+  label: La team
+  type: file
+  path: src/data/team.yml
+  format: yaml
+  fields:
+  - name: membres
+    label: Membres
+    type: object
+    list: true
+    fields:
+    - name: nom
+      label: Nom
+      type: string
+    - name: classe
+      label: Classe
+      type: string
+    - name: role
+      label: Rôle
+      type: string
+    - name: groupe
+      label: Groupe
+      type: select
+      options:
+        values:
+        - value: direction
+          label: La direction
+        - value: stagiaires
+          label: Les stagiaires
+    - name: sprite
+      label: Sprite (chemin)
+      type: string
+      description: Ex. /sprites/dooane.webp
+    - name: prospection
+      label: Prospection
+      type: number
+- name: regions
+  label: Régions de l'atlas
+  type: file
+  path: src/data/regions.yml
+  format: yaml
+  fields:
+  - name: regions
+    label: Régions
+    type: object
+    list: true
+    fields:
+    - name: nom
+      label: Nom
+      type: string
+    - name: niveaux
+      label: Niveaux
+      type: string
+      description: Ex. Niv. 0 – 20
+- name: site
+  label: Réglages du site
+  type: file
+  path: src/data/site.yml
+  format: yaml
+  fields:
+  - name: serveur
+    label: Serveur
+    type: string
+  - name: donnees_exemple
+    label: Afficher la bannière « données d'exemple »
+    type: boolean
+  - name: youtube
+    label: Lien YouTube
+    type: string
+  - name: x
+    label: Lien X
+    type: string
+  - name: discord
+    label: Lien d'invitation Discord
+    type: string
+  - name: gmail
+    label: Adresse e-mail
+    type: string
+  - name: rythme
+    label: Rythme de publication
+    type: string
