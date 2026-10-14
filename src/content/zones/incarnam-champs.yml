@@ -4,65 +4,63 @@ niveau: 0-20
 statut: mesuree
 rapport: 1
 monstres:
-- Tofu Chimérique
-- Pissenlit Miroitant
-- Rose Vaporeuse
-- Tournesol Nébuleux
-video: ''
-mosaique: ''
-date_prix: '2026-09-29'
-anomalie: 15
+  - Tofu Chimérique
+  - Pissenlit Miroitant
+  - Rose Vaporeuse
+  - Tournesol Nébuleux
+video: https://youtu.be/I-QdROgnT10?si=vR6k3tHJh_u9vGKb
+date_prix: 2026-09-29
+anomalie: 0
 combats: 100
 sessions:
-- 106
-- 86
+  - 30
 kamas_combats: 0
 drops:
-- ressource: Coiffe Antôme
-  monstres: Tous les monstres
-  taux_base: 20
-  quantite: 286
-  prix: 213
-  ventes_30j: 548
-- ressource: Amulette de l'Aventurier
-  monstres: Tous les monstres
-  taux_base: 20
-  quantite: 275
-  prix: 197
-  ventes_30j: 104
-- ressource: Viande Intangible
-  monstres: Tous les monstres
-  taux_base: 59
-  quantite: 616
-  prix: 26
-  ventes_30j: 410
-- ressource: Blé
-  monstres: Tous les monstres
-  taux_base: 50
-  quantite: 596
-  prix: 24
-  ventes_30j: 225
-- ressource: Œuf Chimérique
-  monstres: Tofu Chimérique
-  taux_base: 59
-  quantite: 595
-  prix: 23
-  ventes_30j: 755
-- ressource: Poudre de Perlinpainpain
-  monstres: Tous les monstres
-  taux_base: 59
-  quantite: 571
-  prix: 19
-  ventes_30j: 232
-- ressource: Plume Chimérique
-  monstres: Tofu Chimérique
-  taux_base: 59
-  quantite: 642
-  prix: 16
-  ventes_30j: 361
-- ressource: Pétale Diaphane
-  monstres: Pissenlit Miroitant, Rose Vaporeuse, Tournesol Nébuleux
-  taux_base: 59
-  quantite: 655
-  prix: 9
-  ventes_30j: 347
+  - ressource: Coiffe Antôme
+    monstres: Tous les monstres
+    taux_base: 20
+    quantite: 286
+    prix: 213
+    ventes_30j: 548
+  - ressource: Amulette de l'Aventurier
+    monstres: Tous les monstres
+    taux_base: 20
+    quantite: 275
+    prix: 197
+    ventes_30j: 104
+  - ressource: Viande Intangible
+    monstres: Tous les monstres
+    taux_base: 59
+    quantite: 616
+    prix: 26
+    ventes_30j: 410
+  - ressource: Blé
+    monstres: Tous les monstres
+    taux_base: 50
+    quantite: 596
+    prix: 24
+    ventes_30j: 225
+  - ressource: Œuf Chimérique
+    monstres: Tofu Chimérique
+    taux_base: 59
+    quantite: 595
+    prix: 23
+    ventes_30j: 755
+  - ressource: Poudre de Perlinpainpain
+    monstres: Tous les monstres
+    taux_base: 59
+    quantite: 571
+    prix: 19
+    ventes_30j: 232
+  - ressource: Plume Chimérique
+    monstres: Tofu Chimérique
+    taux_base: 59
+    quantite: 642
+    prix: 16
+    ventes_30j: 361
+  - ressource: Pétale Diaphane
+    monstres: Pissenlit Miroitant, Rose Vaporeuse, Tournesol Nébuleux
+    taux_base: 59
+    quantite: 655
+    prix: 9
+    ventes_30j: 347
