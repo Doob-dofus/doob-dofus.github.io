@@ -1,0 +1,49 @@
+nom: Forêt
+region: Incarnam
+niveau: 0-20
+statut: mesuree
+rapport: 1
+monstres:
+- Chakrobat
+- Ronronchon
+- Tigrimas
+video: ''
+mosaique: ''
+date_prix: '2026-09-29'
+anomalie: 15
+combats: 100
+sessions:
+- 102
+- 83
+kamas_combats: 0
+drops:
+- ressource: Queue de Chapardam
+  monstres: Tous les monstres
+  taux_base: 58
+  quantite: 564
+  prix: 79
+  ventes_30j: 336
+- ressource: Cendres Éternelles
+  monstres: Tous les monstres
+  taux_base: 58
+  quantite: 636
+  prix: 61
+  ventes_30j: 103
+- ressource: Viande Intangible
+  monstres: Tous les monstres
+  taux_base: 58
+  quantite: 610
+  prix: 57
+  ventes_30j: 624
+- ressource: Bois de Frêne
+  monstres: Tous les monstres
+  taux_base: 50
+  quantite: 565
+  prix: 59
+  ventes_30j: 268
+- ressource: Anneau de l'Aventurier
+  monstres: Tous les monstres
+  taux_base: 20
+  quantite: 286
+  prix: 72
+  ventes_30j: 266

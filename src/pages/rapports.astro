@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import { getZones, site } from '../lib/data.js';
+import { fmt, niveau, dateFr } from '../lib/farm.js';
+const zones = await getZones();
+const done = zones.filter((z) => z.measured).sort((a, b) => (b.rapport || 0) - (a.rapport || 0) || b.kpi - a.kpi);
+const groups = [...new Set(done.map((z) => z.rapport))].map((n) => ({ n, zones: done.filter((z) => z.rapport === n) }));
+const wip = zones.filter((z) => !z.measured);
+---
+<Base title="Tous les rapports F.A.R.M. — zones de farm Dofus mesurées sur 100 combats | par Doob" description={`Chaque rapport F.A.R.M. : une zone farmée 100 combats en B8 sur ${site.serveur}, drops et prix HDV relevés.`} current="rapports">
+  <div class="wrap">
+    <div class="page-head">
+      <div class="eyebrow"><i></i>Rapports</div>
+      <h1>Tous les rapports</h1>
+      <p>Un rapport = un épisode YouTube. Chaque zone est farmée 100 combats en B8 sur {site.serveur}, puis les ressources sont estimées au prix de l'HDV. {site.rythme}.</p>
+    </div>
+    {groups.map((g) => (
+      <section style="padding-top:28px">
+        <div class="sec-head"><div><h2>Rapport n°{g.n}</h2><p class="sub">{g.zones.length} zone{g.zones.length > 1 ? 's' : ''} · prix relevés le {dateFr(g.zones[0].date_prix)}</p></div>{g.zones[0].video && <a class="btn btn-ghost" href={g.zones[0].video} target="_blank" rel="noopener">▶ L'épisode</a>}</div>
+        <div class="replist">
+          {g.zones.map((z) => (
+            <a class="rep" href={z.url}>
+              <span class="no">{z.region.slice(0, 3).toUpperCase()}</span>
+              <span><b>{z.nom}</b><small>{z.region} · niveau {niveau(z.niveau)} · {z.monstres.join(', ')}</small></span>
+              <span class="kv"><b>{fmt(z.kpi)}</b><small>kamas / combat</small></span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+    {wip.length > 0 && (
+      <section style="padding-top:28px">
+        <div class="sec-head"><div><h2>À venir</h2><p class="sub">Ces zones sont dans l'atlas mais n'ont pas encore leur épisode.</p></div></div>
+        <div class="mono">{wip.map((z) => <a href={z.url}><span>{z.nom} · {z.region}</span></a>)}</div>
+      </section>
+    )}
+  </div>
+</Base>

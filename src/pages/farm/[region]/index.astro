@@ -1,0 +1,47 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getZones, regions, site } from '../../../lib/data.js';
+import { slug, fmt, niveau } from '../../../lib/farm.js';
+
+export async function getStaticPaths() {
+  const zones = await getZones();
+  const names = [...new Set(zones.map((z) => z.region))];
+  return names.map((nom) => ({
+    params: { region: slug(nom) },
+    props: { nom, zones: zones.filter((z) => z.region === nom) },
+  }));
+}
+const { nom, zones } = Astro.props;
+const info = regions.find((r) => r.nom === nom) || {};
+const WIP = "WIP : attendre la sortie de l'épisode sur YouTube !";
+const done = zones.filter((z) => z.measured).sort((a, b) => b.kpi - a.kpi);
+const wip = zones.filter((z) => !z.measured);
+---
+<Base title={`Farm en ${nom} : rentabilité des zones mesurée sur 100 combats — F.A.R.M.`} description={`Toutes les zones de ${nom} classées par K.P.I. (kamas par combat), mesuré en B8 sur ${site.serveur}.`} current="atlas">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Fil d'Ariane"><a href="/#atlas">Atlas</a><span>›</span>{nom}</nav>
+    <div class="page-head">
+      <div class="eyebrow"><i></i>Région{info.niveaux ? ` · ${info.niveaux}` : ''}</div>
+      <h1>{nom}</h1>
+      <p>{done.length} zone{done.length > 1 ? 's' : ''} mesurée{done.length > 1 ? 's' : ''} sur {zones.length}. Classement par K.P.I. — Kamas Par Itération, moyenne sur 100 combats en B8.</p>
+    </div>
+    <section style="padding-top:24px">
+      <div class="replist">
+        {done.map((z, i) => (
+          <a class="rep" href={z.url}>
+            <span class="no">#{i + 1}</span>
+            <span><b>{z.nom}</b><small>Niveau {niveau(z.niveau)} · {z.monstres.join(', ')}</small></span>
+            <span class="kv"><b>{fmt(z.kpi)}</b><small>kamas / combat</small></span>
+          </a>
+        ))}
+        {wip.map((z) => (
+          <a class="rep wiprep" href={z.url}>
+            <span class="no">—</span>
+            <span><b>{z.nom}</b><small>Niveau {niveau(z.niveau)} · {z.monstres.join(', ')}</small></span>
+            <span class="wip">{WIP}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>

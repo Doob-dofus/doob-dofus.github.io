@@ -1,0 +1,49 @@
+nom: Lac
+region: Incarnam
+niveau: 0-20
+statut: mesuree
+rapport: 1
+monstres:
+- Plikplok
+- Petit Gloot
+- Grand Splatch
+video: ''
+mosaique: ''
+date_prix: '2026-09-29'
+anomalie: 10
+combats: 100
+sessions:
+- 92
+- 75
+kamas_combats: 0
+drops:
+- ressource: Goujon
+  monstres: Tous les monstres
+  taux_base: 50
+  quantite: 564
+  prix: 87
+  ventes_30j: 136
+- ressource: Ceinture de l'aventurier
+  monstres: Tous les monstres
+  taux_base: 20
+  quantite: 274
+  prix: 88
+  ventes_30j: 559
+- ressource: Eau Potable
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 598
+  prix: 36
+  ventes_30j: 706
+- ressource: Viande Intangible
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 567
+  prix: 32
+  ventes_30j: 474
+- ressource: Peau de Gloot
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 585
+  prix: 31
+  ventes_30j: 468

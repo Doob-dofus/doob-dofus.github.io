@@ -1,0 +1,82 @@
+nom: Crypte de Kardorim
+region: Incarnam
+niveau: 0-20
+statut: mesuree
+rapport: 1
+monstres:
+- Chafer Débutant
+- Chafer Furtif
+- Chafer Éclaireur
+- Chafer Piquier
+- Sergent Chafer
+- Kardorim
+video: ''
+mosaique: ''
+date_prix: '2026-09-29'
+anomalie: 12
+combats: 100
+sessions:
+- 134
+- 109
+kamas_combats: 0
+drops:
+- ressource: Chapeau de l'Aventurier
+  monstres: Chafer Débutant, Chafer Furtif, Chafer Éclaireur, Chafer Piquier, Sergent Chafer
+  taux_base: 20
+  quantite: 282
+  prix: 239
+  ventes_30j: 110
+- ressource: Relique d'Incarnam
+  monstres: Tous les monstres
+  taux_base: 58
+  quantite: 662
+  prix: 90
+  ventes_30j: 525
+- ressource: Os de Chafer
+  monstres: Tous les monstres
+  taux_base: 58
+  quantite: 597
+  prix: 72
+  ventes_30j: 648
+- ressource: Viande Intangible
+  monstres: Chafer Débutant, Chafer Furtif, Chafer Éclaireur, Chafer Piquier, Sergent Chafer
+  taux_base: 58
+  quantite: 644
+  prix: 28
+  ventes_30j: 788
+- ressource: Barre Rabmarac au Nougat
+  monstres: Kardorim (boss)
+  taux_base: 6
+  quantite: 16
+  prix: 694
+  ventes_30j: 737
+- ressource: Bracelet de Kardorim
+  monstres: Kardorim (boss)
+  taux_base: 20
+  quantite: 49
+  prix: 200
+  ventes_30j: 545
+- ressource: Crâne de Kardorim
+  monstres: Kardorim (boss)
+  taux_base: 57
+  quantite: 100
+  prix: 78
+  ventes_30j: 172
+- ressource: Cape de Kardorim
+  monstres: Kardorim (boss)
+  taux_base: 20
+  quantite: 54
+  prix: 144
+  ventes_30j: 512
+- ressource: Casque de Kardorim
+  monstres: Kardorim (boss)
+  taux_base: 20
+  quantite: 53
+  prix: 131
+  ventes_30j: 435
+- ressource: Bidoche Intangible
+  monstres: Kardorim (boss)
+  taux_base: 0.57
+  quantite: 1
+  prix: 3518
+  ventes_30j: 548

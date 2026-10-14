@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/data.js';
+const { title, description = 'La rentabilité des zones de farm Dofus, mesurée sur 100 combats réels sur le serveur Brial.', current = '' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={new URL('/images/logo.png', Astro.site)}>
+  <meta name="theme-color" content="#090909">
+</head>
+<body>
+  {site.donnees_exemple && <div class="mock">Site en préparation — les chiffres affichés sont des exemples</div>}
+  <Header current={current} />
+  <main id="top"><slot /></main>
+  <Footer />
+</body>
+</html>

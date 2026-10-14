@@ -1,0 +1,214 @@
+---
+import Base from '../layouts/Base.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+import { getZones, regions, site } from '../lib/data.js';
+import { fmt, niveau, dateFr, duree, minutes } from '../lib/farm.js';
+
+const zones = await getZones();
+const measured = zones.filter((z) => z.measured).sort((a, b) => b.kpi - a.kpi);
+const regionNames = regions.map((r) => r.nom);
+const covered = regionNames.filter((r) => zones.some((z) => z.region === r && z.measured)).length;
+const totalKamas = measured.reduce((a, z) => a + z.kpi * z.combats, 0);
+const totalCombats = measured.reduce((a, z) => a + z.combats, 0);
+const kamasLabel = totalKamas >= 1e6 ? (totalKamas / 1e6).toFixed(1).replace('.', ',') + ' M' : fmt(totalKamas);
+const stats = [
+  [measured.length, 'zones auditées'],
+  [fmt(totalCombats), 'combats comptés'],
+  [kamasLabel, 'kamas mesurés en B8'],
+  [`${covered} / ${regionNames.length}`, 'régions couvertes'],
+];
+const podium = measured.slice(0, 3);
+const podiumOrder = [1, 0, 2].filter((i) => podium[i]);
+const lastNo = Math.max(0, ...measured.map((z) => z.rapport || 0));
+const lastZones = measured.filter((z) => z.rapport === lastNo);
+const last = lastZones[0];
+const lastRegion = last?.region;
+const levels = [...new Set(zones.map((z) => z.niveau))].sort((a, b) => parseInt(a) - parseInt(b));
+const WIP = "WIP : attendre la sortie de l'épisode sur YouTube !";
+const data = {
+  measured: measured.map((z) => ({ n: z.nom, r: z.region, l: z.niveau, m: z.monstres, k: z.kpi, h: z.kph, d: dateFr(z.date_prix), u: z.url })),
+  wip: zones.filter((z) => !z.measured).map((z) => ({ n: z.nom, r: z.region, l: z.niveau, m: z.monstres, u: z.url })),
+  regions: regionNames,
+};
+const atlas = regions.map((r) => {
+  const zs = zones.filter((z) => z.region === r.nom).sort((a, b) => b.kpi - a.kpi || a.nom.localeCompare(b.nom));
+  return { ...r, zones: zs, done: zs.filter((z) => z.measured).length };
+});
+const atlasListed = atlas.filter((r) => r.zones.length);
+const atlasOthers = atlas.filter((r) => !r.zones.length);
+---
+<Base title="F.A.R.M. — Rentabilité des zones de farm Dofus, mesurée sur 100 combats | par Doob">
+  <section class="hero" style="padding:0">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><i></i>Fichier d'Analyse de la Rentabilité des Maps</div>
+        <h1>Quelle zone <span>farmer</span> ?</h1>
+        <p class="lead">La rentabilité des zones de Dofus, mesurée sur 100 combats réels sur le serveur {site.serveur}. Pas d'estimation : des drops comptés, des prix HDV datés, une méthode transparente.</p>
+        <div class="method"><span>Serveur {site.serveur}</span><span>100 combats par zone</span><span>K.P.I. = Kamas Par Itération</span><span>Ventes 30 j</span></div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="glow"></div><div class="floor"></div>
+        <img class="sprite s1" src="/sprites/doote.webp" alt="">
+        <img class="sprite s2" src="/sprites/dooane.webp" alt="">
+        <img class="sprite s3" src="/sprites/dooblage.webp" alt="">
+        <img class="sprite s4" src="/sprites/dooleur.webp" alt="">
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="stats">{stats.map(([b, s]) => <div class="stat"><b>{b}</b><small>{s}</small></div>)}</div></div>
+
+  {podium.length > 0 && (
+    <section style="padding-top:16px">
+      <div class="wrap">
+        <div class="sec-head"><div><h2>Le podium</h2><p class="sub">Les 3 zones au meilleur K.P.I. — Kamas Par Itération, soit les kamas moyens gagnés par combat. Mesuré en B8.</p></div></div>
+        <div class="podium">
+          {podiumOrder.map((i) => { const z = podium[i]; return (
+            <a class={`pod ${i === 0 ? 'first' : ''}`} href={z.url}>
+              <div class="rank">{i + 1}{i === 0 ? 're' : 'e'} place</div><h3>{z.nom}</h3><div class="where">{z.region} · Niv. {niveau(z.niveau)}</div>
+              <div class="kpi"><b>{fmt(z.kpi)}</b><small>kamas / combat</small></div>
+              <div class="meta"><span>{fmt(z.kph)} k/h</span><span>Prix HDV {site.serveur} du {dateFr(z.date_prix)}</span></div>
+            </a>); })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section id="classement">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Le classement</h2><p class="sub">Toutes les zones sont farmées en B8 sur {site.serveur}. Les filtres se croisent : zone, monstre, niveau, région.</p></div></div>
+      <div class="panel">
+        <div class="filters">
+          <div class="field search"><label for="q">Zone ou monstre</label><input id="q" type="search" placeholder="Ex. Pâturages, Bouftou…" autocomplete="off"></div>
+          <div class="field"><label for="lvl">Niveau</label>
+            <select id="lvl"><option value="">Tous</option>{levels.map((l) => <option value={l}>{niveau(l)}</option>)}</select></div>
+          <div class="field"><label for="isl">Région</label>
+            <select id="isl"><option value="">Toutes</option>{regionNames.map((r) => <option>{r}</option>)}</select></div>
+          <div class="field"><label>Rentabilité pour</label>
+            <div class="seg" id="compo" role="group" aria-label="Rentabilité affichée pour">
+              <button type="button" data-v="1" aria-pressed="false">1 compte</button>
+              <button type="button" data-v="4" aria-pressed="false">4 comptes</button>
+              <button type="button" data-v="8" aria-pressed="true">8 comptes</button>
+            </div></div>
+          <button class="reset" id="reset" type="button">Réinitialiser</button>
+        </div>
+        <div class="note" id="note" hidden></div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Zone</th><th class="hm">Niveau</th><th class="hm">Monstres</th><th class="num" id="kpih">K.P.I. · B8</th><th class="num hm">Kamas / h</th><th class="num hm">Prix HDV {site.serveur} du</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <div class="count" id="count"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="atlas" style="padding-top:16px">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>L'atlas des zones</h2><p class="sub">Les zones rangées par grandes régions. Une zone sans rapport reste en WIP jusqu'à la sortie de son épisode.</p></div></div>
+      <div class="atlas">
+        {atlasListed.map((r) => (
+          <div class={`reg ${r.done === r.zones.length ? 'done' : ''}`}>
+            <div class="reg-h"><b><a href={`/farm/${r.zones[0].regionSlug}/`}>{r.nom}</a></b><small>{r.niveaux ? r.niveaux + ' · ' : ''}{r.done} / {r.zones.length} zones</small></div>
+            <div class="prog"><i style={`width:${Math.round(r.done / r.zones.length * 100)}%`}></i></div>
+            <div class="zl">{r.zones.map((z) => <a href={z.url}><div><span>{z.nom}</span>{z.measured ? <em>{fmt(z.kpi)}</em> : <em class="w">WIP</em>}</div></a>)}</div>
+            {r.done < r.zones.length && <span class="wip">{WIP}</span>}
+          </div>
+        ))}
+        {atlasOthers.length > 0 && (
+          <div class="reg">
+            <div class="reg-h"><b>Autres régions</b><small>{atlasOthers.length} régions</small></div>
+            <div class="prog"><i style="width:0"></i></div>
+            <div class="others">{atlasOthers.map((r) => <span>{r.nom}</span>)}</div>
+            <span class="wip">{WIP}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {last && (
+    <section id="rapport">
+      <div class="wrap">
+        <div class="sec-head"><div><h2>Dernier rapport</h2><p class="sub">Chaque épisode F.A.R.M. alimente le classement.</p></div><a class="btn btn-ghost" href="/rapports/">Tous les rapports →</a></div>
+        <div class="split">
+          <a class="video" href={last.video || site.youtube} target="_blank" rel="noopener" aria-label="Voir l'épisode sur YouTube">
+            {last.mosaique ? <img src={last.mosaique} alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55"> : <div class="grid" id="mosaic">{Array.from({ length: 60 }, (_, i) => <i style={`opacity:${(0.35 + ((i * 37) % 60) / 100).toFixed(2)}`}></i>)}</div>}
+            <div class="play"></div>
+            <div class="cap"><small>RAPPORT N°{lastNo} · ÉPISODE YOUTUBE</small><b>100 combats dans chaque zone {lastRegion === 'Incarnam' ? "d'" : 'de '}{lastRegion}</b></div>
+          </a>
+          <div class="card">
+            <div><span class="rank">Fiche · {last.region}</span><h3 style="font-size:22px;margin-top:6px">{last.nom}</h3><p class="sub">Niveau {niveau(last.niveau)} · B8 · {site.serveur} · {last.sessions.length} session{last.sessions.length > 1 ? 's' : ''} ({last.sessions.map(duree).join(' · ')})</p></div>
+            <div class="kv">
+              <div><small>K.P.I. (Kamas Par Itération)</small><b>{fmt(last.kpi)}</b></div>
+              <div><small>Kamas / heure</small><b>{fmt(last.kph)}</b></div>
+              <div><small>% d'anomalie</small><b>{last.anomalie ?? '—'} %</b></div>
+              <div><small>Prix HDV {site.serveur} du</small><b>{dateFr(last.date_prix)}</b></div>
+            </div>
+            <div class="actions"><a class="btn btn-primary" href={last.url}>Voir la fiche complète</a>{last.video && <a class="btn btn-ghost" href={last.video} target="_blank" rel="noopener">▶ L'épisode</a>}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section id="team">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>La team</h2><p class="sub">8 personnages, une seule ligne de production de combats. Serveur {site.serveur}.</p></div><a class="btn btn-ghost" href="/team/">Voir la team →</a></div>
+      <TeamGrid />
+    </div>
+  </section>
+
+  <section style="padding-bottom:0">
+    <div class="wrap">
+      <div class="cta">
+        <div><h2>{site.rythme}</h2><p class="sub">Les tournages, les zones, les drops : tout sort d'abord en vidéo.</p></div>
+        <a class="btn btn-primary" href={site.youtube} target="_blank" rel="noopener">▶ S'abonner sur YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="farm-data" set:html={JSON.stringify(data)}></script>
+</Base>
+
+<script>
+  import { fmt, niveau } from '../lib/farm.js';
+  const D = JSON.parse(document.getElementById('farm-data').textContent);
+  const WIP = "WIP : attendre la sortie de l'épisode sur YouTube !";
+  const st = { q: '', lvl: '', isl: '', n: 8 };
+  const max = Math.max(1, ...D.measured.map((r) => r.k));
+  const $ = (id) => document.getElementById(id);
+  const match = (r) => {
+    const q = st.q.trim().toLowerCase();
+    return (!q || r.n.toLowerCase().includes(q) || r.m.some((m) => m.toLowerCase().includes(q))) && (!st.lvl || r.l === st.lvl) && (!st.isl || r.r === st.isl);
+  };
+  function render() {
+    const f = st.n / 8;
+    const rows = D.measured.filter(match);
+    const showWip = st.q.trim() || st.isl;
+    const wips = showWip ? D.wip.filter(match) : [];
+    const regionWip = st.isl && !D.measured.some((r) => r.r === st.isl) && !D.wip.some((r) => r.r === st.isl);
+    $('kpih').textContent = 'K.P.I. · B' + st.n;
+    $('note').hidden = st.n === 8;
+    $('note').textContent = st.n === 8 ? '' : `Projection : rentabilité estimée si la zone était farmée avec ${st.n} compte${st.n > 1 ? 's' : ''} (au prorata du B8). La mesure réelle est faite en B8.`;
+    let html = rows.map((r, i) => `<tr tabindex="0" data-u="${r.u}"><td class="r">${i + 1}</td>
+      <td class="zn"><a href="${r.u}"><b>${r.n}</b></a><small>${r.r}</small></td><td class="hm">${niveau(r.l)}</td>
+      <td class="mobs hm">${r.m.join(' · ')}</td><td class="num kpi-cell"><b>${fmt(r.k * f)}</b>${f < 1 ? '<span class="proj">projection</span>' : ''}<div class="bar"><i style="width:${Math.round(r.k / max * 100)}%"></i></div></td>
+      <td class="num hm">${fmt(r.h * f)}</td><td class="num hm">${r.d}</td></tr>`).join('');
+    html += wips.map((r) => `<tr class="wiprow" data-u="${r.u}"><td class="r">—</td><td class="zn"><a href="${r.u}"><b>${r.n}</b></a><small>${r.r}</small></td><td class="hm">${niveau(r.l)}</td><td class="mobs hm">${r.m.join(' · ')}</td><td colspan="3" class="num"><span class="wip">${WIP}</span></td></tr>`).join('');
+    if (regionWip) html += `<tr class="wiprow"><td class="r">—</td><td class="zn"><b>${st.isl}</b><small>Toutes les zones</small></td><td class="hm"></td><td class="hm"></td><td colspan="3" class="num"><span class="wip">${WIP}</span></td></tr>`;
+    $('rows').innerHTML = html || `<tr><td colspan="7" class="empty">Aucune zone ne correspond à ces filtres.</td></tr>`;
+    const nw = wips.length + (regionWip ? 1 : 0);
+    $('count').textContent = `${rows.length} zone${rows.length > 1 ? 's' : ''} mesurée${rows.length > 1 ? 's' : ''}${nw ? ` · ${nw} en WIP` : ''} · tri par K.P.I. décroissant` + (showWip ? '' : ' · choisis une région pour voir les zones en WIP');
+  }
+  $('q').addEventListener('input', (e) => { st.q = e.target.value; render(); });
+  $('lvl').addEventListener('change', (e) => { st.lvl = e.target.value; render(); });
+  $('isl').addEventListener('change', (e) => { st.isl = e.target.value; render(); });
+  const segs = document.querySelectorAll('#compo button');
+  segs.forEach((b) => b.addEventListener('click', () => { segs.forEach((x) => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true'); st.n = +b.dataset.v; render(); }));
+  $('reset').addEventListener('click', () => { st.q = st.lvl = st.isl = ''; st.n = 8; ['q', 'lvl', 'isl'].forEach((id) => ($(id).value = '')); segs.forEach((x) => x.setAttribute('aria-pressed', x.dataset.v === '8' ? 'true' : 'false')); render(); });
+  $('rows').addEventListener('click', (e) => { const tr = e.target.closest('tr[data-u]'); if (tr && !e.target.closest('a')) location.href = tr.dataset.u; });
+  $('rows').addEventListener('keydown', (e) => { const tr = e.target.closest('tr[data-u]'); if (tr && e.key === 'Enter') location.href = tr.dataset.u; });
+  render();
+</script>

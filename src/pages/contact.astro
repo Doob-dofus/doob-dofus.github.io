@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/data.js';
+const items = [
+  ['YouTube', 'Les épisodes F.A.R.M.', site.youtube && site.youtube !== 'https://www.youtube.com/' ? site.youtube : ''],
+  ['X', 'Les annonces et les résultats', site.x],
+  ['Discord', 'Discuter avec la communauté', site.discord],
+  ['Gmail', 'Partenariats et questions', site.gmail ? `mailto:${site.gmail}` : ''],
+];
+---
+<Base title="Contact — F.A.R.M. | par Doob" description="Retrouver Doob sur YouTube, X, Discord ou par e-mail." current="contact">
+  <div class="wrap">
+    <div class="page-head">
+      <div class="eyebrow"><i></i>Contact</div>
+      <h1>Contacter Doob</h1>
+      <p>Une zone à proposer, une erreur dans un rapport, une question sur la méthode ? Passe par l'un de ces canaux.</p>
+    </div>
+    <section style="padding-top:28px">
+      <div class="contact">
+        {items.map(([n, d, u]) => u
+          ? <a href={u} target={u.startsWith('http') ? '_blank' : undefined} rel="noopener"><b>{n}</b><small>{d}{u.startsWith('mailto:') ? ` · ${site.gmail}` : ''}</small></a>
+          : <div class="off"><b>{n}</b><small>{d} · lien à venir</small></div>)}
+      </div>
+    </section>
+  </div>
+</Base>

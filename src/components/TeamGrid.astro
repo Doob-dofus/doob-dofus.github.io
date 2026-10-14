@@ -1,0 +1,19 @@
+---
+import { team } from '../lib/data.js';
+const groups = [['direction', 'La direction'], ['stagiaires', 'Les stagiaires — Objectif CDI']];
+---
+<div class="org">
+  {groups.map(([g, label]) => (
+    <div>
+      <h3>{label}</h3>
+      <div class="team">
+        {team.filter((m) => m.groupe === g).map((m) => (
+          <div class="member">
+            <div class="pic"><img src={m.sprite} alt={`${m.nom}, ${m.classe}`} loading="lazy" width="62" height="92"></div>
+            <div><b>{m.nom}</b><div class="cls">{m.classe}</div><div class="role">{m.role}</div></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,57 @@
+nom: Pâturages
+region: Incarnam
+niveau: 0-20
+statut: mesuree
+rapport: 1
+monstres:
+- Bouftou Nuageux
+- Boufton Pâlichon
+- Boufton Orageux
+- Bouftor Éthéré
+video: ''
+mosaique: ''
+date_prix: '2026-09-29'
+anomalie: 10
+combats: 100
+sessions:
+- 70
+- 55
+- 65
+kamas_combats: 0
+drops:
+- ressource: Animulette
+  monstres: Tous les monstres
+  taux_base: 20
+  quantite: 273
+  prix: 192
+  ventes_30j: 471
+- ressource: Bave de Bouftou
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 623
+  prix: 61
+  ventes_30j: 786
+- ressource: Viande Intangible
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 627
+  prix: 57
+  ventes_30j: 877
+- ressource: Bottes de l'Aventurier
+  monstres: Tous les monstres
+  taux_base: 20
+  quantite: 261
+  prix: 114
+  ventes_30j: 815
+- ressource: Ortie
+  monstres: Tous les monstres
+  taux_base: 50
+  quantite: 614
+  prix: 48
+  ventes_30j: 114
+- ressource: Laine Céleste
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 563
+  prix: 51
+  ventes_30j: 822

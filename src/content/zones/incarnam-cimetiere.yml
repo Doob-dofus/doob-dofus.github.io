@@ -1,0 +1,44 @@
+nom: Cimetière
+region: Incarnam
+niveau: 0-20
+statut: mesuree
+rapport: 1
+monstres:
+- Chafer Débutant
+- Chafer Furtif
+- Chafer Éclaireur
+- Chafer Piquier
+video: ''
+mosaique: ''
+date_prix: '2026-09-29'
+anomalie: 15
+combats: 100
+sessions:
+- 96
+- 78
+kamas_combats: 0
+drops:
+- ressource: Chapeau de l'Aventurier
+  monstres: Tous les monstres
+  taux_base: 20
+  quantite: 301
+  prix: 112
+  ventes_30j: 328
+- ressource: Relique d'Incarnam
+  monstres: Tous les monstres
+  taux_base: 58
+  quantite: 559
+  prix: 54
+  ventes_30j: 418
+- ressource: Viande Intangible
+  monstres: Tous les monstres
+  taux_base: 58
+  quantite: 634
+  prix: 47
+  ventes_30j: 168
+- ressource: Os de Chafer
+  monstres: Tous les monstres
+  taux_base: 58
+  quantite: 587
+  prix: 41
+  ventes_30j: 536

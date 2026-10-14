@@ -1,0 +1,28 @@
+---
+import { site } from '../lib/data.js';
+const { current } = Astro.props;
+const links = [
+  ['classement', 'Classement', '/#classement'],
+  ['atlas', 'Atlas', '/#atlas'],
+  ['rapports', 'Rapports', '/rapports/'],
+  ['team', 'La team', '/team/'],
+  ['contact', 'Contact', '/contact/'],
+];
+---
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="F.A.R.M. — accueil">
+      <img src="/images/logo.png" alt="Logo Doob" width="68" height="34">
+      <span class="sep"></span>
+      <b>F.A.R.M.</b>
+    </a>
+    <span class="srv" style="margin-right:auto">Serveur {site.serveur}</span>
+    <nav class="links" aria-label="Navigation principale">
+      {links.map(([k, label, href]) => <a href={href} aria-current={current === k ? 'page' : undefined}>{label}</a>)}
+    </nav>
+    <a class="btn btn-primary" href={site.youtube} target="_blank" rel="noopener">▶ La chaîne</a>
+  </div>
+  <nav class="mnav" aria-label="Navigation mobile">
+    {links.map(([k, label, href]) => <a href={href} aria-current={current === k ? 'page' : undefined}>{label}</a>)}
+  </nav>
+</header>

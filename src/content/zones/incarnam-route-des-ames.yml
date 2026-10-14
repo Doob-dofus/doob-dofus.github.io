@@ -1,0 +1,50 @@
+nom: Route des âmes
+region: Incarnam
+niveau: 0-20
+statut: mesuree
+rapport: 1
+monstres:
+- Feu Vif
+- Feu de Joie
+- Feu Furieux
+- Feu Follet
+video: ''
+mosaique: ''
+date_prix: '2026-09-29'
+anomalie: 14
+combats: 100
+sessions:
+- 98
+- 81
+kamas_combats: 0
+drops:
+- ressource: Cape Syché
+  monstres: Tous les monstres
+  taux_base: 20
+  quantite: 305
+  prix: 62
+  ventes_30j: 736
+- ressource: Cape de l'Aventurier
+  monstres: Tous les monstres
+  taux_base: 20
+  quantite: 291
+  prix: 59
+  ventes_30j: 507
+- ressource: Cendres Éternelles
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 644
+  prix: 16
+  ventes_30j: 672
+- ressource: Viande Intangible
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 607
+  prix: 15
+  ventes_30j: 450
+- ressource: Feu Intérieur
+  monstres: Tous les monstres
+  taux_base: 59
+  quantite: 657
+  prix: 13
+  ventes_30j: 448
