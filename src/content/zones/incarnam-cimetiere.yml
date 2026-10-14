@@ -8,37 +8,36 @@ monstres:
 - Chafer Furtif
 - Chafer Éclaireur
 - Chafer Piquier
-video: ''
+video: https://www.youtube.com/watch?v=I-QdROgnT10
 mosaique: ''
-date_prix: '2026-09-29'
-anomalie: 15
+date_prix: '2026-10-11'
+anomalie: 0
 combats: 100
 sessions:
-- 96
-- 78
+- 24.143
 kamas_combats: 0
 drops:
 - ressource: Chapeau de l'Aventurier
-  monstres: Tous les monstres
+  monstres: Chafer Débutant, Chafer Furtif, Chafer Éclaireur, Chafer Piquier
   taux_base: 20
-  quantite: 301
-  prix: 112
-  ventes_30j: 328
-- ressource: Relique d'Incarnam
-  monstres: Tous les monstres
-  taux_base: 58
-  quantite: 559
-  prix: 54
-  ventes_30j: 418
-- ressource: Viande Intangible
-  monstres: Tous les monstres
-  taux_base: 58
-  quantite: 634
-  prix: 47
-  ventes_30j: 168
+  quantite: 0
+  prix: 0
+  ventes_30j: 0
 - ressource: Os de Chafer
-  monstres: Tous les monstres
+  monstres: Chafer Débutant, Chafer Furtif, Chafer Éclaireur, Chafer Piquier
   taux_base: 58
-  quantite: 587
-  prix: 41
-  ventes_30j: 536
+  quantite: 1512
+  prix: 44
+  ventes_30j: 124901
+- ressource: Relique d'Incarnam
+  monstres: Chafer Débutant, Chafer Furtif, Chafer Éclaireur, Chafer Piquier
+  taux_base: 58
+  quantite: 1513
+  prix: 105
+  ventes_30j: 114692
+- ressource: Viande Intangible
+  monstres: Chafer Débutant, Chafer Furtif, Chafer Éclaireur, Chafer Piquier
+  taux_base: 58
+  quantite: 1514
+  prix: 98
+  ventes_30j: 188154

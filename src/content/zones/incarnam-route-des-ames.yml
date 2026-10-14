@@ -8,43 +8,42 @@ monstres:
 - Feu de Joie
 - Feu Furieux
 - Feu Follet
-video: ''
+video: https://www.youtube.com/watch?v=I-QdROgnT10
 mosaique: ''
-date_prix: '2026-09-29'
-anomalie: 14
+date_prix: '2026-10-11'
+anomalie: 0
 combats: 100
 sessions:
-- 98
-- 81
+- 24.143
 kamas_combats: 0
 drops:
-- ressource: Cape Syché
-  monstres: Tous les monstres
-  taux_base: 20
-  quantite: 305
-  prix: 62
-  ventes_30j: 736
 - ressource: Cape de l'Aventurier
-  monstres: Tous les monstres
+  monstres: Feu Vif, Feu de Joie, Feu Furieux, Feu Follet
   taux_base: 20
-  quantite: 291
-  prix: 59
-  ventes_30j: 507
+  quantite: 0
+  prix: 0
+  ventes_30j: 0
+- ressource: Cape Syché
+  monstres: Feu Vif, Feu de Joie, Feu Furieux, Feu Follet
+  taux_base: 20
+  quantite: 0
+  prix: 0
+  ventes_30j: 0
 - ressource: Cendres Éternelles
-  monstres: Tous les monstres
+  monstres: Feu Vif, Feu de Joie, Feu Furieux, Feu Follet
   taux_base: 59
-  quantite: 644
-  prix: 16
-  ventes_30j: 672
-- ressource: Viande Intangible
-  monstres: Tous les monstres
-  taux_base: 59
-  quantite: 607
-  prix: 15
-  ventes_30j: 450
+  quantite: 1796
+  prix: 210
+  ventes_30j: 480427
 - ressource: Feu Intérieur
-  monstres: Tous les monstres
+  monstres: Feu Vif, Feu de Joie, Feu Furieux, Feu Follet
   taux_base: 59
-  quantite: 657
-  prix: 13
-  ventes_30j: 448
+  quantite: 1797
+  prix: 83
+  ventes_30j: 61299
+- ressource: Viande Intangible
+  monstres: Feu Vif, Feu de Joie, Feu Furieux, Feu Follet
+  taux_base: 59
+  quantite: 1795
+  prix: 98
+  ventes_30j: 188154

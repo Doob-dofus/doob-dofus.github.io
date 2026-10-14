@@ -1,0 +1,46 @@
+nom: Mine
+region: Incarnam
+niveau: 0-20
+statut: mesuree
+rapport: 1
+monstres:
+- Aminite
+video: https://www.youtube.com/watch?v=I-QdROgnT10
+mosaique: ''
+date_prix: '2026-10-11'
+anomalie: 0
+combats: 100
+sessions:
+- 24.143
+kamas_combats: 0
+drops:
+- ressource: Cendres Éternelles
+  monstres: Aminite
+  taux_base: 58
+  quantite: 1697
+  prix: 210
+  ventes_30j: 480427
+- ressource: Fer
+  monstres: Aminite
+  taux_base: 100
+  quantite: 0
+  prix: 0
+  ventes_30j: 0
+- ressource: Poudre d'Aminite
+  monstres: Aminite
+  taux_base: 48
+  quantite: 0
+  prix: 0
+  ventes_30j: 0
+- ressource: Viande Intangible
+  monstres: Aminite
+  taux_base: 58
+  quantite: 1701
+  prix: 98
+  ventes_30j: 188154
+- ressource: Volve d'Aminite
+  monstres: Aminite
+  taux_base: 58
+  quantite: 1701
+  prix: 76
+  ventes_30j: 31749

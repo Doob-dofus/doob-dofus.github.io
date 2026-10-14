@@ -6,14 +6,9 @@ Adresse prévue : **https://doob-dofus.github.io**
 
 ---
 
-## 1. Mettre le site en ligne (une seule fois)
+## 1. Publication
 
-1. Sur GitHub (compte **Doob-dofus**), crée un dépôt **public** nommé exactement **`doob-dofus.github.io`**.
-2. Dépose tout le contenu de ce dossier dans le dépôt (bouton *Add file → Upload files*, puis glisser-déposer). Le dossier caché `.github` doit bien être envoyé : sinon, crée le fichier `.github/workflows/deploy.yml` à la main en copiant son contenu.
-3. Dans le dépôt : **Settings → Pages → Build and deployment → Source : GitHub Actions**.
-4. Va dans l'onglet **Actions** : la publication « Publier le site » tourne (1 à 2 minutes). Le site est ensuite en ligne sur https://doob-dofus.github.io.
-
-À chaque modification enregistrée sur la branche `main`, le site se republie tout seul.
+Le site est en ligne sur **https://doob-dofus.github.io**. À chaque modification enregistrée sur la branche `main` (via Pages CMS ou GitHub), il se republie tout seul en 1 à 2 minutes : suivi dans l'onglet **Actions** du dépôt.
 
 ## 2. Modifier le site sans code : Pages CMS
 
@@ -49,12 +44,11 @@ Le K.P.I. (Kamas Par Itération = kamas moyens par combat), les kamas/heure, le 
 
 Pour une zone pas encore tournée : statut **WIP**, avec juste le nom, la région, le niveau et les monstres. Elle s'affiche avec « WIP : attendre la sortie de l'épisode sur YouTube ! ».
 
-## 4. Avant l'ouverture officielle
+## 4. Bonnes pratiques pour les prochains rapports
 
-- [ ] Les zones d'Incarnam actuelles contiennent des **chiffres d'exemple** : remplace-les par les vrais relevés (ou repasse-les en WIP).
-- [ ] Mets à jour la **prospection** réelle des 8 persos (rubrique *La team*).
-- [ ] Renseigne les liens **YouTube**, **Discord** et l'**e-mail** (rubrique *Réglages du site*).
-- [ ] Décoche **« Afficher la bannière données d'exemple »** quand tout est réel.
+- Dans l'Atlas de Tenma, remets le stock à zéro avant chaque zone, puis note le stock et la durée de chaque zone.
+- La date du relevé des prix = le jour où tu exportes les prix de l'Atlas.
+- Si la prospection d'un perso change, mets-la à jour dans **La team** avant de publier le rapport.
 
 ## 5. Pour les curieux (technique)
 

@@ -7,43 +7,48 @@ monstres:
 - Plikplok
 - Petit Gloot
 - Grand Splatch
-video: ''
+video: https://www.youtube.com/watch?v=I-QdROgnT10
 mosaique: ''
-date_prix: '2026-09-29'
-anomalie: 10
+date_prix: '2026-10-11'
+anomalie: 0
 combats: 100
 sessions:
-- 92
-- 75
+- 24.143
 kamas_combats: 0
 drops:
-- ressource: Goujon
-  monstres: Tous les monstres
-  taux_base: 50
-  quantite: 564
-  prix: 87
-  ventes_30j: 136
+- ressource: 'Âme capturée : Petit Gloot'
+  monstres: Petit Gloot
+  taux_base: 100
+  quantite: 0
+  prix: 0
+  ventes_30j: 0
 - ressource: Ceinture de l'aventurier
-  monstres: Tous les monstres
+  monstres: Plikplok, Petit Gloot, Grand Splatch
   taux_base: 20
-  quantite: 274
-  prix: 88
-  ventes_30j: 559
+  quantite: 0
+  prix: 0
+  ventes_30j: 0
 - ressource: Eau Potable
-  monstres: Tous les monstres
+  monstres: Plikplok, Petit Gloot, Grand Splatch
   taux_base: 59
-  quantite: 598
-  prix: 36
-  ventes_30j: 706
-- ressource: Viande Intangible
-  monstres: Tous les monstres
-  taux_base: 59
-  quantite: 567
-  prix: 32
-  ventes_30j: 474
+  quantite: 1491
+  prix: 145
+  ventes_30j: 1310676
+- ressource: Goujon
+  monstres: Plikplok, Petit Gloot, Grand Splatch
+  taux_base: 50
+  quantite: 0
+  prix: 0
+  ventes_30j: 0
 - ressource: Peau de Gloot
-  monstres: Tous les monstres
+  monstres: Plikplok, Petit Gloot, Grand Splatch
   taux_base: 59
-  quantite: 585
-  prix: 31
-  ventes_30j: 468
+  quantite: 1488
+  prix: 6
+  ventes_30j: 250527
+- ressource: Viande Intangible
+  monstres: Plikplok, Petit Gloot, Grand Splatch
+  taux_base: 59
+  quantite: 1490
+  prix: 98
+  ventes_30j: 188154
