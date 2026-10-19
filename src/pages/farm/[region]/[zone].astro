@@ -16,7 +16,7 @@ const cph = total ? z.combats / (total / 60) : 0;
 const data = {
   cur: z.nom,
   team: team.map((m, i) => [m.nom, ppRapport[i] ?? 0]),
-  zone: { res: z.drops.map((d) => ({ n: d.ressource, mobs: d.monstres, b: d.taux_base, d: d.quantite, p: d.prix, v: d.ventes_30j ?? null })), combats: z.combats, kc: z.kamas_combats || 0, cph },
+  zone: { res: z.drops.map((d) => ({ n: d.ressource, mobs: d.monstres, b: d.taux_base, d: d.quantite, p: d.prix, v: d.ventes_30j ?? null, ek: d.eklame ? 1 : 0 })), combats: z.combats, kc: z.kamas_combats || 0, cph },
   region: regionZones.map((x) => ({ z: x.nom, u: x.url, combats: x.combats, kc: x.kamas_combats || 0, pp: x.prospection && x.prospection.length ? x.prospection : team.map((m) => Number(m.prospection) || 0), res: x.drops.map((d) => ({ b: d.taux_base, d: d.quantite, p: d.prix })) })),
 };
 const title = z.measured
@@ -28,7 +28,7 @@ const description = z.measured
 ---
 <Base title={title} description={description} current="rapports">
   <div class="wrap">
-    <nav class="crumb" aria-label="Fil d'Ariane"><a href="/#atlas">Atlas</a><span>›</span><a href={`/farm/${z.regionSlug}/`}>{z.region}</a><span>›</span>{z.nom}</nav>
+    <nav class="crumb" aria-label="Fil d'Ariane"><a href="/#atlas">Cartographie</a><span>›</span><a href={`/farm/${z.regionSlug}/`}>{z.region}</a><span>›</span>{z.nom}</nav>
     <div class="zhead">
       <div>
         <div class="eyebrow"><i></i>{z.measured ? `Rapport n°${z.rapport} · ${z.region}` : `${z.region} · à venir`}</div>
@@ -53,6 +53,9 @@ const description = z.measured
         <div class="fact"><small>Temps total</small><b>{duree(total)}</b><em>{cph.toFixed(1).replace('.', ',')} combats / h</em></div>
         <div class="fact"><small>Kamas / heure</small><b>{fmt(z.kph)}</b></div>
         <div class="fact"><small>% d'anomalie</small><b>{z.anomalie ?? '—'} %</b></div>
+        {z.monstres_combattus != null && (
+          <div class="fact"><small>Monstres combattus</small><b>{fmt(z.monstres_combattus)}</b><em>{(z.monstres_combattus / z.combats).toFixed(1).replace('.', ',')} / combat</em></div>
+        )}
         <div class="fact"><small>Prix HDV {site.serveur} du</small><b>{dateFr(z.date_prix)}</b><em>ventes 30 j utilisées</em></div>
       </div>
     )}
@@ -70,12 +73,12 @@ const description = z.measured
     <>
       <section id="sim">
         <div class="wrap">
-          <div class="sec-head"><div><h2>Simule avec ta team</h2><p class="sub">Change le nombre de comptes et la prospection : le taux de drop, le K.P.I. et le classement se mettent à jour.</p></div></div>
+          <div class="sec-head"><div><h2>Simule avec ta team</h2><p class="sub">Change la taille de la team (B1 à B8) et la prospection : le taux de drop, le K.P.I. et le classement se mettent à jour.</p></div></div>
           <div class="sim">
             <div class="ctrl">
-              <div><span class="lbl">Nombre de comptes</span>
-                <div class="seg" id="nSeg" role="group" aria-label="Nombre de comptes">
-                  <button type="button" data-v="1">1 compte</button><button type="button" data-v="4">4 comptes</button><button type="button" data-v="8">8 comptes</button>
+              <div><span class="lbl">Taille de la team</span>
+                <div class="seg wrapit" id="nSeg" role="group" aria-label="Nombre de comptes">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => <button type="button" data-v={n}>B{n}</button>)}
                 </div></div>
               <div><span class="lbl">Prospection par personnage</span>
                 <div class="seg wrapit" id="mSeg" role="group" aria-label="Prospection">
@@ -102,7 +105,7 @@ const description = z.measured
 
       <section style="padding-top:8px">
         <div class="wrap">
-          <div class="sec-head"><div><h2>Les drops</h2><p class="sub">Taux de base : DofusDB. Quantités : mesurées sur {z.combats} combats, puis recalculées pour ta team.</p></div></div>
+          <div class="sec-head"><div><h2>Les drops</h2><p class="sub">Taux de base : DofusDB. Quantités : mesurées sur {z.combats} combats, puis recalculées pour ta team. L'Éklâme (drop global, tous monstres) est affichée à titre indicatif : taux réel variable de 1 à 4 %.</p></div></div>
           <div class="panel"><div class="tbl-wrap"><table class="dt">
             <thead><tr><th>Ressource</th><th class="num hm">Taux<br>de base</th><th class="num">Taux avec<br>ta team</th><th class="num hm">PP pour<br>100 %</th><th class="num">Drops<br>/ 100 combats</th><th class="num hm">Prix<br>HDV {site.serveur}</th><th class="num hm">Ventes<br>30 j</th><th class="num">Kamas<br>/ combat</th></tr></thead>
             <tbody id="drops"></tbody></table></div>
@@ -122,7 +125,7 @@ const description = z.measured
               <p>Chaque personnage tire ses drops séparément. Son taux = taux de base × un multiplicateur lié à sa prospection, plafonné à 100 %.</p>
               <code>m(PP) = 0,74 + 1,755 / (1 + e^((150 − PP) / 85))<br>minimum 1× · maximum ≈ 2,5×</code>
               <p>Les drops projetés partent des drops réellement comptés, ajustés par le rapport entre ta team et la team Doob.</p>
-              <ul><li>Formule communautaire, à valider avec nos mesures.</li><li>Hors challenges, étoiles et bonus de zone.</li><li>Temps de combat identique quel que soit le nombre de comptes.</li><li>Prix HDV {site.serveur} datés : ils bougent.</li></ul>
+              <ul><li>Formule communautaire, à valider avec nos mesures.</li><li>Hors challenges, étoiles et bonus de zone.</li><li>Temps de combat identique quel que soit la taille de la team.</li><li>Prix HDV {site.serveur} datés : ils bougent.</li></ul>
             </div>
           </div>
         </div>
@@ -182,7 +185,7 @@ const description = z.measured
       $('kProj').textContent = fmt(k);
       $('kDelta').className = 'delta ' + (same || Math.abs(dl) < 0.5 ? 'eq' : dl > 0 ? 'up' : 'down');
       $('kDelta').textContent = same ? '= mesure réelle' : (dl > 0 ? '+' : '') + dl.toFixed(0).replace('-', '−') + ' % vs mesure B8';
-      $('outLbl').textContent = same ? 'K.P.I. mesuré (team Doob, B8)' : 'K.P.I. projeté — ' + st.n + ' compte' + (st.n > 1 ? 's' : '');
+      $('outLbl').textContent = same ? 'K.P.I. mesuré (team Doob, B8)' : 'K.P.I. projeté — B' + st.n;
       $('hProj').textContent = fmt(k * Z.cph);
       $('mAvg').textContent = x2(pps.reduce((a, p) => a + mult(p), 0) / pps.length);
       $('dProj').textContent = fmt(rs.reduce((a, r) => a + r.dp, 0));
@@ -193,10 +196,11 @@ const description = z.measured
       $('rProj').textContent = ranked.findIndex((x) => x.z === FD.cur) + 1 + 'e / ' + ranked.length;
       $('drops').innerHTML = [...rs.filter((r) => r.d > 0), ...rs.filter((r) => !(r.d > 0))].map((r) => {
         const rates = pps.map((pp) => Math.min(100, r.b * mult(pp))); const mn = Math.min(...rates), mx = Math.max(...rates); const need = ppFor100(r.b);
-        if (!(r.d > 0)) return `<tr class="nodrop"><td class="rn"><b>${r.n}</b><small>${r.mobs || ''}</small></td><td class="num hm">${pct(r.b)}</td><td class="num">${mn === mx ? pct(mn) : pct(mn) + ' – ' + pct(mx)}</td><td class="num hm">${need === null ? 'jamais' : need === 0 ? '0' : fmt(Math.ceil(need / 10) * 10)}</td><td class="num">aucun drop</td><td class="num hm">—</td><td class="num hm">—</td><td class="num">—</td></tr>`;
+        if (!(r.d > 0)) return `<tr class="nodrop"><td class="rn"><b>${r.n}</b><small>${r.mobs || ''}</small></td><td class="num hm">${pct(r.b)}</td><td class="num">${mn === mx ? pct(mn) : pct(mn) + ' – ' + pct(mx)}</td><td class="num hm">${need === null ? 'jamais' : need === 0 ? '0' : fmt(Math.ceil(need / 10) * 10)}</td><td class="num">${r.ek ? 'pas encore mesurée' : 'aucun drop'}</td><td class="num hm">—</td><td class="num hm">—</td><td class="num">—</td></tr>`;
         return `<tr><td class="rn"><b>${r.n}</b><small>${r.mobs || ''}</small></td><td class="num hm">${pct(r.b)}</td><td class="num">${mn === mx ? pct(mn) : pct(mn) + ' – ' + pct(mx)}${mn >= 100 ? '<span class="cap100">MAX</span>' : ''}</td><td class="num hm">${need === null ? '<span style="color:var(--muted)">jamais</span>' : need === 0 ? '0' : fmt(Math.ceil(need / 10) * 10)}</td><td class="num">${fmt(r.dp)}${same ? '' : `<span class="proj">mesuré : ${fmt(r.d)}</span>`}</td><td class="num hm">${fmt(r.p)}</td><td class="num hm">${r.v == null ? '—' : fmt(r.v)}</td><td class="num"><b>${fmt((r.dp * r.p) / Z.combats)}</b></td></tr>`;
       }).join('');
-      $('dCount').textContent = `${rs.length} ressources${rs.some((r) => !(r.d > 0)) ? ` (dont ${rs.filter((r) => !(r.d > 0)).length} sans drop pendant la mesure)` : ''} · « PP pour 100 % » = prospection à partir de laquelle chaque perso drop la ressource à tous les coups`;
+      const noMes = rs.filter((r) => !(r.d > 0) && !r.ek).length;
+      $('dCount').textContent = `${rs.length} ressources${noMes ? ` (dont ${noMes} sans drop pendant la mesure)` : ''}${rs.some((r) => r.ek) ? ' · Éklâme affichée à titre indicatif (non mesurée)' : ''} · « PP pour 100 % » = prospection à partir de laquelle chaque perso drop la ressource à tous les coups`;
       const caps = Z.res.map((r) => ppFor100(r.b)).filter((v) => v !== null && v > 0);
       const saturating = Z.res.filter((r) => ppFor100(r.b) !== null && ppFor100(r.b) > 0).length;
       $('insight').innerHTML = saturating ? `Ici, ${saturating} ressource${saturating > 1 ? 's' : ''} sur ${Z.res.length} peu${saturating > 1 ? 'vent' : 't'} tomber à tous les coups : à partir d'environ <b>${fmt(Math.ceil(Math.min(...caps) / 10) * 10)}–${fmt(Math.ceil(Math.max(...caps) / 10) * 10)} PP</b> par perso. Au-delà, la prospection ne rapporte plus que sur les ressources plus rares.` : 'Aucune ressource ne plafonne ici : chaque point de prospection compte.';

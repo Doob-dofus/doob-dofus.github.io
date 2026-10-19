@@ -54,7 +54,7 @@ h1 span{color:var(--violet)}
 @media (prefers-reduced-motion:reduce){.sprite{animation:none}}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-1px;padding:32px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:-1px;padding:32px 0}
 .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px}
 .stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-.01em}
 .stat small{color:var(--muted);font-size:14px}
@@ -218,7 +218,7 @@ tr.wiprow .zn b{color:var(--muted)}
 .kbig b{font-size:44px;font-weight:800;color:var(--violet);letter-spacing:-.02em;line-height:1.1}
 .kbig .u{color:var(--muted);font-size:14px;margin-left:6px}
 .kbig .act{display:flex;gap:8px;margin-top:14px}
-.facts{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .fact{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
 .fact small{display:block;color:var(--muted);font-size:13px}
 .fact b{font-size:18px;font-variant-numeric:tabular-nums}

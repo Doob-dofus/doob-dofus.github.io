@@ -15,7 +15,7 @@ content:
     - region
     - statut
     - rapport
-    sort:
+  sort:
     - region
     - nom
   fields:
@@ -42,7 +42,7 @@ content:
       - Île de Pandala
       - Saharach
       creatable: true
-    description: Doit correspondre exactement à une région de l'atlas (fichier Régions).
+    description: Doit correspondre exactement à une région de la cartographie (fichier Régions).
   - name: niveau
     label: Niveau
     type: string
@@ -82,6 +82,10 @@ content:
     label: Nombre de combats
     type: number
     default: 100
+  - name: monstres_combattus
+    label: Monstres combattus (total)
+    type: number
+    description: Nombre total de monstres affrontés pendant les sessions de la zone (facultatif).
   - name: sessions
     label: Sessions (durée en minutes)
     type: number
@@ -136,9 +140,10 @@ content:
     - name: classe
       label: Classe
       type: string
-    - name: role
-      label: Rôle
+    - name: niveau
+      label: Niveau affiché
       type: string
+      description: Ex. « Oméga 130 » ou « Niv. 61 ».
     - name: groupe
       label: Groupe
       type: select
@@ -156,7 +161,7 @@ content:
       label: Prospection
       type: number
 - name: regions
-  label: Régions de l'atlas
+  label: Régions de la cartographie
   type: file
   path: src/data/regions.yml
   format: yaml

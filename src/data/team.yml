@@ -1,49 +1,49 @@
 membres:
 - nom: Dooane
   classe: Pandawa
-  role: Le central
+  niveau: Oméga 130
   groupe: direction
   sprite: /sprites/dooane.webp
   prospection: 575
 - nom: Doote
   classe: Enutrof
-  role: La rentabilité
+  niveau: Oméga 127
   groupe: direction
   sprite: /sprites/doote.webp
   prospection: 418
 - nom: Dooblage
   classe: Eliotrope
-  role: Le multiplicateur
+  niveau: Oméga 123
   groupe: direction
   sprite: /sprites/dooblage.webp
   prospection: 594
 - nom: Dooleur
   classe: Iop
-  role: Le marteau
+  niveau: Oméga 124
   groupe: direction
   sprite: /sprites/dooleur.webp
   prospection: 589
 - nom: Doocement
   classe: Zobal
-  role: Le filet de sécurité
+  niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doocement.webp
   prospection: 235
 - nom: Dooillet
   classe: Huppermage
-  role: Le deuxième soliste
+  niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/dooillet.webp
   prospection: 245
 - nom: Doozienne
   classe: Xélor
-  role: Maîtresse du temps
+  niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doozienne.webp
   prospection: 235
 - nom: Doomage
   classe: Roublard
-  role: L'explosion
+  niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doomage.webp
   prospection: 239

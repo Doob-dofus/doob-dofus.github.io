@@ -19,7 +19,7 @@ const wip = zones.filter((z) => !z.measured);
 ---
 <Base title={`Farm en ${nom} : rentabilité des zones mesurée sur 100 combats — F.A.R.M.`} description={`Toutes les zones de ${nom} classées par K.P.I. (kamas par combat), mesuré en B8 sur ${site.serveur}.`} current="atlas">
   <div class="wrap">
-    <nav class="crumb" aria-label="Fil d'Ariane"><a href="/#atlas">Atlas</a><span>›</span>{nom}</nav>
+    <nav class="crumb" aria-label="Fil d'Ariane"><a href="/#atlas">Cartographie</a><span>›</span>{nom}</nav>
     <div class="page-head">
       <div class="eyebrow"><i></i>Région{info.niveaux ? ` · ${info.niveaux}` : ''}</div>
       <h1>{nom}</h1>
@@ -30,7 +30,7 @@ const wip = zones.filter((z) => !z.measured);
         {done.map((z, i) => (
           <a class="rep" href={z.url}>
             <span class="no">#{i + 1}</span>
-            <span><b>{z.nom}</b><small>Niveau {niveau(z.niveau)} · {z.monstres.join(', ')}</small></span>
+            <span><b>{z.nom}</b><small>Niveau {niveau(z.niveau)} · {z.monstres.join(', ')}{(z.anomalie ?? 0) > 0 ? ` · ⚠ ${z.anomalie} % d'anomalie` : ''}{z.monstres_combattus ? ` · ${fmt(z.monstres_combattus)} monstres combattus` : ''}</small></span>
             <span class="kv"><b>{fmt(z.kpi)}</b><small>kamas / combat</small></span>
           </a>
         ))}

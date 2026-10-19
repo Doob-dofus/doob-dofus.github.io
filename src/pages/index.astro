@@ -11,12 +11,17 @@ const covered = regionNames.filter((r) => zones.some((z) => z.region === r && z.
 const totalKamas = measured.reduce((a, z) => a + z.kpi * z.combats, 0);
 const totalCombats = measured.reduce((a, z) => a + z.combats, 0);
 const kamasLabel = totalKamas >= 1e6 ? (totalKamas / 1e6).toFixed(1).replace('.', ',') + ' M' : fmt(totalKamas);
+const anoZones = measured.filter((z) => (z.anomalie ?? 0) > 0).length;
+const anoPct = measured.length ? Math.round((anoZones / measured.length) * 100) : 0;
+const totalMobs = measured.reduce((a, z) => a + (z.monstres_combattus || 0), 0);
 const stats = [
   [measured.length, 'zones auditées'],
   [fmt(totalCombats), 'combats comptés'],
   [kamasLabel, 'kamas mesurés en B8'],
   [`${covered} / ${regionNames.length}`, 'régions couvertes'],
+  [`${anoPct} %`, 'de zones en anomalie'],
 ];
+if (totalMobs > 0) stats.push([fmt(totalMobs), 'monstres combattus']);
 const podium = measured.slice(0, 3);
 const podiumOrder = [1, 0, 2].filter((i) => podium[i]);
 const lastNo = Math.max(0, ...measured.map((z) => z.rapport || 0));
@@ -67,7 +72,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
             <a class={`pod ${i === 0 ? 'first' : ''}`} href={z.url}>
               <div class="rank">{i + 1}{i === 0 ? 're' : 'e'} place</div><h3>{z.nom}</h3><div class="where">{z.region} · Niv. {niveau(z.niveau)}</div>
               <div class="kpi"><b>{fmt(z.kpi)}</b><small>kamas / combat</small></div>
-              <div class="meta"><span>{fmt(z.kph)} k/h</span><span>Prix HDV {site.serveur} du {dateFr(z.date_prix)}</span></div>
+              <div class="meta"><span>{fmt(z.kph)} k/h</span>{(z.anomalie ?? 0) > 0 && <span>⚠ {z.anomalie} % d'anomalie</span>}<span>Prix HDV {site.serveur} du {dateFr(z.date_prix)}</span></div>
             </a>); })}
         </div>
       </div>
@@ -85,10 +90,8 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
           <div class="field"><label for="isl">Région</label>
             <select id="isl"><option value="">Toutes</option>{regionNames.map((r) => <option>{r}</option>)}</select></div>
           <div class="field"><label>Rentabilité pour</label>
-            <div class="seg" id="compo" role="group" aria-label="Rentabilité affichée pour">
-              <button type="button" data-v="1" aria-pressed="false">1 compte</button>
-              <button type="button" data-v="4" aria-pressed="false">4 comptes</button>
-              <button type="button" data-v="8" aria-pressed="true">8 comptes</button>
+            <div class="seg wrapit" id="compo" role="group" aria-label="Rentabilité affichée">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => <button type="button" data-v={n} aria-pressed={n === 8 ? 'true' : 'false'}>B{n}</button>)}
             </div></div>
           <button class="reset" id="reset" type="button">Réinitialiser</button>
         </div>
@@ -106,13 +109,13 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
 
   <section id="atlas" style="padding-top:16px">
     <div class="wrap">
-      <div class="sec-head"><div><h2>L'atlas des zones</h2><p class="sub">Les zones rangées par grandes régions. Une zone sans rapport reste en WIP jusqu'à la sortie de son épisode.</p></div></div>
+      <div class="sec-head"><div><h2>La cartographie des zones</h2><p class="sub">Les zones rangées par grandes régions. Une zone sans rapport reste en WIP jusqu'à la sortie de son épisode.</p></div></div>
       <div class="atlas">
         {atlasListed.map((r) => (
           <div class={`reg ${r.done === r.zones.length ? 'done' : ''}`}>
             <div class="reg-h"><b><a href={`/farm/${r.zones[0].regionSlug}/`}>{r.nom}</a></b><small>{r.niveaux ? r.niveaux + ' · ' : ''}{r.done} / {r.zones.length} zones</small></div>
             <div class="prog"><i style={`width:${Math.round(r.done / r.zones.length * 100)}%`}></i></div>
-            <div class="zl">{r.zones.map((z) => <a href={z.url}><div><span>{z.nom}</span>{z.measured ? <em>{fmt(z.kpi)}</em> : <em class="w">WIP</em>}</div></a>)}</div>
+            <div class="zl">{r.zones.map((z) => <a href={z.url}><div><span>{z.nom}{z.measured && (z.anomalie ?? 0) > 0 ? ` ⚠ ${z.anomalie} %` : ''}</span>{z.measured ? <em>{fmt(z.kpi)}</em> : <em class="w">WIP</em>}</div></a>)}</div>
             {r.done < r.zones.length && <span class="wip">{WIP}</span>}
           </div>
         ))}
@@ -144,6 +147,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
               <div><small>K.P.I. (Kamas Par Itération)</small><b>{fmt(last.kpi)}</b></div>
               <div><small>Kamas / heure</small><b>{fmt(last.kph)}</b></div>
               <div><small>% d'anomalie</small><b>{last.anomalie ?? '—'} %</b></div>
+              {last.monstres_combattus ? <div><small>Monstres combattus</small><b>{fmt(last.monstres_combattus)}</b></div> : ''}
               <div><small>Prix HDV {site.serveur} du</small><b>{dateFr(last.date_prix)}</b></div>
             </div>
             <div class="actions"><a class="btn btn-primary" href={last.url}>Voir la fiche complète</a>{last.video && <a class="btn btn-ghost" href={last.video} target="_blank" rel="noopener">▶ L'épisode</a>}</div>
@@ -191,7 +195,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
     const regionWip = st.isl && !D.measured.some((r) => r.r === st.isl) && !D.wip.some((r) => r.r === st.isl);
     $('kpih').textContent = 'K.P.I. · B' + st.n;
     $('note').hidden = st.n === 8;
-    $('note').textContent = st.n === 8 ? '' : `Projection : rentabilité estimée si la zone était farmée avec ${st.n} compte${st.n > 1 ? 's' : ''} (au prorata du B8). La mesure réelle est faite en B8.`;
+    $('note').textContent = st.n === 8 ? '' : `Projection : rentabilité estimée si la zone était farmée en B${st.n} (au prorata du B8). La mesure réelle est faite en B8.`;
     let html = rows.map((r, i) => `<tr tabindex="0" data-u="${r.u}"><td class="r">${i + 1}</td>
       <td class="zn"><a href="${r.u}"><b>${r.n}</b></a><small>${r.r}</small></td><td class="hm">${niveau(r.l)}</td>
       <td class="mobs hm">${r.m.join(' · ')}</td><td class="num kpi-cell"><b>${fmt(r.k * f)}</b>${f < 1 ? '<span class="proj">projection</span>' : ''}<div class="bar"><i style="width:${Math.round(r.k / max * 100)}%"></i></div></td>

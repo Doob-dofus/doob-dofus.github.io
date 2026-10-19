@@ -21,7 +21,7 @@ const wip = zones.filter((z) => !z.measured);
           {g.zones.map((z) => (
             <a class="rep" href={z.url}>
               <span class="no">{z.region.slice(0, 3).toUpperCase()}</span>
-              <span><b>{z.nom}</b><small>{z.region} · niveau {niveau(z.niveau)} · {z.monstres.join(', ')}</small></span>
+              <span><b>{z.nom}</b><small>{z.region} · niveau {niveau(z.niveau)} · {z.monstres.join(', ')}{(z.anomalie ?? 0) > 0 ? ` · ⚠ ${z.anomalie} % d'anomalie` : ''}{z.monstres_combattus ? ` · ${fmt(z.monstres_combattus)} monstres` : ''}</small></span>
               <span class="kv"><b>{fmt(z.kpi)}</b><small>kamas / combat</small></span>
             </a>
           ))}
@@ -30,7 +30,7 @@ const wip = zones.filter((z) => !z.measured);
     ))}
     {wip.length > 0 && (
       <section style="padding-top:28px">
-        <div class="sec-head"><div><h2>À venir</h2><p class="sub">Ces zones sont dans l'atlas mais n'ont pas encore leur épisode.</p></div></div>
+        <div class="sec-head"><div><h2>À venir</h2><p class="sub">Ces zones sont dans la cartographie mais n'ont pas encore leur épisode.</p></div></div>
         <div class="mono">{wip.map((z) => <a href={z.url}><span>{z.nom} · {z.region}</span></a>)}</div>
       </section>
     )}

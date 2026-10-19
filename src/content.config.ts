@@ -24,6 +24,7 @@ const zones = defineCollection({
     date_prix: z.coerce.string().optional().default(''),
     anomalie: z.coerce.number().optional(),
     combats: z.coerce.number().default(100),
+    monstres_combattus: z.coerce.number().optional(),
     sessions: z.array(z.coerce.number()).default([]),
     kamas_combats: z.coerce.number().optional().default(0),
     prospection: z.array(z.coerce.number()).optional(),
