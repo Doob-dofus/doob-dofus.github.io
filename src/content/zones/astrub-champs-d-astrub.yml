@@ -1,10 +1,86 @@
 nom: Champs d'Astrub
 region: Astrub
 niveau: 0-20
-statut: wip
+statut: mesuree
+rapport: 2
 monstres:
 - Tournesol Sauvage
 - Rose Démoniaque
 - Pissenlit Diabolique
-- Pissdane l'Insipide
 - Épouvanteur
+- Pissdane l'Insipide
+date_prix: '2026-10-20'
+combats: 100
+monstres_combattus: 541
+sessions:
+- 34.766666666666666
+kamas_combats: 6160
+kamas_combats_inconnus: false
+estimations:
+- libelle: Équipements de la panoplie Champ
+  valeur: 886000
+notes: 'Ressources des Champs uniquement, sans reprise des stocks des autres zones. Viandes Faisandées : 4 274 unités déclarées pour la session ; le stock
+  cumulé de l’export est ignoré, seuls son prix unitaire et ses ventes sur 30 jours sont repris. Panoplie Champ : valorisation globale estimée à 886 000
+  kamas, nombre d’équipements non renseigné. Les 1 510 Oignons sont valorisés à 165 kamas par unité (334 846 ventes sur 30 jours), sans valoriser les sachets
+  en plus. Les 286 Éklâmes inférieures sont valorisées à 70 kamas par unité. Kamas directs de combat inclus : 6 160 kamas.'
+drops:
+- ressource: Fleur de Pissenlit Diabolique
+  monstres: Pissenlit Diabolique
+  taux_base: 55
+  quantite: 956
+  prix: 97
+  ventes_30j: 60440
+- ressource: Pétale de Rose Démoniaque
+  monstres: Rose Démoniaque
+  taux_base: 55
+  quantite: 1062
+  prix: 140
+  ventes_30j: 72142
+- ressource: Langue d'Épouvanteur
+  monstres: Épouvanteur
+  taux_base: 55
+  quantite: 1076
+  prix: 95
+  ventes_30j: 53203
+- ressource: Coton Ancestral
+  monstres: Épouvanteur
+  taux_base: 9.24
+  quantite: 330
+  prix: 316
+  ventes_30j: 7919
+- ressource: Feuille de Tournesol Sauvage
+  monstres: Tournesol Sauvage
+  taux_base: 9.24
+  quantite: 362
+  prix: 704
+  ventes_30j: 28471
+- ressource: Engrais
+  monstres: Pissenlit Diabolique
+  taux_base: 9.24
+  quantite: 298
+  prix: 707
+  ventes_30j: 38986
+- ressource: Poire de Pissenlit
+  monstres: Pissenlit Diabolique
+  taux_base: 100
+  quantite: 1187
+  prix: 63
+  ventes_30j: 63623
+- ressource: Viande Faisandée
+  monstres: Tournesol Sauvage, Rose Démoniaque, Pissenlit Diabolique, Épouvanteur
+  taux_base: 55
+  quantite: 4274
+  prix: 49
+  ventes_30j: 281591
+- ressource: Oignons
+  monstres: 'Monstres des Champs — quantité après ouverture des sachets ; taux de base indiqué : Sachet d’Oignons, pas oignon unitaire'
+  taux_base: 1
+  quantite: 1510
+  prix: 165
+  ventes_30j: 334846
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 286
+  prix: 70
+  ventes_30j: 701095
