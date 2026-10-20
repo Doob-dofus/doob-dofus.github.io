@@ -23,7 +23,7 @@ estimations:
   quantite: 349
   valeur: 132000
 notes: 'Quantités de la session isolées des stocks Incarnam. Les 349 équipements Piou sont valorisés globalement à 132 000 kamas, sans saisie par objet.
-  Les 107 Éklâmes inférieures sont comptées mais non valorisées : prix HDV non renseigné. Kamas directs de combat non relevés et exclus du calcul.'
+  Les 107 Éklâmes inférieures sont valorisées à 70 kamas par unité, soit 7 490 kamas au total. Kamas directs de combat non relevés et exclus du calcul.'
 drops:
 - ressource: Graine de Sésame
   monstres: Piou Violet, Piou Rouge, Piou Vert, Piou Bleu, Piou Rose, Piou Jaune
@@ -89,5 +89,6 @@ drops:
   monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
   taux_base: 2.5
   quantite: 107
-  prix: 0
-  prix_manquant: true
+  prix: 70
+  ventes_30j: 701095
+  prix_manquant: false
