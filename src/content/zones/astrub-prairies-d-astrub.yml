@@ -1,7 +1,8 @@
 nom: Prairies d'Astrub
 region: Astrub
 niveau: 0-20
-statut: wip
+statut: mesuree
+rapport: 2
 monstres:
 - Larve Bleue
 - Larve Verte
@@ -9,6 +10,82 @@ monstres:
 - Larvonika l'Instrument
 - Sam Sagaz
 - Larve Jaune
+date_prix: '2026-10-20'
+combats: 100
+monstres_combattus: 549
+sessions:
+- 35.53333333333333
+kamas_combats: 38076
+kamas_combats_inconnus: false
+estimations:
+- libelle: Équipements de la session
+  valeur: 28799
+notes: 'Ressources des Prairies uniquement, sans reprise des stocks des autres zones. Viandes de la session déclarées par Doob : 3 203 Viandes Faisandées
+  et 1 969 Viandes Hachées ; les stocks de l’export ne font pas référence pour ces quantités, seuls les prix unitaires et les ventes sur 30 jours sont repris.
+  Équipements : valorisation globale estimée à 28 799 kamas, nombre d’objets non renseigné. Les 1 300 Poudres Temporelles sont valorisées à 72 kamas par
+  unité (343 132 ventes sur 30 jours), sans valoriser les sachets en plus. Les 310 Éklâmes inférieures sont valorisées à 70 kamas par unité. Kamas directs
+  de combat inclus : 37 156 + 920 = 38 076 kamas.'
+drops:
+- ressource: Peau de Larve Bleue
+  monstres: Larve Bleue
+  taux_base: 55
+  quantite: 1149
+  prix: 805
+  ventes_30j: 66747
+- ressource: Peau de Larve Orange
+  monstres: Larve Orange
+  taux_base: 55
+  quantite: 1084
+  prix: 572
+  ventes_30j: 69007
+- ressource: Peau de Larve Verte
+  monstres: Larve Verte
+  taux_base: 55
+  quantite: 1031
+  prix: 115
+  ventes_30j: 57643
+- ressource: Peau de Larve Jaune
+  monstres: Larve Jaune
+  taux_base: 55
+  quantite: 1088
+  prix: 166
+  ventes_30j: 39703
+- ressource: Œuf de Larve Dorée
+  monstres: Larve Bleue, Larve Verte, Larve Orange, Larve Jaune
+  taux_base: 9.24
+  quantite: 1253
+  prix: 34
+  ventes_30j: 4472
+- ressource: Cervelle de larve
+  monstres: Larve Bleue, Larve Verte, Larve Orange, Larve Jaune
+  taux_base: 6
+  quantite: 996
+  prix: 5
+  ventes_30j: 3683
+- ressource: Viande Faisandée
+  monstres: Larve Verte, Larve Orange, Larve Jaune
+  taux_base: 55
+  quantite: 3203
+  prix: 49
+  ventes_30j: 281591
+- ressource: Viande Hachée
+  monstres: Larve Bleue
+  taux_base: 55
+  quantite: 1969
+  prix: 67
+  ventes_30j: 154191
+- ressource: Poudre Temporelle
+  monstres: 'Larves — quantité après ouverture des sachets ; taux de base indiqué : Sachet de Poudre Temporelle, pas poudre unitaire'
+  taux_base: 1
+  quantite: 1300
+  prix: 72
+  ventes_30j: 343132
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 310
+  prix: 70
+  ventes_30j: 701095
 prospection:
 - 491
 - 418
