@@ -4,7 +4,7 @@ membres:
   niveau: Oméga 130
   groupe: direction
   sprite: /sprites/dooane.webp
-  prospection: 575
+  prospection: 491
 - nom: Doote
   classe: Enutrof
   niveau: Oméga 127
@@ -16,34 +16,34 @@ membres:
   niveau: Oméga 123
   groupe: direction
   sprite: /sprites/dooblage.webp
-  prospection: 594
+  prospection: 620
 - nom: Dooleur
   classe: Iop
   niveau: Oméga 124
   groupe: direction
   sprite: /sprites/dooleur.webp
-  prospection: 589
+  prospection: 616
 - nom: Doocement
   classe: Zobal
   niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doocement.webp
-  prospection: 235
+  prospection: 254
 - nom: Dooillet
   classe: Huppermage
   niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/dooillet.webp
-  prospection: 245
+  prospection: 255
 - nom: Doozienne
   classe: Xélor
   niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doozienne.webp
-  prospection: 235
+  prospection: 254
 - nom: Doomage
   classe: Roublard
   niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doomage.webp
-  prospection: 239
+  prospection: 270
