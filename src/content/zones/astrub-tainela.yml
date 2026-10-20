@@ -1,0 +1,82 @@
+nom: Tainéla
+region: Astrub
+niveau: 20-50
+statut: mesuree
+rapport: 2
+monstres:
+- Bouftou
+- Boufton Blanc
+- Chef de Guerre Bouftou
+- Boufton Noir
+date_prix: '2026-10-20'
+combats: 100
+monstres_combattus: 556
+sessions:
+- 38.63333333333333
+kamas_combats: 86527
+kamas_combats_inconnus: false
+estimations:
+- libelle: Équipements de la session
+  valeur: 236543
+notes: 'Ressources de Tainéla uniquement, sans reprise des stocks des autres zones. Viande Frelatée : 3 867 unités confirmées par Doob pour cette session,
+  valorisées au prix de l’export. Équipements : valorisation globale estimée à 236 543 kamas, nombre d’objets non renseigné. Les 1 490 Aubergines sont valorisées
+  à 105 kamas par unité (492 722 ventes sur 30 jours), sans valoriser les sachets en plus. Les 366 Éklâmes inférieures sont valorisées à 70 kamas par unité.
+  Kamas directs de combat inclus : 86 527 kamas. Sang de Bouftou : taux de base de 8,8 à 8,84 % selon le monstre ; le simulateur utilise 8,8 % à titre d’approximation.'
+drops:
+- ressource: Corne de Boufton
+  monstres: Boufton Blanc
+  taux_base: 53
+  quantite: 1007
+  prix: 33
+  ventes_30j: 64956
+- ressource: Laine de Bouftou
+  monstres: Bouftou
+  taux_base: 53
+  quantite: 1009
+  prix: 25
+  ventes_30j: 77579
+- ressource: Laine du Chef de Guerre Bouftou
+  monstres: Chef de Guerre Bouftou
+  taux_base: 53
+  quantite: 1019
+  prix: 32
+  ventes_30j: 74782
+- ressource: Laine de Boufton Noir
+  monstres: Boufton Noir
+  taux_base: 53
+  quantite: 825
+  prix: 1533
+  ventes_30j: 931482
+- ressource: Sang de Bouftou
+  monstres: 'Bouftou, Boufton Blanc, Chef de Guerre Bouftou, Boufton Noir — taux de base : 8,8 % (8,84 % sur Bouftou), simulateur à 8,8 %'
+  taux_base: 8.8
+  quantite: 1129
+  prix: 10
+  ventes_30j: 59311
+- ressource: Viande Frelatée
+  monstres: Bouftou, Boufton Blanc, Chef de Guerre Bouftou, Boufton Noir
+  taux_base: 53
+  quantite: 3867
+  prix: 36
+  ventes_30j: 172411
+- ressource: Aubergines
+  monstres: 'Bouftous et Bouftons — quantité après ouverture des sachets ; taux de base indiqué : Sachet d’Aubergines, pas aubergine unitaire'
+  taux_base: 1
+  quantite: 1490
+  prix: 105
+  ventes_30j: 492722
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 366
+  prix: 70
+  ventes_30j: 701095
+prospection:
+- 491
+- 418
+- 620
+- 616
+- 254
+- 255
+- 254
+- 270
