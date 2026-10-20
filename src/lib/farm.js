@@ -17,10 +17,12 @@ export function ppFor100(base) {
 
 export const minutes = (sessions = []) => sessions.reduce((a, b) => a + b, 0);
 
+export const estimationsOf = (z) => (z.estimations || []).reduce((a, e) => a + e.valeur, 0);
+
 export function kpiOf(z) {
   const combats = z.combats || 100;
   const fromDrops = (z.drops || []).reduce((a, d) => a + d.quantite * d.prix, 0);
-  return (fromDrops + (z.kamas_combats || 0)) / combats;
+  return (fromDrops + (z.kamas_combats || 0) + estimationsOf(z)) / combats;
 }
 
 export function kphOf(z) {

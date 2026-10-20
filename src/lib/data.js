@@ -22,7 +22,7 @@ const EKLAMES = [
 // Ajoute la ligne Éklâme du palier correspondant au niveau de la zone,
 // sauf si elle est déjà renseignée dans le fichier de la zone (quantité/prix mesurés).
 function avecEklame(z) {
-  if (z.drops.some((d) => d.ressource.toLowerCase().includes('éklâme'))) return z.drops;
+  if (z.drops.some((d) => d.ressource.toLowerCase().includes('éklâme'))) return z.drops.map((d) => ({ ...d, eklame: d.ressource.toLowerCase().includes('éklâme') }));
   const min = parseInt(z.niveau, 10) || 0;
   const ek = EKLAMES.find((e) => min <= e.max) || EKLAMES[EKLAMES.length - 1];
   return [...z.drops, { ressource: ek.nom, monstres: 'Tous les monstres de la zone (taux réel variable : 1–4 %)', taux_base: 2.5, quantite: 0, prix: 0, eklame: true }];

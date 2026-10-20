@@ -8,6 +8,7 @@ const drop = z.object({
   quantite: z.coerce.number().default(0),
   prix: z.coerce.number().default(0),
   ventes_30j: z.coerce.number().optional(),
+  prix_manquant: z.boolean().optional().default(false),
 });
 
 const zones = defineCollection({
@@ -27,6 +28,13 @@ const zones = defineCollection({
     monstres_combattus: z.coerce.number().optional(),
     sessions: z.array(z.coerce.number()).default([]),
     kamas_combats: z.coerce.number().optional().default(0),
+    kamas_combats_inconnus: z.boolean().optional().default(false),
+    notes: z.string().optional().default(''),
+    estimations: z.array(z.object({
+      libelle: z.string(),
+      quantite: z.coerce.number().nonnegative(),
+      valeur: z.coerce.number().nonnegative(),
+    })).default([]),
     prospection: z.array(z.coerce.number()).optional(),
     drops: z.array(drop).default([]),
   }),

@@ -94,6 +94,26 @@ content:
     label: Kamas ramassés en combat (total)
     type: number
     default: 0
+  - name: kamas_combats_inconnus
+    label: Kamas de combat non relevés
+    type: boolean
+  - name: notes
+    label: Précisions sur la mesure
+    type: text
+  - name: estimations
+    label: Valorisations globales estimées
+    type: object
+    list: true
+    fields:
+    - name: libelle
+      label: Libellé
+      type: string
+    - name: quantite
+      label: Nombre d'objets
+      type: number
+    - name: valeur
+      label: Valeur totale estimée (kamas)
+      type: number
   - name: prospection
     label: Prospection des 8 persos pendant ce rapport (facultatif)
     type: number
@@ -120,6 +140,9 @@ content:
     - name: prix
       label: Prix unitaire HDV (kamas)
       type: number
+    - name: prix_manquant
+      label: Prix non renseigné (exclu de la valorisation)
+      type: boolean
     - name: ventes_30j
       label: Ventes sur 30 jours
       type: number

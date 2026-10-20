@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { getZones, team, site } from '../../../lib/data.js';
-import { slug, fmt, niveau, dateFr, duree, minutes } from '../../../lib/farm.js';
+import { slug, fmt, niveau, dateFr, duree, minutes, estimationsOf } from '../../../lib/farm.js';
 
 export async function getStaticPaths() {
   const zones = await getZones();
@@ -12,12 +12,16 @@ const WIP = "WIP : attendre la sortie de l'épisode sur YouTube !";
 const regionZones = zones.filter((x) => x.region === z.region && x.measured);
 const ppRapport = z.prospection && z.prospection.length ? z.prospection : team.map((m) => Number(m.prospection) || 0);
 const total = minutes(z.sessions);
+const preciseDuration = (min) => {
+  const seconds = Math.round(min * 60);
+  return `${Math.floor(seconds / 60)} min ${String(seconds % 60).padStart(2, '0')} s`;
+};
 const cph = total ? z.combats / (total / 60) : 0;
 const data = {
   cur: z.nom,
   team: team.map((m, i) => [m.nom, ppRapport[i] ?? 0]),
-  zone: { res: z.drops.map((d) => ({ n: d.ressource, mobs: d.monstres, b: d.taux_base, d: d.quantite, p: d.prix, v: d.ventes_30j ?? null, ek: d.eklame ? 1 : 0 })), combats: z.combats, kc: z.kamas_combats || 0, cph },
-  region: regionZones.map((x) => ({ z: x.nom, u: x.url, combats: x.combats, kc: x.kamas_combats || 0, pp: x.prospection && x.prospection.length ? x.prospection : team.map((m) => Number(m.prospection) || 0), res: x.drops.map((d) => ({ b: d.taux_base, d: d.quantite, p: d.prix })) })),
+  zone: { res: z.drops.map((d) => ({ n: d.ressource, mobs: d.monstres, b: d.taux_base, d: d.quantite, p: d.prix_manquant ? null : d.prix, v: d.ventes_30j ?? null, ek: d.eklame ? 1 : 0 })), combats: z.combats, kc: z.kamas_combats || 0, est: estimationsOf(z), cph },
+  region: regionZones.map((x) => ({ z: x.nom, u: x.url, combats: x.combats, kc: x.kamas_combats || 0, est: estimationsOf(x), pp: x.prospection && x.prospection.length ? x.prospection : team.map((m) => Number(m.prospection) || 0), res: x.drops.map((d) => ({ b: d.taux_base, d: d.quantite, p: d.prix, ek: d.eklame ? 1 : 0 })) })),
 };
 const title = z.measured
   ? `Farm à ${z.nom} : rentabilité mesurée sur 100 combats (K.P.I.) — F.A.R.M.`
@@ -49,8 +53,8 @@ const description = z.measured
     {z.measured && (
       <div class="facts">
         <div class="fact"><small>Combats</small><b>{z.combats} / 100</b></div>
-        <div class="fact"><small>Sessions</small><b>{z.sessions.length}</b><em>{z.sessions.map(duree).join(' · ')}</em></div>
-        <div class="fact"><small>Temps total</small><b>{duree(total)}</b><em>{cph.toFixed(1).replace('.', ',')} combats / h</em></div>
+        <div class="fact"><small>Sessions</small><b>{z.sessions.length}</b><em>{z.sessions.map(preciseDuration).join(' · ')}</em></div>
+        <div class="fact"><small>Temps total</small><b>{preciseDuration(total)}</b><em>{cph.toFixed(1).replace('.', ',')} combats / h</em></div>
         <div class="fact"><small>Kamas / heure</small><b>{fmt(z.kph)}</b></div>
         <div class="fact"><small>% d'anomalie</small><b>{z.anomalie ?? '—'} %</b></div>
         {z.monstres_combattus != null && (
@@ -71,6 +75,16 @@ const description = z.measured
     </section>
   ) : (
     <>
+      {(z.estimations.length > 0 || z.notes) && (
+        <section style="padding-top:8px">
+          <div class="wrap">
+            <div class="sec-head"><div><h2>Valorisation complémentaire</h2><p class="sub">Montants estimés inclus dans le K.P.I., distincts des prix unitaires des ressources.</p></div></div>
+            {z.estimations.map((e) => <div class="panel" style="padding:20px"><b>{e.libelle} : {fmt(e.valeur)} kamas estimés</b><p class="sub">{fmt(e.quantite)} objets droppés sur la session · valorisation globale, sans détail par équipement.</p></div>)}
+            {z.notes && <p class="sub" style="margin-top:16px">{z.notes}</p>}
+            {z.estimations.length > 0 && <p class="sub">Simulation : ce forfait est ajusté au nombre de personnages (B/8), sans correction de prospection faute de détail par équipement. Les Éklâmes ne sont pas influencées par la prospection.</p>}
+          </div>
+        </section>
+      )}
       <section id="sim">
         <div class="wrap">
           <div class="sec-head"><div><h2>Simule avec ta team</h2><p class="sub">Change la taille de la team (B1 à B8) et la prospection : le taux de drop, le K.P.I. et le classement se mettent à jour.</p></div></div>
@@ -158,10 +172,10 @@ const description = z.measured
     try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.perso) st = { ...st, ...s }; } catch (e) {}
     const teamPP = () => st.mode === 'doob' ? ACT.slice(0, st.n) : st.mode === 'perso' ? st.perso.slice(0, st.n) : Array(st.n).fill(+st.mode);
     const E = (b, pps) => pps.reduce((a, pp) => a + Math.min(1, (b / 100) * mult(pp)), 0);
-    const proj = (res, pps, act) => res.map((r) => { const ea = E(r.b, act); return { ...r, dp: ea ? r.d * E(r.b, pps) / ea : 0 }; });
-    const kpi = (rs, combats, kc, f) => (rs.reduce((a, r) => a + r.dp * r.p, 0) + kc * f) / combats;
+    const proj = (res, pps, act) => res.map((r) => { const ea = E(r.b, act); return { ...r, dp: r.ek ? r.d * pps.length / act.length : ea ? r.d * E(r.b, pps) / ea : 0 }; });
+    const kpi = (rs, combats, kc, f, est = 0) => (rs.reduce((a, r) => a + r.dp * (r.p || 0), 0) + (kc + est) * f) / combats;
     const Z = FD.zone;
-    const kMeas = kpi(proj(Z.res, ACT, ACT), Z.combats, Z.kc, 1);
+    const kMeas = kpi(proj(Z.res, ACT, ACT), Z.combats, Z.kc, 1, Z.est);
     const seg = (id, val) => document.querySelectorAll('#' + id + ' button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.v == String(val) ? 'true' : 'false'));
     function save() {
       if (st.mode === 'perso') { localStorage.setItem(KEY, JSON.stringify(st)); $('saved').textContent = 'Enregistré dans ton navigateur : tu retrouveras ta team à ta prochaine visite.'; }
@@ -180,7 +194,7 @@ const description = z.measured
     }
     function renderOut() {
       const pps = teamPP(), f = st.n / 8;
-      const rs = proj(Z.res, pps, ACT), k = kpi(rs, Z.combats, Z.kc, f), dl = (k / kMeas - 1) * 100;
+      const rs = proj(Z.res, pps, ACT), k = kpi(rs, Z.combats, Z.kc, f, Z.est), dl = (k / kMeas - 1) * 100;
       const same = st.mode === 'doob' && st.n === 8;
       $('kProj').textContent = fmt(k);
       $('kDelta').className = 'delta ' + (same || Math.abs(dl) < 0.5 ? 'eq' : dl > 0 ? 'up' : 'down');
@@ -189,18 +203,18 @@ const description = z.measured
       $('hProj').textContent = fmt(k * Z.cph);
       $('mAvg').textContent = x2(pps.reduce((a, p) => a + mult(p), 0) / pps.length);
       $('dProj').textContent = fmt(rs.reduce((a, r) => a + r.dp, 0));
-      const all = FD.region.map((x) => ({ z: x.z, u: x.u, k: kpi(proj(x.res, pps, x.pp), x.combats, x.kc, f), km: kpi(proj(x.res, x.pp, x.pp), x.combats, x.kc, 1) }));
+      const all = FD.region.map((x) => ({ z: x.z, u: x.u, k: kpi(proj(x.res, pps, x.pp), x.combats, x.kc, f, x.est), km: kpi(proj(x.res, x.pp, x.pp), x.combats, x.kc, 1, x.est) }));
       const measRank = [...all].sort((a, b) => b.km - a.km).map((x) => x.z);
       const ranked = [...all].sort((a, b) => b.k - a.k);
       $('rank').innerHTML = ranked.map((x, i) => { const mv = measRank.indexOf(x.z) - i; return `<tr class="${x.z === FD.cur ? 'me' : ''}"><td class="r">${i + 1}</td><td class="zn"><a href="${x.u}"><b>${x.z}</b></a></td><td class="num"><b>${fmt(x.k)}</b></td><td class="num"><span class="arrow ${mv > 0 ? 'up' : mv < 0 ? 'down' : 'eq'}">${mv > 0 ? '▲ ' + mv : mv < 0 ? '▼ ' + -mv : '='}</span></td></tr>`; }).join('');
       $('rProj').textContent = ranked.findIndex((x) => x.z === FD.cur) + 1 + 'e / ' + ranked.length;
       $('drops').innerHTML = [...rs.filter((r) => r.d > 0), ...rs.filter((r) => !(r.d > 0))].map((r) => {
-        const rates = pps.map((pp) => Math.min(100, r.b * mult(pp))); const mn = Math.min(...rates), mx = Math.max(...rates); const need = ppFor100(r.b);
-        if (!(r.d > 0)) return `<tr class="nodrop"><td class="rn"><b>${r.n}</b><small>${r.mobs || ''}</small></td><td class="num hm">${pct(r.b)}</td><td class="num">${mn === mx ? pct(mn) : pct(mn) + ' – ' + pct(mx)}</td><td class="num hm">${need === null ? 'jamais' : need === 0 ? '0' : fmt(Math.ceil(need / 10) * 10)}</td><td class="num">${r.ek ? 'pas encore mesurée' : 'aucun drop'}</td><td class="num hm">—</td><td class="num hm">—</td><td class="num">—</td></tr>`;
-        return `<tr><td class="rn"><b>${r.n}</b><small>${r.mobs || ''}</small></td><td class="num hm">${pct(r.b)}</td><td class="num">${mn === mx ? pct(mn) : pct(mn) + ' – ' + pct(mx)}${mn >= 100 ? '<span class="cap100">MAX</span>' : ''}</td><td class="num hm">${need === null ? '<span style="color:var(--muted)">jamais</span>' : need === 0 ? '0' : fmt(Math.ceil(need / 10) * 10)}</td><td class="num">${fmt(r.dp)}${same ? '' : `<span class="proj">mesuré : ${fmt(r.d)}</span>`}</td><td class="num hm">${fmt(r.p)}</td><td class="num hm">${r.v == null ? '—' : fmt(r.v)}</td><td class="num"><b>${fmt((r.dp * r.p) / Z.combats)}</b></td></tr>`;
+        const rates = pps.map((pp) => r.ek ? r.b : Math.min(100, r.b * mult(pp))); const mn = Math.min(...rates), mx = Math.max(...rates); const need = r.ek ? null : ppFor100(r.b);
+        if (!(r.d > 0)) return `<tr class="nodrop"><td class="rn"><b>${r.n}</b><small>${r.mobs || ''}</small></td><td class="num hm">${r.ek ? '1–4 %' : pct(r.b)}</td><td class="num">${r.ek ? '1–4 % (hors PP)' : mn === mx ? pct(mn) : pct(mn) + ' – ' + pct(mx)}</td><td class="num hm">${r.ek ? '—' : need === null ? 'jamais' : need === 0 ? '0' : fmt(Math.ceil(need / 10) * 10)}</td><td class="num">${r.ek ? 'pas encore mesurée' : 'aucun drop'}</td><td class="num hm">—</td><td class="num hm">—</td><td class="num">—</td></tr>`;
+        return `<tr><td class="rn"><b>${r.n}</b><small>${r.mobs || ''}</small></td><td class="num hm">${r.ek ? '1–4 %' : pct(r.b)}</td><td class="num">${r.ek ? '1–4 % (hors PP)' : mn === mx ? pct(mn) : pct(mn) + ' – ' + pct(mx)}${mn >= 100 ? '<span class="cap100">MAX</span>' : ''}</td><td class="num hm">${r.ek ? '—' : need === null ? '<span style="color:var(--muted)">jamais</span>' : need === 0 ? '0' : fmt(Math.ceil(need / 10) * 10)}</td><td class="num">${fmt(r.dp)}${same ? '' : `<span class="proj">mesuré : ${fmt(r.d)}</span>`}</td><td class="num hm">${r.p == null ? 'non renseigné' : fmt(r.p)}</td><td class="num hm">${r.v == null ? '—' : fmt(r.v)}</td><td class="num"><b>${r.p == null ? 'non valorisé' : fmt((r.dp * r.p) / Z.combats)}</b></td></tr>`;
       }).join('');
       const noMes = rs.filter((r) => !(r.d > 0) && !r.ek).length;
-      $('dCount').textContent = `${rs.length} ressources${noMes ? ` (dont ${noMes} sans drop pendant la mesure)` : ''}${rs.some((r) => r.ek) ? ' · Éklâme affichée à titre indicatif (non mesurée)' : ''} · « PP pour 100 % » = prospection à partir de laquelle chaque perso drop la ressource à tous les coups`;
+      $('dCount').textContent = `${rs.length} ressources${noMes ? ` (dont ${noMes} sans drop pendant la mesure)` : ''}${rs.some((r) => r.ek && !r.d) ? ' · Éklâme affichée à titre indicatif (non mesurée)' : rs.some((r) => r.ek) ? ' · Éklâme mesurée, indépendante de la PP' : ''} · « PP pour 100 % » = prospection à partir de laquelle chaque perso drop la ressource à tous les coups`;
       const caps = Z.res.map((r) => ppFor100(r.b)).filter((v) => v !== null && v > 0);
       const saturating = Z.res.filter((r) => ppFor100(r.b) !== null && ppFor100(r.b) > 0).length;
       $('insight').innerHTML = saturating ? `Ici, ${saturating} ressource${saturating > 1 ? 's' : ''} sur ${Z.res.length} peu${saturating > 1 ? 'vent' : 't'} tomber à tous les coups : à partir d'environ <b>${fmt(Math.ceil(Math.min(...caps) / 10) * 10)}–${fmt(Math.ceil(Math.max(...caps) / 10) * 10)} PP</b> par perso. Au-delà, la prospection ne rapporte plus que sur les ressources plus rares.` : 'Aucune ressource ne plafonne ici : chaque point de prospection compte.';

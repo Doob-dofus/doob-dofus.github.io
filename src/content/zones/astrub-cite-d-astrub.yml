@@ -1,11 +1,93 @@
 nom: Cité d'Astrub
 region: Astrub
 niveau: 0-20
-statut: wip
+statut: mesuree
+rapport: 2
 monstres:
 - Piou Violet
-- Fouduglen l'Écureuil
 - Piou Rouge
 - Piou Vert
 - Piou Bleu
 - Piou Rose
+- Piou Jaune
+- Fouduglen l'Écureuil
+date_prix: '2026-10-20'
+combats: 100
+monstres_combattus: 532
+sessions:
+- 34.016666666666666
+kamas_combats: 0
+kamas_combats_inconnus: true
+estimations:
+- libelle: Équipements Piou
+  quantite: 349
+  valeur: 132000
+notes: 'Quantités de la session isolées des stocks Incarnam. Les 349 équipements Piou sont valorisés globalement à 132 000 kamas, sans saisie par objet.
+  Les 107 Éklâmes inférieures sont comptées mais non valorisées : prix HDV non renseigné. Kamas directs de combat non relevés et exclus du calcul.'
+drops:
+- ressource: Graine de Sésame
+  monstres: Piou Violet, Piou Rouge, Piou Vert, Piou Bleu, Piou Rose, Piou Jaune
+  taux_base: 9.4
+  quantite: 1455
+  prix: 569
+  ventes_30j: 75760
+- ressource: Plume de Piou Bleu
+  monstres: Piou Bleu
+  taux_base: 57
+  quantite: 669
+  prix: 23
+  ventes_30j: 70377
+- ressource: Plume de Piou Violet
+  monstres: Piou Violet
+  taux_base: 57
+  quantite: 815
+  prix: 21
+  ventes_30j: 60945
+- ressource: Plume de Piou Vert
+  monstres: Piou Vert
+  taux_base: 57
+  quantite: 748
+  prix: 49
+  ventes_30j: 56691
+- ressource: Plume de Piou Rouge
+  monstres: Piou Rouge
+  taux_base: 57
+  quantite: 639
+  prix: 77
+  ventes_30j: 38432
+- ressource: Plume de Piou Jaune
+  monstres: Piou Jaune
+  taux_base: 57
+  quantite: 624
+  prix: 30
+  ventes_30j: 45383
+- ressource: Plume de Piou Rose
+  monstres: Piou Rose
+  taux_base: 57
+  quantite: 740
+  prix: 35
+  ventes_30j: 54751
+- ressource: Fragment de carte de Fouduglen 1/2
+  monstres: Piou Rouge, Piou Vert, Piou Bleu
+  taux_base: 0.65
+  quantite: 16
+  prix: 202
+  ventes_30j: 410
+- ressource: Fragment de carte de Fouduglen 2/2
+  monstres: Piou Violet, Piou Rose, Piou Jaune
+  taux_base: 0.65
+  quantite: 13
+  prix: 285
+  ventes_30j: 183
+- ressource: Viande Hachée
+  monstres: Piou Violet, Piou Rouge, Piou Vert, Piou Bleu, Piou Rose, Piou Jaune
+  taux_base: 57
+  quantite: 4230
+  prix: 67
+  ventes_30j: 154191
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 107
+  prix: 0
+  prix_manquant: true
