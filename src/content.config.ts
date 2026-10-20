@@ -32,7 +32,7 @@ const zones = defineCollection({
     notes: z.string().optional().default(''),
     estimations: z.array(z.object({
       libelle: z.string(),
-      quantite: z.coerce.number().nonnegative(),
+      quantite: z.coerce.number().nonnegative().optional(),
       valeur: z.coerce.number().nonnegative(),
     })).default([]),
     prospection: z.array(z.coerce.number()).optional(),

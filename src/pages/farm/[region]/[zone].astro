@@ -79,7 +79,7 @@ const description = z.measured
         <section style="padding-top:8px">
           <div class="wrap">
             <div class="sec-head"><div><h2>Valorisation complémentaire</h2><p class="sub">Montants estimés inclus dans le K.P.I., distincts des prix unitaires des ressources.</p></div></div>
-            {z.estimations.map((e) => <div class="panel" style="padding:20px"><b>{e.libelle} : {fmt(e.valeur)} kamas estimés</b><p class="sub">{fmt(e.quantite)} objets droppés sur la session · valorisation globale, sans détail par équipement.</p></div>)}
+            {z.estimations.map((e) => <div class="panel" style="padding:20px"><b>{e.libelle} : {fmt(e.valeur)} kamas estimés</b><p class="sub">{e.quantite != null ? `${fmt(e.quantite)} objets droppés sur la session · ` : 'Nombre d’objets non renseigné · '}valorisation globale, sans détail par équipement.</p></div>)}
             {z.notes && <p class="sub" style="margin-top:16px">{z.notes}</p>}
             {z.estimations.length > 0 && <p class="sub">Simulation : ce forfait est ajusté au nombre de personnages (B/8), sans correction de prospection faute de détail par équipement. Les Éklâmes ne sont pas influencées par la prospection.</p>}
           </div>

@@ -1,10 +1,75 @@
 nom: Calanques d'Astrub
 region: Astrub
 niveau: 0-20
-statut: wip
+statut: mesuree
+rapport: 2
 monstres:
 - Pichon Orange
 - Pichon Bleu
 - Pichon Blanc
 - Pichon Vert
+- Pichon Kloune
 - Pichtoire l'Erudit
+date_prix: '2026-10-20'
+combats: 100
+monstres_combattus: 533
+sessions:
+- 37.28333333333333
+kamas_combats: 38889
+kamas_combats_inconnus: false
+estimations:
+- libelle: Équipements de la panoplie Mousse
+  valeur: 474389
+notes: 'Ressources de la session des Calanques uniquement, sans reprise des stocks des autres zones. Panoplie Mousse : valorisation globale estimée à 474
+  389 kamas, nombre d''équipements non renseigné. Les 143 tonneaux ont été ouverts : seules les 1 430 Eaux Potables obtenues sont valorisées à 127 kamas
+  par unité (35 443 ventes sur 30 jours). L''ancien stock d''Eau Potable de l''export et les tonneaux eux-mêmes sont exclus pour éviter tout double comptage.
+  Les 280 Éklâmes inférieures sont valorisées à 70 kamas par unité. Kamas directs de combat inclus : 38 889 kamas.'
+drops:
+- ressource: Écaille poisseuse
+  monstres: Pichon Orange, Pichon Bleu, Pichon Blanc, Pichon Vert, Pichon Kloune
+  taux_base: 9.24
+  quantite: 1310
+  prix: 108
+  ventes_30j: 12134
+- ressource: Serviette de Plage
+  monstres: Pichon Blanc
+  taux_base: 55
+  quantite: 1103
+  prix: 122
+  ventes_30j: 38250
+- ressource: Nageoire de Compétition
+  monstres: Pichon Bleu
+  taux_base: 55
+  quantite: 921
+  prix: 197
+  ventes_30j: 39156
+- ressource: Conque Marine
+  monstres: Pichon Vert
+  taux_base: 55
+  quantite: 1161
+  prix: 203
+  ventes_30j: 37282
+- ressource: Crème à bronzer
+  monstres: Pichon Orange
+  taux_base: 55
+  quantite: 1038
+  prix: 295
+  ventes_30j: 37875
+- ressource: Viande Faisandée
+  monstres: Pichon Orange, Pichon Bleu, Pichon Blanc, Pichon Vert, Pichon Kloune
+  taux_base: 55
+  quantite: 4234
+  prix: 49
+  ventes_30j: 281591
+- ressource: Eau Potable (tonneaux ouverts)
+  monstres: 'Pichons — 143 tonneaux ouverts × 10 eaux ; taux de base indiqué : tonneau, pas eau unitaire'
+  taux_base: 1
+  quantite: 1430
+  prix: 127
+  ventes_30j: 35443
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 280
+  prix: 70
+  ventes_30j: 701095
