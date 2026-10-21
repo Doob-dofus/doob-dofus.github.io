@@ -1,13 +1,138 @@
 nom: Forêt d'Astrub
 region: Astrub
 niveau: 20-50
-statut: wip
+statut: mesuree
+rapport: 2
 monstres:
 - Prespic
 - Sanglier
 - Milimulou
 - Frakacia Leukocytine
 - Écurouille
+date_prix: '2026-10-21'
+combats: 100
+monstres_combattus: 592
+sessions:
+- 36.65
+kamas_combats: 18601
+kamas_combats_inconnus: false
+estimations:
+- libelle: Équipements de la session
+  valeur: 428740
+notes: 'Ressources de la Forêt d’Astrub uniquement, sans reprise des stocks des anciennes zones. Viandes de la session déclarées par Doob : 1 199 Viandes
+  Faisandées et 3 470 Viandes Frelatées ; les stocks cumulés de l’export sont ignorés pour ces quantités, seuls les prix unitaires et les ventes sur 30
+  jours sont repris. Équipements : valorisation globale estimée à 428 740 kamas, nombre d’objets non renseigné. Les contenus des sachets et tonneaux sont
+  valorisés sans ajouter leurs conteneurs : 680 Mesures de Poivre à 12 kamas (219 552 ventes sur 30 jours), 390 Doses de Jus Goûtu à 80 kamas (289 559 ventes),
+  260 Épices à 26 kamas (490 749 ventes). Les 493 Éklâmes inférieures sont valorisées à 70 kamas par unité. Kamas directs de combat inclus : 18 601 kamas.'
+drops:
+- ressource: Défense du Sanglier
+  monstres: Sanglier
+  taux_base: 53
+  quantite: 1026
+  prix: 280
+  ventes_30j: 72458
+- ressource: Noisette
+  monstres: Écurouille
+  taux_base: 53
+  quantite: 1235
+  prix: 46
+  ventes_30j: 17320
+- ressource: Pic de Prespic
+  monstres: Prespic
+  taux_base: 53
+  quantite: 1196
+  prix: 301
+  ventes_30j: 41767
+- ressource: Étoffe du Sanglier
+  monstres: Sanglier
+  taux_base: 8.84
+  quantite: 279
+  prix: 751
+  ventes_30j: 14845
+- ressource: Étoffe d'Écurouille
+  monstres: Écurouille
+  taux_base: 8.84
+  quantite: 343
+  prix: 786
+  ventes_30j: 7265
+- ressource: Poils de Darit
+  monstres: Prespic
+  taux_base: 8.84
+  quantite: 334
+  prix: 479
+  ventes_30j: 9335
+- ressource: Poils du Milimulou
+  monstres: Milimulou
+  taux_base: 53
+  quantite: 1211
+  prix: 30
+  ventes_30j: 21237
+- ressource: Scalp de Milimulou
+  monstres: Milimulou
+  taux_base: 8.84
+  quantite: 300
+  prix: 1110
+  ventes_30j: 8176
+- ressource: Fragment de carte de Frakacia 1/4
+  monstres: Écurouille
+  taux_base: 1
+  quantite: 13
+  prix: 4789
+  ventes_30j: 192
+- ressource: Fragment de carte de Frakacia 2/4
+  monstres: Milimulou
+  taux_base: 1
+  quantite: 11
+  prix: 4016
+  ventes_30j: 183
+- ressource: Fragment de carte de Frakacia 3/4
+  monstres: Sanglier
+  taux_base: 1
+  quantite: 9
+  prix: 946
+  ventes_30j: 169
+- ressource: Fragment de carte de Frakacia 4/4
+  monstres: Prespic
+  taux_base: 1
+  quantite: 15
+  prix: 1221
+  ventes_30j: 168
+- ressource: Viande Faisandée
+  monstres: Prespic
+  taux_base: 53
+  quantite: 1199
+  prix: 49
+  ventes_30j: 281591
+- ressource: Viande Frelatée
+  monstres: Sanglier, Milimulou, Écurouille
+  taux_base: 53
+  quantite: 3470
+  prix: 36
+  ventes_30j: 172411
+- ressource: Mesure de Poivre
+  monstres: 'Sanglier, Écurouille — quantité après ouverture ; taux de base indiqué : Sachet de Poivre, pas contenu unitaire'
+  taux_base: 1
+  quantite: 680
+  prix: 12
+  ventes_30j: 219552
+- ressource: Dose de Jus Goûtu
+  monstres: 'Milimulou — quantité après ouverture ; taux de base indiqué : Tonneau de Jus Goûtu, pas contenu unitaire'
+  taux_base: 1
+  quantite: 390
+  prix: 80
+  ventes_30j: 289559
+- ressource: Épices
+  monstres: 'Prespic — quantité après ouverture ; taux de base indiqué : Sachet d''Épices, pas contenu unitaire'
+  taux_base: 1
+  quantite: 260
+  prix: 26
+  ventes_30j: 490749
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 493
+  prix: 70
+  ventes_30j: 701095
 prospection:
 - 491
 - 418
