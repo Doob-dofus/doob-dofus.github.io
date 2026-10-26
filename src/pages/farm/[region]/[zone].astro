@@ -52,8 +52,6 @@ const description = z.measured
     </div>
     {z.measured && (
       <div class="facts">
-        <div class="fact"><small>Combats</small><b>{z.combats} / 100</b></div>
-        <div class="fact"><small>Sessions</small><b>{z.sessions.length}</b><em>{z.sessions.map(preciseDuration).join(' · ')}</em></div>
         <div class="fact"><small>Temps total</small><b>{preciseDuration(total)}</b><em>{cph.toFixed(1).replace('.', ',')} combats / h</em></div>
         <div class="fact"><small>Kamas / heure</small><b>{fmt(z.kph)}</b></div>
         <div class="fact"><small>Valeur totale du butin</small><b>{fmt(z.kpi * z.combats)}</b><em>{z.kamas_combats_inconnus ? 'drops + valorisations (kamas de combat non relevés)' : 'drops + kamas de combat + valorisations'}</em></div>
@@ -61,7 +59,7 @@ const description = z.measured
         {z.monstres_combattus != null && (
           <div class="fact"><small>Monstres combattus</small><b>{fmt(z.monstres_combattus)}</b><em>{(z.monstres_combattus / z.combats).toFixed(1).replace('.', ',')} / combat</em></div>
         )}
-        <div class="fact"><small>Prix HDV {site.serveur} du</small><b>{dateFr(z.date_prix)}</b><em>ventes 30 j utilisées</em></div>
+        <div class="fact"><small>Prix HDV {site.serveur} au</small><b>{dateFr(z.date_prix)}</b><em>ventes 30 j utilisées</em></div>
       </div>
     )}
   </div>

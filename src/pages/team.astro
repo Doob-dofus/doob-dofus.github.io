@@ -5,11 +5,11 @@ import { team, site } from '../lib/data.js';
 const pp = team.map((m) => Number(m.prospection) || 0);
 const total = pp.reduce((a, b) => a + b, 0);
 ---
-<Base title="La team Doob : 8 personnages, une ligne de production de combats — F.A.R.M." description={`La team de 8 personnages qui farme chaque zone F.A.R.M. sur ${site.serveur} : classes, rôles et prospection.`} current="team">
+<Base title="Ma team : 8 personnages, une ligne de production de combats — F.A.R.M." description={`Ma team de 8 personnages qui farme chaque zone F.A.R.M. sur ${site.serveur} : classes, rôles et prospection.`} current="team">
   <div class="wrap">
     <div class="page-head">
-      <div class="eyebrow"><i></i>La team · Serveur {site.serveur}</div>
-      <h1>La team Doob</h1>
+      <div class="eyebrow"><i></i>Ma team · Serveur {site.serveur}</div>
+      <h1>Ma team</h1>
       <p>8 personnages, une seule ligne de production de combats. Toutes les mesures F.A.R.M. sont faites avec cette team, en B8.</p>
     </div>
     <section style="padding-top:28px"><TeamGrid /></section>

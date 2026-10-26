@@ -145,6 +145,11 @@ tbody tr:last-child td{border-bottom:0}
 .member img{height:92px;width:auto}
 .member b{display:block;font-size:17px}
 .member .cls{color:var(--violet);font-size:14px;font-weight:600}
+.member a.cls{display:inline-block}
+.member a.cls:hover{text-decoration:underline}
+.member a.pic{transition:transform .15s}
+.member a.pic:hover{transform:scale(1.05)}
+.dbk-note{color:var(--muted);font-size:14px;text-align:center;margin-top:18px}
 .member .role{color:var(--muted);font-size:14px}
 
 /* CTA + FOOTER */
