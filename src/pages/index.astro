@@ -11,15 +11,13 @@ const covered = regionNames.filter((r) => zones.some((z) => z.region === r && z.
 const totalKamas = measured.reduce((a, z) => a + z.kpi * z.combats, 0);
 const totalCombats = measured.reduce((a, z) => a + z.combats, 0);
 const kamasLabel = totalKamas >= 1e6 ? (totalKamas / 1e6).toFixed(1).replace('.', ',') + ' M' : fmt(totalKamas);
-const anoZones = measured.filter((z) => (z.anomalie ?? 0) > 0).length;
-const anoPct = measured.length ? Math.round((anoZones / measured.length) * 100) : 0;
 const totalMobs = measured.reduce((a, z) => a + (z.monstres_combattus || 0), 0);
+const totalZones = 567; // sous-zones référencées par DofusDB (api.dofusdb.fr/subareas), relevé du 25/10/2026
 const stats = [
-  [measured.length, 'zones auditées'],
+  [`${measured.length} / ${totalZones}`, 'zones auditées'],
   [fmt(totalCombats), 'combats comptés'],
   [kamasLabel, 'kamas mesurés en B8'],
   [`${covered} / ${regionNames.length}`, 'régions couvertes'],
-  [`${anoPct} %`, 'de zones en anomalie'],
 ];
 if (totalMobs > 0) stats.push([fmt(totalMobs), 'monstres combattus']);
 const podium = measured.slice(0, 3);
@@ -47,7 +45,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
     <div class="wrap">
       <div>
         <div class="eyebrow"><i></i>Fichier d'Analyse de la Rentabilité des Maps</div>
-        <h1>Quelle zone <span>farmer</span> ?</h1>
+        <h1>Quelles zones <span>farmer</span> ?</h1>
         <p class="lead">La rentabilité des zones de Dofus, mesurée sur 100 combats réels sur le serveur {site.serveur}. Pas d'estimation : des drops comptés, des prix HDV datés, une méthode transparente.</p>
         <div class="method"><span>Serveur {site.serveur}</span><span>100 combats par zone</span><span>K.P.I. = Kamas Par Itération</span><span>Ventes 30 j</span></div>
       </div>
@@ -66,13 +64,13 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
   {podium.length > 0 && (
     <section style="padding-top:16px">
       <div class="wrap">
-        <div class="sec-head"><div><h2>Le podium</h2><p class="sub">Les 3 zones au meilleur K.P.I. — Kamas Par Itération, soit les kamas moyens gagnés par combat. Mesuré en B8.</p></div></div>
+        <div class="sec-head center"><div><h2>Le podium</h2></div></div>
         <div class="podium">
           {podiumOrder.map((i) => { const z = podium[i]; return (
             <a class={`pod ${i === 0 ? 'first' : ''}`} href={z.url}>
               <div class="rank">{i + 1}{i === 0 ? 're' : 'e'} place</div><h3>{z.nom}</h3><div class="where">{z.region} · Niv. {niveau(z.niveau)}</div>
               <div class="kpi"><b>{fmt(z.kpi)}</b><small>kamas / combat</small></div>
-              <div class="meta"><span>{fmt(z.kph)} k/h</span>{(z.anomalie ?? 0) > 0 && <span>⚠ {z.anomalie} % d'anomalie</span>}<span>Prix HDV {site.serveur} du {dateFr(z.date_prix)}</span></div>
+              <div class="meta"><span>{fmt(z.kph)} k/h</span>{(z.anomalie ?? 0) > 0 && <span>⚠ {z.anomalie} % d'anomalie</span>}<span>Prix HDV {site.serveur} au {dateFr(z.date_prix)}</span></div>
             </a>); })}
         </div>
       </div>
@@ -81,7 +79,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
 
   <section id="classement">
     <div class="wrap">
-      <div class="sec-head"><div><h2>Le classement</h2><p class="sub">Toutes les zones sont farmées en B8 sur {site.serveur}. Les filtres se croisent : zone, monstre, niveau, région.</p></div></div>
+      <div class="sec-head center"><div><h2>Le classement</h2></div></div>
       <div class="panel">
         <div class="filters">
           <div class="field search"><label for="q">Zone ou monstre</label><input id="q" type="search" placeholder="Ex. Pâturages, Bouftou…" autocomplete="off"></div>
@@ -102,6 +100,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
             <tbody id="rows"></tbody>
           </table>
         </div>
+        <div class="pager" id="pager" hidden></div>
         <div class="count" id="count"></div>
       </div>
     </div>
@@ -109,7 +108,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
 
   <section id="atlas" style="padding-top:16px">
     <div class="wrap">
-      <div class="sec-head"><div><h2>La cartographie des zones</h2><p class="sub">Les zones rangées par grandes régions. Une zone sans rapport reste en WIP jusqu'à la sortie de son épisode.</p></div></div>
+      <div class="sec-head center"><div><h2>La cartographie des zones</h2></div></div>
       <div class="atlas">
         {atlasListed.map((r) => (
           <div class={`reg ${r.done === r.zones.length ? 'done' : ''}`}>
@@ -134,7 +133,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
   {last && (
     <section id="rapport">
       <div class="wrap">
-        <div class="sec-head"><div><h2>Dernier rapport</h2><p class="sub">Chaque épisode F.A.R.M. alimente le classement.</p></div><a class="btn btn-ghost" href="/rapports/">Tous les rapports →</a></div>
+        <div class="sec-head center"><div><h2>Dernier rapport</h2></div><a class="btn btn-ghost" href="/rapports/">Tous les rapports →</a></div>
         <div class="split">
           <a class="video" href={last.video || site.youtube} target="_blank" rel="noopener" aria-label="Voir l'épisode sur YouTube">
             {last.mosaique ? <img src={last.mosaique} alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55"> : <div class="grid" id="mosaic">{Array.from({ length: 60 }, (_, i) => <i style={`opacity:${(0.35 + ((i * 37) % 60) / 100).toFixed(2)}`}></i>)}</div>}
@@ -148,7 +147,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
               <div><small>Kamas / heure</small><b>{fmt(last.kph)}</b></div>
               <div><small>% d'anomalie</small><b>{last.anomalie ?? '—'} %</b></div>
               {last.monstres_combattus ? <div><small>Monstres combattus</small><b>{fmt(last.monstres_combattus)}</b></div> : ''}
-              <div><small>Prix HDV {site.serveur} du</small><b>{dateFr(last.date_prix)}</b></div>
+              <div><small>Prix HDV {site.serveur} au</small><b>{dateFr(last.date_prix)}</b></div>
             </div>
             <div class="actions"><a class="btn btn-primary" href={last.url}>Voir la fiche complète</a>{last.video && <a class="btn btn-ghost" href={last.video} target="_blank" rel="noopener">▶ L'épisode</a>}</div>
           </div>
@@ -159,7 +158,7 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
 
   <section id="team">
     <div class="wrap">
-      <div class="sec-head"><div><h2>La team</h2><p class="sub">8 personnages, une seule ligne de production de combats. Serveur {site.serveur}.</p></div><a class="btn btn-ghost" href="/team/">Voir la team →</a></div>
+      <div class="sec-head center"><div><h2>Ma team</h2><p class="sub">F.A.R.M. — Fichier d'Analyse de la Rentabilité des Maps | par Doob · Serveur {site.serveur}</p></div><a class="btn btn-ghost" href="/team/">Voir la team →</a></div>
       <TeamGrid />
     </div>
   </section>
@@ -180,23 +179,27 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
   import { fmt, niveau } from '../lib/farm.js';
   const D = JSON.parse(document.getElementById('farm-data').textContent);
   const WIP = "WIP : attendre la sortie de l'épisode sur YouTube !";
-  const st = { q: '', lvl: '', isl: '', n: 8 };
+  const st = { q: '', lvl: '', isl: '', n: 8, page: 1 };
   const max = Math.max(1, ...D.measured.map((r) => r.k));
   const $ = (id) => document.getElementById(id);
   const match = (r) => {
     const q = st.q.trim().toLowerCase();
     return (!q || r.n.toLowerCase().includes(q) || r.m.some((m) => m.toLowerCase().includes(q))) && (!st.lvl || r.l === st.lvl) && (!st.isl || r.r === st.isl);
   };
+  const PER = 10;
   function render() {
     const f = st.n / 8;
-    const rows = D.measured.filter(match);
+    const all = D.measured.filter(match);
+    const pages = Math.max(1, Math.ceil(all.length / PER));
+    if (st.page > pages) st.page = pages;
+    const rows = all.slice((st.page - 1) * PER, st.page * PER);
     const showWip = st.q.trim() || st.isl;
     const wips = showWip ? D.wip.filter(match) : [];
     const regionWip = st.isl && !D.measured.some((r) => r.r === st.isl) && !D.wip.some((r) => r.r === st.isl);
     $('kpih').textContent = 'K.P.I. · B' + st.n;
     $('note').hidden = st.n === 8;
     $('note').textContent = st.n === 8 ? '' : `Projection : rentabilité estimée si la zone était farmée en B${st.n} (au prorata du B8). La mesure réelle est faite en B8.`;
-    let html = rows.map((r, i) => `<tr tabindex="0" data-u="${r.u}"><td class="r">${i + 1}</td>
+    let html = rows.map((r, i) => `<tr tabindex="0" data-u="${r.u}"><td class="r">${(st.page - 1) * PER + i + 1}</td>
       <td class="zn"><a href="${r.u}"><b>${r.n}</b></a><small>${r.r}</small></td><td class="hm">${niveau(r.l)}</td>
       <td class="mobs hm">${r.m.join(' · ')}</td><td class="num kpi-cell"><b>${fmt(r.k * f)}</b>${f < 1 ? '<span class="proj">projection</span>' : ''}<div class="bar"><i style="width:${Math.round(r.k / max * 100)}%"></i></div></td>
       <td class="num hm">${fmt(r.h * f)}</td><td class="num hm">${r.d}</td></tr>`).join('');
@@ -204,14 +207,27 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
     if (regionWip) html += `<tr class="wiprow"><td class="r">—</td><td class="zn"><b>${st.isl}</b><small>Toutes les zones</small></td><td class="hm"></td><td class="hm"></td><td colspan="3" class="num"><span class="wip">${WIP}</span></td></tr>`;
     $('rows').innerHTML = html || `<tr><td colspan="7" class="empty">Aucune zone ne correspond à ces filtres.</td></tr>`;
     const nw = wips.length + (regionWip ? 1 : 0);
-    $('count').textContent = `${rows.length} zone${rows.length > 1 ? 's' : ''} mesurée${rows.length > 1 ? 's' : ''}${nw ? ` · ${nw} en WIP` : ''} · tri par K.P.I. décroissant` + (showWip ? '' : ' · choisis une région pour voir les zones en WIP');
+    $('count').textContent = `${all.length} zone${all.length > 1 ? 's' : ''} mesurée${all.length > 1 ? 's' : ''}${nw ? ` · ${nw} en WIP` : ''} · tri par K.P.I. décroissant` + (showWip ? '' : ' · choisis une région pour voir les zones en WIP');
+    const pg = $('pager');
+    if (pages > 1) {
+      pg.hidden = false;
+      pg.innerHTML = [`<button type="button" data-p="${st.page - 1}" ${st.page === 1 ? 'disabled' : ''} aria-label="Page précédente">‹</button>`,
+        ...Array.from({ length: pages }, (_, i) => `<button type="button" data-p="${i + 1}" aria-current="${st.page === i + 1 ? 'true' : 'false'}">${i + 1}</button>`),
+        `<button type="button" data-p="${st.page + 1}" ${st.page === pages ? 'disabled' : ''} aria-label="Page suivante">›</button>`].join('');
+    } else { pg.hidden = true; pg.innerHTML = ''; }
   }
-  $('q').addEventListener('input', (e) => { st.q = e.target.value; render(); });
-  $('lvl').addEventListener('change', (e) => { st.lvl = e.target.value; render(); });
-  $('isl').addEventListener('change', (e) => { st.isl = e.target.value; render(); });
+  $('pager').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-p]');
+    if (!b || b.disabled) return;
+    st.page = +b.dataset.p;
+    render();
+  });
+  $('q').addEventListener('input', (e) => { st.q = e.target.value; st.page = 1; render(); });
+  $('lvl').addEventListener('change', (e) => { st.lvl = e.target.value; st.page = 1; render(); });
+  $('isl').addEventListener('change', (e) => { st.isl = e.target.value; st.page = 1; render(); });
   const segs = document.querySelectorAll('#compo button');
   segs.forEach((b) => b.addEventListener('click', () => { segs.forEach((x) => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true'); st.n = +b.dataset.v; render(); }));
-  $('reset').addEventListener('click', () => { st.q = st.lvl = st.isl = ''; st.n = 8; ['q', 'lvl', 'isl'].forEach((id) => ($(id).value = '')); segs.forEach((x) => x.setAttribute('aria-pressed', x.dataset.v === '8' ? 'true' : 'false')); render(); });
+  $('reset').addEventListener('click', () => { st.q = st.lvl = st.isl = ''; st.n = 8; st.page = 1; ['q', 'lvl', 'isl'].forEach((id) => ($(id).value = '')); segs.forEach((x) => x.setAttribute('aria-pressed', x.dataset.v === '8' ? 'true' : 'false')); render(); });
   $('rows').addEventListener('click', (e) => { const tr = e.target.closest('tr[data-u]'); if (tr && !e.target.closest('a')) location.href = tr.dataset.u; });
   $('rows').addEventListener('keydown', (e) => { const tr = e.target.closest('tr[data-u]'); if (tr && e.key === 'Enter') location.href = tr.dataset.u; });
   render();
