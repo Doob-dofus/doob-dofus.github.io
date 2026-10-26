@@ -1,56 +1,48 @@
 membres:
 - nom: Dooane
   classe: Pandawa
-  niveau: Oméga 130
   groupe: direction
   sprite: /sprites/dooane.webp
   prospection: 575
   lien: https://d-bk.net/fr/d/1aeeY
 - nom: Doote
   classe: Enutrof
-  niveau: Oméga 127
   groupe: direction
   sprite: /sprites/doote.webp
   prospection: 580
   lien: https://d-bk.net/fr/d/1axG1
 - nom: Dooblage
   classe: Eliotrope
-  niveau: Oméga 123
   groupe: direction
   sprite: /sprites/dooblage.webp
   prospection: 594
   lien: https://d-bk.net/fr/d/1aeeY
 - nom: Dooleur
   classe: Iop
-  niveau: Oméga 124
   groupe: direction
   sprite: /sprites/dooleur.webp
   prospection: 589
   lien: https://d-bk.net/fr/d/1aeeY
 - nom: Doocement
   classe: Zobal
-  niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doocement.webp
   prospection: 235
   lien: https://d-bk.net/fr/d/1axGZ
 - nom: Dooillet
   classe: Huppermage
-  niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/dooillet.webp
   prospection: 245
   lien: https://d-bk.net/fr/d/1axGZ
 - nom: Doozienne
   classe: Xélor
-  niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doozienne.webp
   prospection: 235
   lien: https://d-bk.net/fr/d/1axGZ
 - nom: Doomage
   classe: Roublard
-  niveau: Niv. 61
   groupe: stagiaires
   sprite: /sprites/doomage.webp
   prospection: 239

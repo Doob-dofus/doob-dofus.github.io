@@ -10,7 +10,7 @@ const groups = [['direction', 'La direction'], ['stagiaires', 'Les stagiaires â€
         {team.filter((m) => m.groupe === g).map((m) => (
           <div class="member">
             <a class="pic" href={m.lien} target="_blank" rel="noopener" title={`Voir le stuff de ${m.nom} sur Dofusbook`}><img src={m.sprite} alt={`${m.nom}, ${m.classe}`} loading="lazy" width="62" height="92"></a>
-            <div><b>{m.nom}</b><a class="cls" href={m.lien} target="_blank" rel="noopener" title={`Voir le stuff de ${m.nom} sur Dofusbook`}>{m.classe}</a><div class="role">{m.niveau}</div></div>
+            <div><b>{m.nom}</b><a class="cls" href={m.lien} target="_blank" rel="noopener" title={`Voir le stuff de ${m.nom} sur Dofusbook`}>{m.classe}</a></div>
           </div>
         ))}
       </div>

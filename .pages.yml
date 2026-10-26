@@ -163,10 +163,6 @@ content:
     - name: classe
       label: Classe
       type: string
-    - name: niveau
-      label: Niveau affiché
-      type: string
-      description: Ex. « Oméga 130 » ou « Niv. 61 ».
     - name: groupe
       label: Groupe
       type: select
