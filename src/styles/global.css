@@ -352,3 +352,17 @@ a.reg:hover{background:var(--raised)}
   .mnav a[aria-current="page"]{color:var(--text);background:var(--raised);border-color:var(--violet)}
 }
 .nodrop td{color:var(--muted)}.nodrop td b{color:var(--muted);font-weight:500}
+
+/* Pages légales */
+.legal{max-width:760px}
+.legal h2{font-size:20px;margin:32px 0 10px;color:var(--text)}
+.legal p,.legal li{color:var(--muted);font-size:15px;line-height:1.7}
+.legal ul{padding-left:20px;margin:10px 0}
+.legal li{margin:6px 0}
+.legal a{color:var(--violet);text-decoration:underline;text-underline-offset:3px}
+.legal a:hover{color:var(--lav)}
+.legal b{color:var(--text)}
+.legal-note{border:1px dashed rgba(229,184,236,.45);border-radius:var(--radius);padding:16px 20px;margin-top:32px}
+.legal-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin:14px 0 4px}
+.legal-links a{font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.legal-links a:hover{color:var(--text)}

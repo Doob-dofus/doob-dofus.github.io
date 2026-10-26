@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/data.js';
+---
+<Base title="Mentions légales — F.A.R.M. | par Doob" description="Mentions légales du site F.A.R.M. | par Doob : éditeur, hébergement, propriété intellectuelle.">
+  <div class="wrap legal">
+    <div class="page-head">
+      <div class="eyebrow"><i></i>Informations légales</div>
+      <h1>Mentions légales</h1>
+      <p>Dernière mise à jour : 26 octobre 2026</p>
+    </div>
+
+    <h2>Éditeur du site</h2>
+    <p>
+      Le site <b>F.A.R.M. | par Doob</b> (doob-dofus.github.io) est un site de fan non officiel, édité à titre personnel et non professionnel par « Doob ».
+      Conformément à l'article 6-2 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), l'éditeur, personne physique éditant le site à titre non professionnel, a choisi de ne pas rendre publique son identité ; celle-ci a été communiquée à l'hébergeur.
+    </p>
+    <p>Contact : <a href={`mailto:${site.gmail}`}>{site.gmail}</a></p>
+
+    <h2>Directeur de la publication</h2>
+    <p>« Doob », joignable à l'adresse <a href={`mailto:${site.gmail}`}>{site.gmail}</a>.</p>
+
+    <h2>Hébergement</h2>
+    <p>
+      Le site est hébergé par <b>GitHub, Inc.</b> (service GitHub Pages)<br>
+      88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
+      Site : <a href="https://www.github.com" target="_blank" rel="noopener">www.github.com</a> · Téléphone : +1 (877) 448-4820
+    </p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      Certaines illustrations sont la propriété d'<b>Ankama Studio</b> et de <b>Dofus</b> — Tous droits réservés. Leur utilisation sur ce site s'inscrit dans un cadre de fan non officiel, sans affiliation avec Ankama.
+    </p>
+    <p>
+      Les données de zones et les taux de drop de base sont issus de <b>DofusDB</b>. Utilisation soumise à la licence LPNC-IA 1.0. Les mesures de rentabilité (drops, kamas, durées, K.P.I.) sont des relevés originaux réalisés par l'éditeur sur le serveur {site.serveur}.
+    </p>
+    <p>
+      L'ensemble des autres contenus du site (textes, mesures, méthode F.A.R.M., mise en page) est la propriété de l'éditeur. Toute reproduction sans autorisation est interdite.
+    </p>
+
+    <h2>Données personnelles</h2>
+    <p>Le traitement des données personnelles est décrit dans la <a href="/confidentialite/">politique de confidentialité</a> et l'usage des cookies dans la <a href="/cookies/">page dédiée</a>.</p>
+  </div>
+</Base>

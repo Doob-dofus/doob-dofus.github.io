@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/data.js';
+---
+<Base title="Politique de confidentialité — F.A.R.M. | par Doob" description="Politique de confidentialité du site F.A.R.M. : aucune donnée collectée par le site, un seul stockage local pour le simulateur.">
+  <div class="wrap legal">
+    <div class="page-head">
+      <div class="eyebrow"><i></i>Vos données</div>
+      <h1>Politique de confidentialité</h1>
+      <p>Dernière mise à jour : 26 octobre 2026</p>
+    </div>
+
+    <h2>En résumé</h2>
+    <p>
+      Ce site <b>ne collecte aucune donnée personnelle</b> : pas de formulaire, pas de compte, pas d'outil de mesure d'audience, pas de traceur publicitaire, aucune donnée transmise à un serveur géré par l'éditeur.
+    </p>
+
+    <h2>Responsable de traitement</h2>
+    <p>« Doob », éditeur du site — <a href={`mailto:${site.gmail}`}>{site.gmail}</a>.</p>
+
+    <h2>Le seul stockage : le simulateur « Ma team »</h2>
+    <p>
+      Sur les fiches de zones, le simulateur de prospection propose le mode « Ma team » : les valeurs de prospection que vous saisissez sont enregistrées <b>uniquement dans le stockage local de votre navigateur</b> (localStorage), sur votre appareil. Elles ne sont jamais envoyées sur Internet et l'éditeur n'y a pas accès.
+    </p>
+    <ul>
+      <li><b>Finalité :</b> retrouver vos réglages d'une visite à l'autre (service que vous demandez explicitement).</li>
+      <li><b>Durée :</b> jusqu'à ce que vous effaciez les données de navigation de votre navigateur ou que vous réinitialisiez le simulateur.</li>
+      <li><b>Base légale :</b> ce stockage est strictement nécessaire à la fourniture du service que vous avez demandé ; il est exempté de consentement (lignes directrices de la CNIL sur les cookies et traceurs).</li>
+    </ul>
+
+    <h2>Journaux techniques de l'hébergeur</h2>
+    <p>
+      Comme tout site web, sa consultation génère des journaux techniques (adresse IP, pages demandées) au niveau de l'hébergeur, <b>GitHub, Inc.</b> Ces journaux relèvent de la seule responsabilité de GitHub et sont régis par sa <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">déclaration de confidentialité</a>. L'éditeur n'y a pas accès à des fins d'identification des visiteurs.
+    </p>
+
+    <h2>Liens vers des services tiers</h2>
+    <p>
+      Le site contient des liens vers YouTube, X (Twitter), Discord et Dofusbook. Ces services appliquent leurs propres politiques de confidentialité dès lors que vous les visitez. Aucune vidéo ni contenu tiers n'est intégré directement aux pages : aucun traceur tiers n'est déposé lors de la simple consultation de ce site.
+    </p>
+
+    <h2>Vos droits</h2>
+    <p>
+      Conformément au RGPD et à la loi Informatique et Libertés, vous disposez de droits d'accès, de rectification, d'effacement, d'opposition, de limitation et de portabilité. Le site ne détenant aucune donnée vous concernant, ces droits s'exercent principalement par l'effacement du stockage local de votre navigateur. Pour toute question : <a href={`mailto:${site.gmail}`}>{site.gmail}</a>. Vous pouvez également saisir la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a> d'une réclamation.
+    </p>
+  </div>
+</Base>

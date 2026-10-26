@@ -6,6 +6,12 @@ const socials = [
   ['Discord', site.discord ? `/contact/` : ''],
   ['Gmail', site.gmail ? `mailto:${site.gmail}` : ''],
 ].filter(([, u]) => u);
+const legal = [
+  ['Mentions légales', '/mentions-legales/'],
+  ['Confidentialité', '/confidentialite/'],
+  ['Cookies', '/cookies/'],
+  ["Conditions d'utilisation", '/conditions-utilisation/'],
+];
 ---
 <footer>
   <div class="wrap">
@@ -13,6 +19,9 @@ const socials = [
       <div><b>F.A.R.M.</b> — Fichier d'Analyse de la Rentabilité des Maps | par Doob · Serveur {site.serveur}</div>
       <div class="socials">{socials.map(([n, u]) => <a href={u} target={u.startsWith('http') ? '_blank' : undefined} rel="noopener">{n}</a>)}</div>
     </div>
+    <nav class="legal-links" aria-label="Pages légales">
+      {legal.map(([n, u]) => <a href={u}>{n}</a>)}
+    </nav>
     <p class="legal">Certaines illustrations sont la propriété d'Ankama Studio et de Dofus — Tous droits réservés. Données issues de DofusDB. Utilisation soumise à la LPNC-IA 1.0. Site de fan non officiel.</p>
   </div>
 </footer>
