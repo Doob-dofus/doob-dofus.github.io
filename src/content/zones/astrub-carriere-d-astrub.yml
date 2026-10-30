@@ -8,13 +8,14 @@ monstres:
 - Sherpoa
 - Douzdoa
 - Pikdoa
+date_prix: '2026-10-30'
 combats: 100
 monstres_combattus: 548
 sessions:
 - 37.81666666666667
 kamas_combats: 0
 kamas_combats_inconnus: true
-notes: 'Bilan de la Carrière d’Astrub sur 100 combats en 37 min 49 s, soit 548 monstres. Aucun équipement disponible sur ces monstres. Viandes Frelatées : 4 326 unités déclarées pour la session ; le stock cumulé de l’export est ignoré. Les 1 450 Haricots sont valorisés sans ajouter les sachets. Les 397 Éklâmes inférieures sont valorisées à 70 kamas par unité, prix de référence du précédent rapport à confirmer pour cette session. Les kamas directs de combat n’ont pas été communiqués et sont exclus du calcul. Oueille et Pollénectar : quantités et prix non renseignés dans le bilan, donc non valorisés. Date du relevé des prix non communiquée. K.P.I. et rendement horaire provisoires, hors éléments non renseignés.'
+notes: 'Bilan de la Carrière d’Astrub sur 100 combats en 37 min 49 s, soit 548 monstres. Aucun équipement disponible sur ces monstres. Viandes Frelatées : 4 326 unités déclarées pour la session ; le stock cumulé de l’export est ignoré. Les 1 450 Haricots sont valorisés sans ajouter les sachets. Les 397 Éklâmes inférieures sont valorisées à 70 kamas par unité. Oueille et Pollénectar sont des drops de quête, exclus de la valorisation. Les kamas directs de combat n’ont pas été communiqués et sont exclus du calcul : K.P.I. et rendement horaire provisoires.'
 drops:
 - ressource: Casque de Martoa
   monstres: Martoa
