@@ -1,7 +1,7 @@
 nom: Égouts d'Astrub
 region: Astrub
 niveau: 20-50
-statut: wip
+statut: mesuree
 rapport: 3
 monstres:
 - Arakne des Égouts
@@ -17,7 +17,85 @@ kamas_combats_inconnus: true
 estimations:
 - libelle: Équipements de la session
   valeur: 9742
-notes: 'Données de la session communiquées : 841 Viandes Hachées et 2 765 Viandes Frelatées ; ne pas reprendre les stocks cumulés de l’export pour ces viandes. 364 Éklâmes inférieures ; prix de référence précédent : 70 kamas par unité. 260 Poudres Temporelles à 82 kamas (363 061 ventes sur 30 jours) et 960 Cendres Éternelles à 147 kamas (637 049 ventes sur 30 jours). Kamas directs non relevés. Autres ressources, prix des viandes et taux de drop à compléter avant publication.'
+notes: 'Bilan des Égouts d’Astrub sur 100 combats en 30 min 10 s, soit 460 monstres. Viandes de la session déclarées : 841 Viandes Hachées et 2 765 Viandes Frelatées ; les stocks cumulés de l’export sont ignorés pour ces quantités. Les 260 Poudres Temporelles et 960 Cendres Éternelles sont valorisées sans ajouter les sachets. Les 364 Éklâmes inférieures sont valorisées à 70 kamas par unité, prix de référence confirmé pour les relevés précédents. Les équipements sont valorisés globalement à 9 742 kamas ; les équipements individuels du tableau Atlas ne sont pas ajoutés une seconde fois. Les kamas directs de combat n’ont pas été relevés. Pour les taux affichés en fourchette dans l’Atlas, le simulateur utilise la borne basse : 53–100 % pour certaines ressources et viandes, 1–2 % pour les sachets ; le taux unitaire de leur contenu ne correspond pas à celui des sachets.'
+drops:
+- ressource: Crinière de Scélérat Strubien
+  monstres: Scélérat Strubien, Redoutable le Craint
+  taux_base: 8.84
+  quantite: 288
+  prix: 1429
+  ventes_30j: 7372
+- ressource: Crocs de Rats
+  monstres: Milirat Strubien, Milipussien le Géant — taux Atlas 53–100 %
+  taux_base: 53
+  quantite: 809
+  prix: 158
+  ventes_30j: 44811
+- ressource: Cuir de Scélérat Strubien
+  monstres: Scélérat Strubien, Redoutable le Craint — taux Atlas 53–100 %
+  taux_base: 53
+  quantite: 983
+  prix: 720
+  ventes_30j: 39929
+- ressource: Gland
+  monstres: Arakne des Égouts, Araknay la Galopante — taux Atlas 53–100 %
+  taux_base: 53
+  quantite: 839
+  prix: 10
+  ventes_30j: 7914
+- ressource: Laine de Ramane Strubien
+  monstres: Ramane Strubien
+  taux_base: 53
+  quantite: 969
+  prix: 177
+  ventes_30j: 27731
+- ressource: Œil de Ramane Strubien
+  monstres: Ramane Strubien
+  taux_base: 8.84
+  quantite: 302
+  prix: 1291
+  ventes_30j: 5584
+- ressource: Patte d'Arakne des Égouts
+  monstres: Arakne des Égouts, Araknay la Galopante
+  taux_base: 8.84
+  quantite: 251
+  prix: 1412
+  ventes_30j: 4764
+- ressource: Rondelles de Milirat Strubien
+  monstres: Milirat Strubien, Milipussien le Géant
+  taux_base: 8.84
+  quantite: 248
+  prix: 1503
+  ventes_30j: 5571
+- ressource: Viande Frelatée
+  monstres: Scélérat Strubien, Milirat Strubien, Ramane Strubien — taux Atlas 53–100 %
+  taux_base: 53
+  quantite: 2765
+  prix: 36
+  ventes_30j: 172411
+- ressource: Viande Hachée
+  monstres: Arakne des Égouts, Araknay la Galopante — taux Atlas 53–100 %
+  taux_base: 53
+  quantite: 841
+  prix: 67
+  ventes_30j: 154191
+- ressource: Poudre Temporelle
+  monstres: 'Arakne des Égouts, Araknay la Galopante — taux de base indiqué : Sachet de Poudre Temporelle (1–2 %), pas contenu unitaire'
+  taux_base: 1
+  quantite: 260
+  prix: 82
+  ventes_30j: 363061
+- ressource: Cendre Éternelle
+  monstres: 'Scélérat Strubien, Milirat Strubien, Ramane Strubien — taux de base indiqué : Sachet de Cendres Éternelles (1–2 %), pas contenu unitaire'
+  taux_base: 1
+  quantite: 960
+  prix: 147
+  ventes_30j: 637049
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 364
+  prix: 70
 prospection:
 - 491
 - 418
