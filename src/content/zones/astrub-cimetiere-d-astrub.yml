@@ -2,12 +2,23 @@ nom: Cimetière d'Astrub
 region: Astrub
 niveau: 20-50
 statut: wip
+rapport: 3
 monstres:
 - La Ouassingue
 - Le Ouassingue
 - Gargrouille
 - Ouassébo l'Esthète
 - Garglyphe
+combats: 100
+monstres_combattus: 503
+sessions:
+- 40.733333333333334
+kamas_combats: 0
+kamas_combats_inconnus: true
+estimations:
+- libelle: Équipements de la session
+  valeur: 50129
+notes: 'Données communiquées pour la session : 3 472 Viandes Minérales à 12 kamas (198 961 ventes sur 30 jours), 1 350 Poudres de Perlinpainpain à 59 kamas (516 883 ventes sur 30 jours) et 579 Éklâmes inférieures à 70 kamas. Stocks de ressources du cimetière présents dans l’export Atlas, à confirmer comme appartenant à cette session : Cuir de Gargrouille 987 à 33 kamas (11 080 ventes sur 30 jours) ; Slip en Cuir Moulant du Garglyphe 304 à 451 kamas (891 ventes) ; Cuir de Ouassingue 862 à 468 kamas (10 620 ventes) ; Dent de Garglyphe 1 099 à 208 kamas (7 684 ventes) ; Langue de Gargrouille 308 à 1 005 kamas (7 815 ventes) ; Estomac de Ouassingue 1 001 à 168 kamas (8 301 ventes). Kamas directs non relevés ; taux de drop et provenance par monstre à confirmer avant publication.'
 prospection:
 - 491
 - 418
