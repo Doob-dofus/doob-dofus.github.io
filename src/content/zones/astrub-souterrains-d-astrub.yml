@@ -2,11 +2,67 @@ nom: Souterrains d'Astrub
 region: Astrub
 niveau: 0-20
 statut: wip
+rapport: 3
 monstres:
 - Tofu Malade
 - Arakne Malade
 - Araknosé
 - Arakmuté
+combats: 100
+monstres_combattus: 406
+sessions:
+- 28.316666666666666
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Bilan des Souterrains d’Astrub sur 100 combats en 28 min 19 s, soit 406 monstres. Le tableau Atlas indique 3 227 Viandes Hachées à 67 kamas (154 191 ventes sur 30 jours) : quantité de session à confirmer, les exports précédents pouvant contenir des stocks cumulés. Valorisation des équipements éventuels non communiquée. Les 190 Haricots sont valorisés à 40 kamas (452 519 ventes sur 30 jours), relevé de la Carrière d’Astrub ; les 650 Poudres Temporelles à 82 kamas (365 421 ventes sur 30 jours) ; les 217 Éklâmes inférieures à 70 kamas, prix de référence précédent. Les sachets ne sont pas ajoutés aux contenus. Kamas directs non relevés. Pour les taux en fourchette dans l’Atlas, le simulateur utilise la borne basse : 57–100 % pour certaines ressources et 1–2 % pour les sachets. Le taux unitaire des contenus ne correspond pas à celui des sachets.'
+drops:
+- ressource: Bec du Tofu
+  monstres: Tofu Malade, Tofurapin le Pétri — taux Atlas 57–100 %
+  taux_base: 57
+  quantite: 942
+  prix: 325
+  ventes_30j: 18353
+- ressource: Intestin d'Araknosé
+  monstres: Araknosé
+  taux_base: 57
+  quantite: 615
+  prix: 389
+  ventes_30j: 22609
+- ressource: Œil d'Arakmuté
+  monstres: Arakmuté
+  taux_base: 57
+  quantite: 853
+  prix: 283
+  ventes_30j: 18856
+- ressource: Peau Égrotante
+  monstres: Tofu Malade, Arakne Malade, Araknosé, Arakmuté
+  taux_base: 9.44
+  quantite: 990
+  prix: 220
+  ventes_30j: 6772
+- ressource: Poils d'Arakne Malade
+  monstres: Arakne Malade, Arachtik la Souffreteuse — taux Atlas 57–100 %
+  taux_base: 57
+  quantite: 719
+  prix: 971
+  ventes_30j: 21242
+- ressource: Haricots
+  monstres: 'Tofu Malade, Tofurapin le Pétri — taux de base indiqué : Sachet de Haricots (1–2 %), pas contenu unitaire'
+  taux_base: 1
+  quantite: 190
+  prix: 40
+  ventes_30j: 452519
+- ressource: Poudre Temporelle
+  monstres: 'Arakne Malade, Araknosé, Arakmuté — taux de base indiqué : Sachet de Poudre Temporelle (1–2 %), pas contenu unitaire'
+  taux_base: 1
+  quantite: 650
+  prix: 82
+  ventes_30j: 365421
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 217
+  prix: 70
 prospection:
 - 491
 - 418
