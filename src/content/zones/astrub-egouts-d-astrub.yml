@@ -2,11 +2,22 @@ nom: Égouts d'Astrub
 region: Astrub
 niveau: 20-50
 statut: wip
+rapport: 3
 monstres:
 - Arakne des Égouts
 - Scélérat Strubien
 - Milirat Strubien
 - Ramane Strubien
+combats: 100
+monstres_combattus: 460
+sessions:
+- 30.166666666666668
+kamas_combats: 0
+kamas_combats_inconnus: true
+estimations:
+- libelle: Équipements de la session
+  valeur: 9742
+notes: 'Données de la session communiquées : 841 Viandes Hachées et 2 765 Viandes Frelatées ; ne pas reprendre les stocks cumulés de l’export pour ces viandes. 364 Éklâmes inférieures ; prix de référence précédent : 70 kamas par unité. 260 Poudres Temporelles à 82 kamas (363 061 ventes sur 30 jours) et 960 Cendres Éternelles à 147 kamas (637 049 ventes sur 30 jours). Kamas directs non relevés. Autres ressources, prix des viandes et taux de drop à compléter avant publication.'
 prospection:
 - 491
 - 418
