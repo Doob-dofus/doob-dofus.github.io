@@ -1,7 +1,7 @@
 nom: Carrière d'Astrub
 region: Astrub
 niveau: 20-50
-statut: wip
+statut: mesuree
 rapport: 3
 monstres:
 - Martoa
@@ -9,7 +9,60 @@ monstres:
 - Douzdoa
 - Pikdoa
 combats: 100
-notes: 'Données communiquées pour la session : 1 450 Haricots (prix moyen 40 kamas, 452 519 ventes sur 30 jours), 4 326 Viandes Frelatées et 397 Éklâmes inférieures. Le stock de Viande Frelatée de l’export est cumulé sur plusieurs zones : ne pas l’utiliser comme quantité de la session. Fiche à compléter : autres drops propres à la Carrière, durée, monstres combattus, kamas directs et éventuels équipements ; ne pas publier de K.P.I. incomplet.'
+monstres_combattus: 548
+sessions:
+- 37.81666666666667
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Bilan de la Carrière d’Astrub sur 100 combats en 37 min 49 s, soit 548 monstres. Aucun équipement disponible sur ces monstres. Viandes Frelatées : 4 326 unités déclarées pour la session ; le stock cumulé de l’export est ignoré. Les 1 450 Haricots sont valorisés sans ajouter les sachets. Les 397 Éklâmes inférieures sont valorisées à 70 kamas par unité, prix de référence du précédent rapport à confirmer pour cette session. Les kamas directs de combat n’ont pas été communiqués et sont exclus du calcul. Oueille et Pollénectar : quantités et prix non renseignés dans le bilan, donc non valorisés. Date du relevé des prix non communiquée. K.P.I. et rendement horaire provisoires, hors éléments non renseignés.'
+drops:
+- ressource: Casque de Martoa
+  monstres: Martoa
+  taux_base: 53
+  quantite: 1038
+  prix: 59
+  ventes_30j: 39417
+- ressource: Gant de Sherpoa
+  monstres: Sherpoa
+  taux_base: 53
+  quantite: 1107
+  prix: 66
+  ventes_30j: 31819
+- ressource: Œil de Pikdoa
+  monstres: Pikdoa
+  taux_base: 53
+  quantite: 1101
+  prix: 779
+  ventes_30j: 246719
+- ressource: Oreille de Douzdoa
+  monstres: Douzdoa
+  taux_base: 53
+  quantite: 1081
+  prix: 68
+  ventes_30j: 43963
+- ressource: Pierre de Granit
+  monstres: Martoa, Sherpoa, Douzdoa, Pikdoa
+  taux_base: 8.84
+  quantite: 1390
+  prix: 592
+  ventes_30j: 82445
+- ressource: Viande Frelatée
+  monstres: Martoa, Sherpoa, Douzdoa, Pikdoa
+  taux_base: 53
+  quantite: 4326
+  prix: 36
+  ventes_30j: 172411
+- ressource: Haricots
+  monstres: 'Martoa, Sherpoa, Douzdoa, Pikdoa — taux de base indiqué : Sachet de Haricots, pas contenu unitaire'
+  taux_base: 1
+  quantite: 1450
+  prix: 40
+  ventes_30j: 452519
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 397
+  prix: 70
 prospection:
 - 491
 - 418
