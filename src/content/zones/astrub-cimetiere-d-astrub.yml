@@ -1,7 +1,7 @@
 nom: Cimetière d'Astrub
 region: Astrub
 niveau: 20-50
-statut: wip
+statut: mesuree
 rapport: 3
 monstres:
 - La Ouassingue
@@ -18,7 +18,61 @@ kamas_combats_inconnus: true
 estimations:
 - libelle: Équipements de la session
   valeur: 50129
-notes: 'Données communiquées pour la session : 3 472 Viandes Minérales à 12 kamas (198 961 ventes sur 30 jours), 1 350 Poudres de Perlinpainpain à 59 kamas (516 883 ventes sur 30 jours) et 579 Éklâmes inférieures à 70 kamas. Stocks de ressources du cimetière présents dans l’export Atlas, à confirmer comme appartenant à cette session : Cuir de Gargrouille 987 à 33 kamas (11 080 ventes sur 30 jours) ; Slip en Cuir Moulant du Garglyphe 304 à 451 kamas (891 ventes) ; Cuir de Ouassingue 862 à 468 kamas (10 620 ventes) ; Dent de Garglyphe 1 099 à 208 kamas (7 684 ventes) ; Langue de Gargrouille 308 à 1 005 kamas (7 815 ventes) ; Estomac de Ouassingue 1 001 à 168 kamas (8 301 ventes). Kamas directs non relevés ; taux de drop et provenance par monstre à confirmer avant publication.'
+notes: 'Bilan du Cimetière d’Astrub sur 100 combats en 40 min 44 s, soit 503 monstres. Les 3 472 Viandes Minérales sont celles déclarées pour la session. Les 1 350 Poudres de Perlinpainpain sont valorisées sans ajouter les sachets. Les 579 Éklâmes inférieures sont valorisées à 70 kamas par unité. Oueille et Pollénectar sont des drops de quête, exclus de la valorisation. Les kamas directs de combat n’ont pas été relevés. Pour les taux affichés en fourchette dans l’Atlas, le simulateur utilise la borne basse : 51–100 % pour les cuirs et la viande, 50–100 % pour les estomacs et 1–2 % pour les sachets. Le taux unitaire des poudres ne correspond pas à celui des sachets.'
+drops:
+- ressource: Cuir de Gargrouille
+  monstres: Gargrouille, Garsim le Mort — taux Atlas 51–100 %
+  taux_base: 51
+  quantite: 987
+  prix: 33
+  ventes_30j: 11080
+- ressource: Cuir de Ouassingue
+  monstres: Le Ouassingue, Ouassébo l'Esthète — taux Atlas 51–100 %
+  taux_base: 51
+  quantite: 862
+  prix: 468
+  ventes_30j: 10620
+- ressource: Dent de Garglyphe
+  monstres: Garglyphe
+  taux_base: 51
+  quantite: 1099
+  prix: 208
+  ventes_30j: 7684
+- ressource: Estomac de Ouassingue
+  monstres: La Ouassingue, Ouature la Mobile — taux Atlas 50–100 %
+  taux_base: 50
+  quantite: 1001
+  prix: 168
+  ventes_30j: 8301
+- ressource: Langue de Gargrouille
+  monstres: Gargrouille, Garsim le Mort
+  taux_base: 8.44
+  quantite: 308
+  prix: 1005
+  ventes_30j: 7815
+- ressource: Slip en Cuir Moulant du Garglyphe
+  monstres: Garglyphe
+  taux_base: 8.44
+  quantite: 304
+  prix: 451
+  ventes_30j: 891
+- ressource: Viande Minérale
+  monstres: Monstres du cimetière — taux Atlas 51–100 %
+  taux_base: 51
+  quantite: 3472
+  prix: 12
+  ventes_30j: 198961
+- ressource: Poudre de Perlinpainpain
+  monstres: Monstres du cimetière — taux de base indiqué pour le sachet (1–2 %), pas son contenu unitaire
+  taux_base: 1
+  quantite: 1350
+  prix: 59
+  ventes_30j: 516883
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 579
+  prix: 70
 prospection:
 - 491
 - 418
