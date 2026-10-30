@@ -2,11 +2,14 @@ nom: Carrière d'Astrub
 region: Astrub
 niveau: 20-50
 statut: wip
+rapport: 3
 monstres:
 - Martoa
 - Sherpoa
 - Douzdoa
 - Pikdoa
+combats: 100
+notes: 'Données communiquées pour la session : 1 450 Haricots (prix moyen 40 kamas, 452 519 ventes sur 30 jours), 4 326 Viandes Frelatées et 397 Éklâmes inférieures. Le stock de Viande Frelatée de l’export est cumulé sur plusieurs zones : ne pas l’utiliser comme quantité de la session. Fiche à compléter : autres drops propres à la Carrière, durée, monstres combattus, kamas directs et éventuels équipements ; ne pas publier de K.P.I. incomplet.'
 prospection:
 - 491
 - 418
