@@ -41,8 +41,9 @@ const description = z.measured
       </div>
       {z.measured && (
         <div class="kbig">
-          <small>K.P.I. mesuré — Kamas Par Itération</small>
-          <div><b>{fmt(z.kpi)}</b><span class="u">kamas / combat</span></div>
+          <small>Valeur totale de la session</small>
+          <div><b>{fmt(z.kpi * z.combats)}</b><span class="u">kamas</span></div>
+          <small>{z.kamas_combats_inconnus ? 'Drops + valorisations · kamas de combat non relevés' : 'Drops + kamas de combat + valorisations'}</small>
           <div class="act">
             <a class="btn btn-ghost" href={z.video || site.youtube} target="_blank" rel="noopener">▶ Voir l'épisode</a>
             {z.mosaique && <a class="btn btn-ghost" href="#mosaique">Mosaïque</a>}
@@ -54,7 +55,7 @@ const description = z.measured
       <div class="facts">
         <div class="fact"><small>Temps total</small><b>{preciseDuration(total)}</b><em>{cph.toFixed(1).replace('.', ',')} combats / h</em></div>
         <div class="fact"><small>Kamas / heure</small><b>{fmt(z.kph)}</b></div>
-        <div class="fact"><small>Valeur totale du butin</small><b>{fmt(z.kpi * z.combats)}</b><em>{z.kamas_combats_inconnus ? 'drops + valorisations (kamas de combat non relevés)' : 'drops + kamas de combat + valorisations'}</em></div>
+        <div class="fact"><small>K.P.I. mesuré</small><b>{fmt(z.kpi)}</b><em>Kamas Par Itération · kamas / combat</em></div>
         <div class="fact"><small>% d'anomalie</small><b>{z.anomalie ?? '—'} %</b></div>
         {z.monstres_combattus != null && (
           <div class="fact"><small>Monstres combattus</small><b>{fmt(z.monstres_combattus)}</b><em>{(z.monstres_combattus / z.combats).toFixed(1).replace('.', ',')} / combat</em></div>
