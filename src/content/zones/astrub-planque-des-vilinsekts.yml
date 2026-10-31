@@ -1,9 +1,62 @@
 nom: Planque des Vilinsekts
 region: Astrub
 niveau: 20-50
-statut: wip
+statut: mesuree
+rapport: 3
 monstres:
 - Cafarcher
 - Pyrasite
 - Mirgrillon
 - Sakarien
+combats: 100
+monstres_combattus: 388
+sessions:
+- 42.78333333333333
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Bilan de la Planque des Vilinsekts sur 100 combats en 42 min 47 s, soit 388 monstres. Aucune Viande Minérale récoltée : la zone impose d’entrer en combat avec une Baguette Rikiki, qui n’est pas une arme de chasse. Les 990 Cerises sont valorisées à 11 kamas (492 395 ventes sur 30 jours) sans ajouter les sachets ; les 516 Éklâmes inférieures à 70 kamas, prix de référence précédent. Caissette de Babioles non relevée. Kamas directs non relevés. Zone très peu rentable pour son niveau. Le taux unitaire des Cerises ne correspond pas à celui des Sachets de Cerises.'
+drops:
+- ressource: Antennes de Vilinsekt
+  monstres: Cafarcher, Pyrasite, Mirgrillon, Sakarien
+  taux_base: 51
+  quantite: 3056
+  prix: 25
+  ventes_30j: 44559
+- ressource: Kamiam
+  monstres: Cafarcher, Pyrasite, Mirgrillon, Sakarien
+  taux_base: 6
+  quantite: 332
+  prix: 172
+  ventes_30j: 259
+- ressource: Rondelle de Bois
+  monstres: Cafarcher, Pyrasite, Mirgrillon, Sakarien
+  taux_base: 8.44
+  quantite: 832
+  prix: 29
+  ventes_30j: 7516
+- ressource: Cerise
+  monstres: 'Cafarcher, Pyrasite, Mirgrillon, Sakarien — taux de base indiqué : Sachet de Cerises (1 %), pas contenu unitaire'
+  taux_base: 1
+  quantite: 990
+  prix: 11
+  ventes_30j: 492395
+- ressource: Viande Minérale
+  monstres: 'Cafarcher, Pyrasite, Mirgrillon, Sakarien — non récoltée : Baguette Rikiki imposée, pas arme de chasse'
+  taux_base: 51
+  quantite: 0
+  prix: 12
+  ventes_30j: 198961
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 516
+  prix: 70
+prospection:
+- 491
+- 418
+- 620
+- 616
+- 254
+- 255
+- 254
+- 270
