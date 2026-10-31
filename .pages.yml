@@ -201,6 +201,10 @@ content:
       label: Niveaux
       type: string
       description: Ex. Niv. 0 – 20
+    - name: note
+      label: Note du rapport de région
+      type: string
+      description: Facultatif. Précision affichée sous le rapport de la région (méthode, limites).
 - name: site
   label: Réglages du site
   type: file

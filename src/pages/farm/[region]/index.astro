@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { getZones, regions, site } from '../../../lib/data.js';
-import { slug, fmt, niveau } from '../../../lib/farm.js';
+import { slug, fmt, niveau, minutes, estimationsOf, dateFr } from '../../../lib/farm.js';
 
 export async function getStaticPaths() {
   const zones = await getZones();
@@ -14,34 +14,211 @@ export async function getStaticPaths() {
 const { nom, zones } = Astro.props;
 const info = regions.find((r) => r.nom === nom) || {};
 const WIP = "WIP : attendre la sortie de l'épisode sur YouTube !";
-const done = zones.filter((z) => z.measured).sort((a, b) => b.kpi - a.kpi);
 const wip = zones.filter((z) => !z.measured);
+
+// ---------- Rapport de région ----------
+const M = (n) => (n / 1e6).toFixed(n >= 1e7 ? 1 : 2).replace('.', ',') + ' M';
+const hm = (min) => { const t = Math.round(min), h = Math.floor(t / 60), m = t % 60; return h ? `${h} h ${String(m).padStart(2, '0')}` : `${m} min`; };
+const done = zones.filter((z) => z.measured).map((z) => {
+  const drops = z.drops.reduce((a, d) => a + d.quantite * d.prix, 0);
+  const est = estimationsOf(z), kc = z.kamas_combats || 0;
+  return { ...z, total: drops + est + kc, partDrops: drops, partEst: est, partKc: kc, min: minutes(z.sessions) };
+}).sort((a, b) => b.total - a.total);
+const complete = zones.length > 0 && wip.length === 0;
+const T = {
+  total: done.reduce((a, z) => a + z.total, 0),
+  combats: done.reduce((a, z) => a + (z.combats || 100), 0),
+  min: done.reduce((a, z) => a + z.min, 0),
+  mobs: done.reduce((a, z) => a + (z.monstres_combattus || 0), 0),
+  mobsKnown: done.every((z) => z.monstres_combattus),
+  drops: done.reduce((a, z) => a + z.partDrops, 0),
+  est: done.reduce((a, z) => a + z.partEst, 0),
+  kc: done.reduce((a, z) => a + z.partKc, 0),
+};
+const kph = T.min ? T.total / (T.min / 60) : 0;
+const best = done[0], worst = done[done.length - 1];
+const bestH = [...done].sort((a, b) => b.total / b.min - a.total / a.min)[0];
+const maxTotal = best ? best.total : 1;
+const kcUnknown = done.filter((z) => z.kamas_combats_inconnus);
+const dates = [...new Set(done.map((z) => z.date_prix).filter(Boolean))].sort();
+
+// Carte des kamas : treemap « squarified », surface = valeur totale de la session
+function squarify(items, x, y, w, h, out = []) {
+  if (!items.length) return out;
+  const sum = items.reduce((a, i) => a + i.v, 0);
+  if (items.length === 1) { out.push({ ...items[0], x, y, w, h }); return out; }
+  const horiz = w >= h, side = horiz ? h : w, scale = (w * h) / sum;
+  let row = [], worstPrev = Infinity, i = 0;
+  const worstOf = (r) => { const s = r.reduce((a, it) => a + it.v * scale, 0); const mx = Math.max(...r.map((it) => it.v * scale)), mn = Math.min(...r.map((it) => it.v * scale)); return Math.max((side * side * mx) / (s * s), (s * s) / (side * side * mn)); };
+  while (i < items.length) { const cand = [...row, items[i]]; const wv = worstOf(cand); if (row.length && wv > worstPrev) break; row = cand; worstPrev = wv; i++; }
+  const rs = row.reduce((a, it) => a + it.v * scale, 0), thick = rs / side;
+  let off = 0;
+  for (const it of row) { const len = (it.v * scale) / thick; out.push(horiz ? { ...it, x, y: y + off, w: thick, h: len } : { ...it, x: x + off, y, w: len, h: thick }); off += len; }
+  return horiz ? squarify(items.slice(row.length), x + thick, y, w - thick, h, out) : squarify(items.slice(row.length), x, y + thick, w, h - thick, out);
+}
+const kphs = done.map((z) => (z.min ? z.total / (z.min / 60) : 0));
+const kMin = Math.min(...kphs), kMax = Math.max(...kphs);
+const layout = (W, H) => squarify(done.map((z) => ({ v: z.total, z })), 0, 0, W, H).map((t) => {
+  const zk = t.z.min ? t.z.total / (t.z.min / 60) : 0;
+  const heat = kMax > kMin ? (zk - kMin) / (kMax - kMin) : 1;
+  const w = (t.w / W) * 100, h = (t.h / H) * 100, area = t.w * t.h;
+  return { ...t, x: (t.x / W) * 100, y: (t.y / H) * 100, w, h, zk, heat, small: area < W * H * 0.05, xs: t.w < W * 0.09 || t.h < H * 0.07 };
+});
+const tiles = layout(160, 90), tilesM = layout(90, 130);
+
+// Ressources les plus rentables de la région (cumul toutes zones)
+const resMap = new Map();
+for (const z of done) for (const d of z.drops) {
+  const v = d.quantite * d.prix; if (!(v > 0)) continue;
+  const key = d.ressource.replace(/\s*\(.*\)$/, '');
+  const r = resMap.get(key) || { n: key, v: 0, q: 0, zones: [] };
+  r.v += v; r.q += d.quantite; if (!r.zones.includes(z.nom)) r.zones.push(z.nom); resMap.set(key, r);
+}
+const topRes = [...resMap.values()].sort((a, b) => b.v - a.v).slice(0, 10);
+const topMax = topRes[0]?.v || 1;
+
+// Par épisode (rapport)
+const reps = [...new Set(done.map((z) => z.rapport))].sort((a, b) => a - b).map((n) => {
+  const zs = done.filter((z) => z.rapport === n);
+  const tot = zs.reduce((a, z) => a + z.total, 0), min = zs.reduce((a, z) => a + z.min, 0);
+  return { n, zs, tot, min, kph: min ? tot / (min / 60) : 0, video: zs.find((z) => z.video)?.video || '' };
+});
+const pct = (x) => Math.round((x / T.total) * 100);
 ---
-<Base title={`Farm en ${nom} : rentabilité des zones mesurée sur 100 combats — F.A.R.M.`} description={`Toutes les zones de ${nom} classées par K.P.I. (kamas par combat), mesuré en B8 sur ${site.serveur}.`} current="atlas">
+<Base title={`Farm en ${nom} : rapport complet de la région, mesuré sur ${fmt(T.combats)} combats — F.A.R.M.`} description={`${nom} : ${done.length} zones mesurées, ${fmt(T.combats)} combats en B8 sur ${site.serveur}, ${fmt(T.total)} kamas de butin estimé. Classement, carte des kamas et meilleures ressources.`} current="atlas">
   <div class="wrap">
     <nav class="crumb" aria-label="Fil d'Ariane"><a href="/#atlas">Cartographie</a><span>›</span>{nom}</nav>
     <div class="page-head">
-      <div class="eyebrow"><i></i>Région{info.niveaux ? ` · ${info.niveaux}` : ''}</div>
-      <h1>{nom}</h1>
-      <p>{done.length} zone{done.length > 1 ? 's' : ''} mesurée{done.length > 1 ? 's' : ''} sur {zones.length}. Classement par K.P.I. — Kamas Par Itération, moyenne sur 100 combats en B8.</p>
+      <div class="eyebrow"><i></i>{complete ? 'Rapport de région · 100 % mesurée' : `Région · ${done.length} / ${zones.length} zones mesurées`}{info.niveaux ? ` · ${info.niveaux}` : ''}</div>
+      <h1>{nom}{complete && <span class="rg-done">Région bouclée ✓</span>}</h1>
+      {done.length > 0 && <p>{done.length} zone{done.length > 1 ? 's' : ''}, {fmt(T.combats)} combats et {hm(T.min)} de farm en B8 sur {site.serveur} : <b>{fmt(T.total)} kamas</b> de butin estimé. La meilleure zone, {best.nom}, rapporte {(best.total / worst.total).toFixed(0)} fois plus que la moins rentable, {worst.nom}.</p>}
     </div>
-    <section style="padding-top:24px">
-      <div class="replist">
-        {done.map((z, i) => (
-          <a class="rep" href={z.url}>
-            <span class="no">#{i + 1}</span>
-            <span><b>{z.nom}</b><small>Niveau {niveau(z.niveau)} · {z.monstres.join(', ')}{(z.anomalie ?? 0) > 0 ? ` · ⚠ ${z.anomalie} % d'anomalie` : ''}{z.monstres_combattus ? ` · ${fmt(z.monstres_combattus)} monstres combattus` : ''}</small></span>
-            <span class="kv"><b>{fmt(z.kpi)}</b><small>kamas / combat</small></span>
-          </a>
-        ))}
-        {wip.map((z) => (
-          <a class="rep wiprep" href={z.url}>
-            <span class="no">—</span>
-            <span><b>{z.nom}</b><small>Niveau {niveau(z.niveau)} · {z.monstres.join(', ')}</small></span>
-            <span class="wip">{WIP}</span>
-          </a>
-        ))}
+    {done.length > 0 && (
+      <div class="facts">
+        <div class="fact"><small>Valeur totale</small><b>{M(T.total)}</b><em>{fmt(T.total)} kamas</em></div>
+        <div class="fact"><small>Combats</small><b>{fmt(T.combats)}</b><em>{done.length} zones × 100</em></div>
+        <div class="fact"><small>Temps total</small><b>{hm(T.min)}</b><em>{(T.combats / (T.min / 60)).toFixed(0)} combats / h</em></div>
+        <div class="fact"><small>Kamas / heure</small><b>{M(kph)}</b><em>moyenne de la région</em></div>
+        <div class="fact"><small>K.P.I. moyen</small><b>{fmt(T.total / T.combats)}</b><em>kamas / combat</em></div>
+        {T.mobsKnown && <div class="fact"><small>Monstres combattus</small><b>{fmt(T.mobs)}</b><em>{(T.mobs / T.combats).toFixed(1).replace('.', ',')} / combat</em></div>}
+      </div>
+    )}
+  </div>
+
+  {done.length > 0 && (
+    <>
+      <section style="padding-top:32px">
+        <div class="wrap">
+          <div class="sec-head"><div><h2>La carte des kamas</h2><p class="sub">Chaque case est une zone. Sa taille correspond à ce qu'ont rapporté ses 100 combats ; plus elle est violette, plus elle rapporte à l'heure.</p></div></div>
+          <div class="tmap tm-d" role="list" aria-label={`Zones de ${nom} par valeur totale`}>
+            {tiles.map((t) => (
+              <a role="listitem" class={`tile${t.xs ? ' xs' : t.small ? ' sm' : ''}`} href={t.z.url} style={`left:${t.x}%;top:${t.y}%;width:${t.w}%;height:${t.h}%;--h:${t.heat.toFixed(3)}`} title={`${t.z.nom} : ${fmt(t.z.total)} kamas · ${M(t.zk)} / h`}>
+                <span class="tn">{t.z.nom}</span>
+                <span class="tv">{M(t.z.total)}</span>
+                <span class="tk">{M(t.zk)} / h</span>
+              </a>
+            ))}
+          </div>
+          <div class="tmap tm-m" aria-hidden="true">
+            {tilesM.map((t) => (
+              <a tabindex="-1" class={`tile${t.xs ? ' xs' : t.small ? ' sm' : ''}`} href={t.z.url} style={`left:${t.x}%;top:${t.y}%;width:${t.w}%;height:${t.h}%;--h:${t.heat.toFixed(3)}`} title={`${t.z.nom} : ${fmt(t.z.total)} kamas · ${M(t.zk)} / h`}>
+                <span class="tn">{t.z.nom}</span>
+                <span class="tv">{M(t.z.total)}</span>
+                <span class="tk">{M(t.zk)} / h</span>
+              </a>
+            ))}
+          </div>
+          <div class="tleg">{tilesM.some((t) => t.xs) && <span class="tsmall">Trop petite pour être lue : {tilesM.filter((t) => t.xs).map((t) => `${t.z.nom} (${M(t.z.total)})`).join(', ')}</span>}<span>Kamas / heure</span><i></i><span>{M(kMin)}</span><span>→</span><span>{M(kMax)}</span></div>
+        </div>
+      </section>
+
+      <section style="padding-top:8px">
+        <div class="wrap">
+          <div class="sec-head"><div><h2>Le classement de {nom}</h2><p class="sub">Classé par valeur totale de la session (100 combats en B8). Les chiffres sont ceux mesurés par la team Doob, sans projection.</p></div></div>
+          <div class="panel"><div class="tbl-wrap"><table class="rgt">
+            <thead><tr><th>#</th><th>Zone</th><th class="num">Valeur totale</th><th class="num">K.P.I.</th><th class="num hm">Kamas / h</th><th class="num hm">Temps</th><th class="num hm">Rapport</th></tr></thead>
+            <tbody>
+              {done.map((z, i) => (
+                <tr class={i === 0 ? 'me' : ''}>
+                  <td class="r">{i + 1}</td>
+                  <td class="zn"><a href={z.url}><b>{z.nom}</b></a><small>Niveau {niveau(z.niveau)}</small></td>
+                  <td class="num"><b>{fmt(z.total)}</b><div class="bar"><i style={`width:${(z.total / maxTotal) * 100}%`}></i></div></td>
+                  <td class="num">{fmt(z.total / (z.combats || 100))}</td>
+                  <td class="num hm">{z.min ? M(z.total / (z.min / 60)) : '—'}</td>
+                  <td class="num hm">{z.min ? hm(z.min) : '—'}</td>
+                  <td class="num hm">{z.video ? <a class="lk" href={z.video} target="_blank" rel="noopener">n°{z.rapport} ▶</a> : `n°${z.rapport}`}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table></div></div>
+          <div class="verdict">
+            <div><small>La plus rentable</small><b>{best.nom}</b><em>{fmt(best.total)} kamas sur 100 combats</em></div>
+            <div><small>Le meilleur rendement horaire</small><b>{bestH.nom}</b><em>{M(bestH.total / (bestH.min / 60))} kamas / heure</em></div>
+            <div><small>À éviter</small><b>{worst.nom}</b><em>{fmt(worst.total)} kamas sur 100 combats</em></div>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-top:8px">
+        <div class="wrap two">
+          <div>
+            <div class="sec-head"><div><h2>Les ressources qui rapportent</h2><p class="sub">Le top 10 de la région, toutes zones confondues.</p></div></div>
+            <div class="panel"><ol class="toplist">
+              {topRes.map((r, i) => (
+                <li><span class="r">{i + 1}</span><span class="tr"><b>{r.n}</b><small>{fmt(r.q)} drops · {r.zones.join(', ')}</small><span class="bar"><i style={`width:${(r.v / topMax) * 100}%`}></i></span></span><span class="num"><b>{fmt(r.v)}</b><small>kamas</small></span></li>
+              ))}
+            </ol></div>
+          </div>
+          <div>
+            <div class="sec-head"><div><h2>D'où viennent les kamas</h2><p class="sub">Répartition de la valeur totale de la région.</p></div></div>
+            <div class="panel" style="padding:20px">
+              <div class="stack" aria-hidden="true"><i style={`width:${(T.drops / T.total) * 100}%`}></i><i class="e" style={`width:${(T.est / T.total) * 100}%`}></i><i class="k" style={`width:${(T.kc / T.total) * 100}%`}></i></div>
+              <ul class="parts">
+                <li><i></i>Ressources<b>{fmt(T.drops)} K · {pct(T.drops)} %</b></li>
+                {T.est > 0 && <li><i class="e"></i>Équipements (estimés)<b>{fmt(T.est)} K · {pct(T.est)} %</b></li>}
+                {T.kc > 0 && <li><i class="k"></i>Kamas de combat<b>{fmt(T.kc)} K · {pct(T.kc)} %</b></li>}
+              </ul>
+            </div>
+            {reps.length > 0 && (
+              <>
+                <div class="sec-head" style="margin-top:28px"><div><h2>Épisode par épisode</h2></div></div>
+                <div class="epis">
+                  {reps.map((r) => (
+                    <a class="epi" href={r.video || site.youtube} target="_blank" rel="noopener">
+                      <small>Rapport n°{r.n} · {r.video ? '▶ voir l’épisode' : 'épisode à venir'}</small>
+                      <b>{M(r.tot)} kamas</b>
+                      <em>{r.zs.length} zone{r.zs.length > 1 ? 's' : ''} · {fmt(r.zs.length * 100)} combats · {hm(r.min)} · {M(r.kph)} / h</em>
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-top:8px">
+        <div class="wrap">
+          <p class="sub rg-note">Valeurs estimées aux prix moyens HDV {site.serveur}{dates.length ? ` relevés ${dates.length > 1 ? `entre le ${dateFr(dates[0])} et le ${dateFr(dates[dates.length - 1])}` : `le ${dateFr(dates[0])}`}` : ''}, pas des ventes réalisées.{kcUnknown.length > 0 && ` Kamas de combat non relevés pour ${kcUnknown.length === done.length ? 'toutes les zones' : kcUnknown.map((z) => z.nom).join(', ')}.`}{info.note ? ` ${info.note}` : ''}</p>
+        </div>
+      </section>
+    </>
+  )}
+
+  {wip.length > 0 && (
+    <section style="padding-top:8px">
+      <div class="wrap">
+        <div class="sec-head"><div><h2>Zones à venir</h2></div></div>
+        <div class="replist">
+          {wip.map((z) => (
+            <a class="rep wiprep" href={z.url}>
+              <span class="no">—</span>
+              <span><b>{z.nom}</b><small>Niveau {niveau(z.niveau)} · {z.monstres.join(', ')}</small></span>
+              <span class="wip">{WIP}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
-  </div>
+  )}
 </Base>
