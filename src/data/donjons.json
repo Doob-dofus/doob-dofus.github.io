@@ -28,5 +28,83 @@
       {"nom":"Oignons","quantite":1210,"prix":168,"ventes":362249},
       {"nom":"Éklâme inférieure","quantite":209,"prix":70,"ventes":null}
     ]
-  }
+  },
+{
+  "slug": "chateau-ensable",
+  "nom": "Château Ensablé",
+  "boss": "Mob l’Éponge",
+  "region": "Astrub",
+  "runs": 10,
+  "seconds": 1355,
+  "monstres": 400,
+  "notes": "Ressources de la session valorisées aux prix fournis dans l’export Atlas. Les 1 109 eaux potables sont valorisées à 158 kamas sans ajouter les tonneaux. Prix des Éklâmes : 70 kamas. Les kamas directs, équipements et coûts d’entrée ne sont pas inclus ; le bilan est brut.",
+  "drops": [
+    {
+      "nom": "Écaille poisseuse",
+      "quantite": 898,
+      "prix": 108,
+      "ventes": 12134
+    },
+    {
+      "nom": "Peau de Mob l’Éponge",
+      "quantite": 80,
+      "prix": 208,
+      "ventes": 10430
+    },
+    {
+      "nom": "Serviette de Plage",
+      "quantite": 558,
+      "prix": 122,
+      "ventes": 38250
+    },
+    {
+      "nom": "Nageoire de Compétition",
+      "quantite": 558,
+      "prix": 197,
+      "ventes": 39156
+    },
+    {
+      "nom": "Fluide Glacial",
+      "quantite": 558,
+      "prix": 48,
+      "ventes": 11218
+    },
+    {
+      "nom": "Conque Marine",
+      "quantite": 877,
+      "prix": 203,
+      "ventes": 37282
+    },
+    {
+      "nom": "Crème à bronzer",
+      "quantite": 555,
+      "prix": 555,
+      "ventes": 37875
+    },
+    {
+      "nom": "Bidoche Faisandée",
+      "quantite": 13,
+      "prix": 2509,
+      "ventes": 55
+    },
+    {
+      "nom": "Viande Faisandée",
+      "quantite": 1950,
+      "prix": 49,
+      "ventes": 281591
+    },
+    {
+      "nom": "Eau Potable",
+      "quantite": 1109,
+      "prix": 158,
+      "ventes": 1381993
+    },
+    {
+      "nom": "Éklâme inférieure",
+      "quantite": 201,
+      "prix": 70,
+      "ventes": null
+    }
+  ]
+}
 ]
