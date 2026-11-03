@@ -1,0 +1,36 @@
+---
+import Base from '../../../layouts/Base.astro';
+import donjons from '../../../data/donjons.json';
+import { fmt } from '../../../lib/farm.js';
+export function getStaticPaths() {
+  return donjons.map((d) => ({ params: { donjon: d.slug }, props: { d } }));
+}
+const { d } = Astro.props;
+const total = d.drops.reduce((n, r) => n + (r.prix == null ? 0 : r.quantite * r.prix), 0);
+const incomplete = d.drops.some((r) => r.prix == null);
+const duree = `${Math.floor(d.seconds / 60)} min ${String(d.seconds % 60).padStart(2, '0')} s`;
+---
+<Base title={`${d.nom} : butin et rentabilité sur ${d.runs} runs — F.A.R.M.`} description={`Rapport F.A.R.M. : ${d.runs} runs de ${d.nom} en B8 sur Brial, butin et durée mesurés.`} current="rapports">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Fil d’Ariane"><a href="/rapports/">Rapports</a><span>›</span>Donjons<span>›</span>{d.boss}</nav>
+    <div class="zhead">
+      <div><div class="eyebrow"><i></i>Rapport n°4 · {d.region} · Donjon</div><h1>{d.nom}</h1><p class="meta">{d.runs} runs complets · B8 · Brial</p></div>
+      <div class="kbig"><small>Valeur du butin valorisé{incomplete ? ' · partielle' : ''}</small><div><b>{fmt(total)}</b><span class="u">kamas</span></div><small>Estimation brute · hors frais d’entrée et kamas directs</small></div>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>Temps total</small><b>{duree}</b><em>{d.runs} runs complets</em></div>
+      <div class="fact"><small>Kamas / heure · brut</small><b>{fmt(total * 3600 / d.seconds)}</b><em>{incomplete ? 'Valeur partielle' : 'Hors frais d’entrée'}</em></div>
+      <div class="fact"><small>K.P.I. par run · brut</small><b>{fmt(total / d.runs)}</b><em>kamas / run{incomplete ? ' · partiel' : ''}</em></div>
+      <div class="fact"><small>Monstres affrontés</small><b>{fmt(d.monstres)}</b><em>{d.monstres / d.runs} / run</em></div>
+    </div>
+  </div>
+  <section style="padding-top:28px"><div class="wrap">
+    <div class="sec-head"><div><h2>Les drops de la session</h2><p class="sub">Quantités relevées sur {d.runs} runs · valeurs théoriques aux prix HDV, sans garantie de vente. Sur mobile, fais défiler le tableau horizontalement pour voir toutes les colonnes.</p></div></div>
+    <div class="panel"><div class="tbl-wrap"><table class="dt"><thead><tr><th>Ressource</th><th class="num">Quantité</th><th class="num">Prix unitaire</th><th class="num">Valeur du lot</th><th class="num">Ventes / 30 j</th></tr></thead><tbody>
+      {d.drops.map((r) => <tr><td class="rn"><b>{r.nom}</b></td><td class="num">{fmt(r.quantite)}</td><td class="num">{r.prix == null ? 'Non renseigné' : `${fmt(r.prix)} k`}</td><td class="num"><b>{r.prix == null ? 'Non valorisé' : `${fmt(r.quantite * r.prix)} k`}</b></td><td class="num">{r.ventes == null ? '—' : fmt(r.ventes)}</td></tr>)}
+    </tbody></table></div></div>
+    <p class="sub" style="margin-top:20px">{d.notes}</p>
+    <p class="sub">La taille de l’échantillon est de {d.runs} runs : les ressources rares peuvent varier fortement d’une session à l’autre.</p>
+    <p class="sub" style="margin-top:24px"><a href="/rapports/" style="color:var(--violet)">← Tous les rapports</a></p>
+  </div></section>
+</Base>

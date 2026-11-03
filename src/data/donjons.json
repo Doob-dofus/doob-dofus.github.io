@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "kardorim", "nom": "Crypte de Kardorim", "boss": "Kardorim", "region": "Incarnam", "runs": 10, "seconds": 1481, "monstres": 400,
+    "notes": "Les prix sont ceux de l’export Atlas et le prix de référence des Éklâmes. Le prix du Crâne de Kardorim et de la Bidoche Intangible n’a pas été renseigné. Les kamas directs, équipements et coûts d’entrée ne sont pas inclus ; le bilan est donc partiel et brut.",
+    "drops": [
+      {"nom":"Os de Chafer","quantite":3167,"prix":25,"ventes":111620},
+      {"nom":"Relique d’Incarnam","quantite":3167,"prix":95,"ventes":130443},
+      {"nom":"Viande Intangible","quantite":3087,"prix":136,"ventes":176793},
+      {"nom":"Crâne de Kardorim","quantite":80,"prix":null,"ventes":null},
+      {"nom":"Bidoche Intangible","quantite":1,"prix":null,"ventes":null},
+      {"nom":"Éklâme inférieure","quantite":160,"prix":70,"ventes":null}
+    ]
+  },
+  {
+    "slug": "tournesol-affame", "nom": "Grange du Tournesol Affamé", "boss": "Tournesol Affamé", "region": "Astrub", "runs": 10, "seconds": 1445, "monstres": 400,
+    "notes": "Ressources de la session valorisées aux prix fournis dans l’export Atlas. Les 1 210 oignons sont valorisés après ouverture des sachets, sans compter les sachets en plus. Prix des Éklâmes : 70 kamas. Les kamas directs, équipements et coûts d’entrée ne sont pas inclus ; le bilan est brut.",
+    "drops": [
+      {"nom":"Fleur de Pissenlit Diabolique","quantite":635,"prix":97,"ventes":60440},
+      {"nom":"Pétale de Rose Démoniaque","quantite":625,"prix":140,"ventes":72142},
+      {"nom":"Langue d’Épouvanteur","quantite":638,"prix":95,"ventes":53203},
+      {"nom":"Coton Ancestral","quantite":214,"prix":316,"ventes":7919},
+      {"nom":"Pétale de Tournesol Sauvage","quantite":637,"prix":110,"ventes":57792},
+      {"nom":"Feuille de Tournesol Sauvage","quantite":213,"prix":704,"ventes":28471},
+      {"nom":"Engrais","quantite":191,"prix":707,"ventes":38986},
+      {"nom":"Pétale Magique du Tournesol Affamé","quantite":79,"prix":388,"ventes":15613},
+      {"nom":"Poire de Pissenlit","quantite":1187,"prix":63,"ventes":63623},
+      {"nom":"Viande Faisandée","quantite":1934,"prix":49,"ventes":281591},
+      {"nom":"Oignons","quantite":1210,"prix":168,"ventes":362249},
+      {"nom":"Éklâme inférieure","quantite":209,"prix":70,"ventes":null}
+    ]
+  }
+]

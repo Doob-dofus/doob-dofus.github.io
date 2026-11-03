@@ -14,6 +14,13 @@ const wip = zones.filter((z) => !z.measured);
       <h1>Tous les rapports</h1>
       <p>Un rapport = un épisode YouTube. Chaque zone est farmée 100 combats en B8 sur {site.serveur}, puis les ressources sont estimées au prix de l'HDV. {site.rythme}.</p>
     </div>
+    <section style="padding-top:28px">
+      <div class="sec-head"><div><h2>Rapport n°4 · Donjons</h2><p class="sub">Sessions de 10 runs en B8 · relevés bruts, hors frais d’entrée</p></div></div>
+      <div class="replist">
+        <a class="rep donjon-rep" href="/farm/donjons/kardorim/"><span class="no">INC</span><span><b>Crypte de Kardorim</b><small>Incarnam · 10 runs · 400 monstres</small></span><span class="kv"><b>24 min 41 s</b><small>voir la fiche</small></span></a>
+        <a class="rep donjon-rep" href="/farm/donjons/tournesol-affame/"><span class="no">AST</span><span><b>Grange du Tournesol Affamé</b><small>Astrub · 10 runs · 400 monstres</small></span><span class="kv"><b>24 min 05 s</b><small>voir la fiche</small></span></a>
+      </div>
+    </section>
     {groups.map((g) => (
       <section style="padding-top:28px">
         <div class="sec-head"><div><h2>Rapport n°{g.n}</h2><p class="sub">{g.zones.length} zone{g.zones.length > 1 ? 's' : ''} · prix relevés le {dateFr(g.zones[0].date_prix)}</p></div>{g.zones[0].video && <a class="btn btn-ghost" href={g.zones[0].video} target="_blank" rel="noopener">▶ L'épisode</a>}</div>
@@ -36,3 +43,8 @@ const wip = zones.filter((z) => !z.measured);
     )}
   </div>
 </Base>
+
+<style>
+.donjon-rep .kv { display: block; white-space: nowrap; }
+@media (max-width: 600px) { .donjon-rep .kv b { font-size: 15px; } }
+</style>
