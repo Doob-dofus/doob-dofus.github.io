@@ -106,5 +106,89 @@
       "ventes": null
     }
   ]
+},
+{
+  "slug": "bouftou-royal",
+  "nom": "Cour du Bouftou Royal",
+  "boss": "Bouftou Royal",
+  "region": "Astrub",
+  "runs": 10,
+  "seconds": 1362,
+  "monstres": 400,
+  "notes": "Ressources de la session valorisées aux prix fournis dans l’export Atlas. Les 980 aubergines sont valorisées à 79 kamas sans ajouter les sachets. Prix des Éklâmes : 70 kamas. Les kamas directs, équipements et coûts d’entrée ne sont pas inclus ; le bilan est brut.",
+  "drops": [
+    {
+      "nom": "Corne de Boufton",
+      "quantite": 651,
+      "prix": 33,
+      "ventes": 64956
+    },
+    {
+      "nom": "Laine de Bouftou",
+      "quantite": 704,
+      "prix": 25,
+      "ventes": 77579
+    },
+    {
+      "nom": "Laine de Bouftou Royal",
+      "quantite": 19,
+      "prix": 1341,
+      "ventes": 5171
+    },
+    {
+      "nom": "Laine du Chef de Guerre Bouftou",
+      "quantite": 649,
+      "prix": 32,
+      "ventes": 74782
+    },
+    {
+      "nom": "Cuir de Bouftou Noir",
+      "quantite": 547,
+      "prix": 73,
+      "ventes": 18508
+    },
+    {
+      "nom": "Laine de Boufton Noir",
+      "quantite": 646,
+      "prix": 1533,
+      "ventes": 931482
+    },
+    {
+      "nom": "Cuir de Bouftou Royal",
+      "quantite": 80,
+      "prix": 483,
+      "ventes": 20662
+    },
+    {
+      "nom": "Sang de Bouftou",
+      "quantite": 1033,
+      "prix": 10,
+      "ventes": 59311
+    },
+    {
+      "nom": "Viande Frelatée",
+      "quantite": 1548,
+      "prix": 36,
+      "ventes": 172411
+    },
+    {
+      "nom": "Bidoche Frelatée",
+      "quantite": 9,
+      "prix": 3565,
+      "ventes": 29
+    },
+    {
+      "nom": "Aubergines",
+      "quantite": 980,
+      "prix": 79,
+      "ventes": 523838
+    },
+    {
+      "nom": "Éklâme inférieure",
+      "quantite": 310,
+      "prix": 70,
+      "ventes": null
+    }
+  ]
 }
 ]
