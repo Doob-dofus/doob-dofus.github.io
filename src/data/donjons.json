@@ -1,12 +1,12 @@
 [
   {
     "slug": "kardorim", "nom": "Crypte de Kardorim", "boss": "Kardorim", "region": "Incarnam", "runs": 10, "seconds": 1481, "monstres": 400,
-    "notes": "Les prix sont ceux de l’export Atlas et le prix de référence des Éklâmes. Le prix du Crâne de Kardorim et de la Bidoche Intangible n’a pas été renseigné. Les kamas directs, équipements et coûts d’entrée ne sont pas inclus ; le bilan est donc partiel et brut.",
+    "notes": "Les prix sont ceux de l’export Atlas et le prix de référence des Éklâmes. Le prix de la Bidoche Intangible n’a pas été renseigné. Les kamas directs, équipements et coûts d’entrée ne sont pas inclus ; le bilan est donc partiel et brut.",
     "drops": [
       {"nom":"Os de Chafer","quantite":3167,"prix":25,"ventes":111620},
       {"nom":"Relique d’Incarnam","quantite":3167,"prix":95,"ventes":130443},
       {"nom":"Viande Intangible","quantite":3087,"prix":136,"ventes":176793},
-      {"nom":"Crâne de Kardorim","quantite":80,"prix":null,"ventes":null},
+      {"nom":"Crâne de Kardorim","quantite":80,"prix":163,"ventes":9295},
       {"nom":"Bidoche Intangible","quantite":1,"prix":null,"ventes":null},
       {"nom":"Éklâme inférieure","quantite":160,"prix":70,"ventes":null}
     ]
