@@ -190,5 +190,65 @@
       "ventes": null
     }
   ]
+},
+{
+  "slug": "kankreblath",
+  "nom": "Cache de Kankreblath",
+  "boss": "Kankreblath",
+  "region": "Astrub",
+  "runs": 10,
+  "seconds": 1628,
+  "monstres": 400,
+  "notes": "Ressources de la session valorisées aux prix fournis dans l’export Atlas. Les 1 040 cerises sont valorisées à 10 kamas sans ajouter les sachets. Prix des Éklâmes : 70 kamas. Attention à la liquidité : le stock de Kamiam représente environ 43 jours de ventes au rythme observé sur 30 jours, et les Rondelles de Bois environ 3,8 jours. Les kamas directs, équipements et coûts d’entrée ne sont pas inclus ; le bilan est brut.",
+  "drops": [
+    {
+      "nom": "Antennes de Vilinsekt",
+      "quantite": 3098,
+      "prix": 25,
+      "ventes": 44559
+    },
+    {
+      "nom": "Kamiam",
+      "quantite": 371,
+      "prix": 172,
+      "ventes": 259
+    },
+    {
+      "nom": "Patte de Kankreblath",
+      "quantite": 79,
+      "prix": 1702,
+      "ventes": 26747
+    },
+    {
+      "nom": "Rondelle de Bois",
+      "quantite": 953,
+      "prix": 29,
+      "ventes": 7516
+    },
+    {
+      "nom": "Viande Minérale",
+      "quantite": 3098,
+      "prix": 12,
+      "ventes": 198961
+    },
+    {
+      "nom": "Bidoche Minérale",
+      "quantite": 8,
+      "prix": 1788,
+      "ventes": 128
+    },
+    {
+      "nom": "Cerises",
+      "quantite": 1040,
+      "prix": 10,
+      "ventes": 468956
+    },
+    {
+      "nom": "Éklâme inférieure",
+      "quantite": 398,
+      "prix": 70,
+      "ventes": null
+    }
+  ]
 }
 ]

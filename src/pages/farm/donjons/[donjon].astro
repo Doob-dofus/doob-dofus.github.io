@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import donjons from '../../../data/donjons.json';
-import { fmt } from '../../../lib/farm.js';
+import { fmt, slug } from '../../../lib/farm.js';
 export function getStaticPaths() {
   return donjons.map((d) => ({ params: { donjon: d.slug }, props: { d } }));
 }
@@ -12,7 +12,7 @@ const duree = `${Math.floor(d.seconds / 60)} min ${String(d.seconds % 60).padSta
 ---
 <Base title={`${d.nom} : butin et rentabilité sur ${d.runs} runs — F.A.R.M.`} description={`Rapport F.A.R.M. : ${d.runs} runs de ${d.nom} en B8 sur Brial, butin et durée mesurés.`} current="rapports">
   <div class="wrap">
-    <nav class="crumb" aria-label="Fil d’Ariane"><a href="/rapports/">Rapports</a><span>›</span>Donjons<span>›</span>{d.boss}</nav>
+    <nav class="crumb" aria-label="Fil d’Ariane"><a href="/#atlas">Cartographie</a><span>›</span><a href={`/farm/${slug(d.region)}/`}>{d.region}</a><span>›</span>{d.boss}</nav>
     <div class="zhead">
       <div><div class="eyebrow"><i></i>Rapport n°4 · {d.region} · Donjon</div><h1>{d.nom}</h1><p class="meta">{d.runs} runs complets · B8 · Brial</p></div>
       <div class="kbig"><small>Valeur du butin valorisé{incomplete ? ' · partielle' : ''}</small><div><b>{fmt(total)}</b><span class="u">kamas</span></div><small>Estimation brute · hors frais d’entrée et kamas directs</small></div>

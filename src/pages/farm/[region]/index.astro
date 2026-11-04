@@ -1,5 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import donjons from '../../../data/donjons.json';
 import { getZones, regions, site } from '../../../lib/data.js';
 import { slug, fmt, niveau, minutes, estimationsOf, dateFr } from '../../../lib/farm.js';
 
@@ -12,6 +13,7 @@ export async function getStaticPaths() {
   }));
 }
 const { nom, zones } = Astro.props;
+const regionDonjons = donjons.filter((d) => d.region === nom);
 const info = regions.find((r) => r.nom === nom) || {};
 const WIP = "WIP : attendre la sortie de l'épisode sur YouTube !";
 const wip = zones.filter((z) => !z.measured);
@@ -104,6 +106,22 @@ const pct = (x) => Math.round((x / T.total) * 100);
       </div>
     )}
   </div>
+
+  {regionDonjons.length > 0 && (
+    <section style="padding-top:32px">
+      <div class="wrap">
+        <div class="sec-head"><div><h2>Donjons de {nom}</h2><p class="sub">Sessions de 10 runs en B8 · estimations brutes. Ces donjons sont présentés séparément et ne sont pas inclus dans les statistiques des zones ci-dessous.</p></div></div>
+        <div class="replist">
+          {regionDonjons.map((d) => (
+            <a class="rep region-donjon" style="grid-template-columns:minmax(0,1fr) auto" href={`/farm/donjons/${d.slug}/`}>
+              <span><b>{d.nom}</b><small>{d.runs} runs · {fmt(d.monstres)} monstres · {Math.floor(d.seconds / 60)} min {String(d.seconds % 60).padStart(2, '0')} s</small></span>
+              <span class="kv"><b>Voir la fiche →</b></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   {done.length > 0 && (
     <>
@@ -222,3 +240,10 @@ const pct = (x) => Math.round((x / T.total) * 100);
     </section>
   )}
 </Base>
+
+<style>
+.region-donjon { grid-template-columns: 1fr auto; }
+.region-donjon .kv { display: block; }
+.region-donjon .kv b { font-size: 15px; white-space: nowrap; }
+@media (max-width: 600px) { .region-donjon { gap: 8px; } .region-donjon .kv b { font-size: 13px; } }
+</style>
