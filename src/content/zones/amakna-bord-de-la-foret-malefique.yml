@@ -8,13 +8,14 @@ monstres:
 - Champa Marron
 - Champa Rouge
 - Champa Vert
+date_prix: '2026-11-17'
 combats: 100
 monstres_combattus: 388
 sessions:
 - 29.216666666666665
 kamas_combats: 0
 kamas_combats_inconnus: true
-notes: 'Quantités et prix des ressources de la zone issus de l’export Atlas fourni par Doob. Les 275 Éklâmes inférieures sont valorisées à 70 kamas par unité, comme dans les autres fiches. Kamas de combat, équipements et éventuel contenu des tonneaux non renseignés et non inclus. Date du relevé des prix non précisée. Rattachement au rapport 5 provisoire ; prospection reprise des réglages courants de la team.'
+notes: 'Quantités et prix des ressources de la zone issus de l’export Atlas fourni par Doob. Les 275 Éklâmes inférieures sont valorisées à 70 kamas par unité, comme dans les autres fiches. Kamas de combat, équipements et éventuel contenu des tonneaux non renseignés et non inclus. Prospection reprise des réglages courants de la team.'
 drops:
 - ressource: Lamelle de Champa Bleu
   monstres: Champa Bleu
