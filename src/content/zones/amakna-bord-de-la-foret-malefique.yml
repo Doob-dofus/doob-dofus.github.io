@@ -1,0 +1,60 @@
+nom: Bord de la forêt maléfique
+region: Amakna
+niveau: 20-50
+statut: mesuree
+rapport: 5
+monstres:
+- Champa Bleu
+- Champa Marron
+- Champa Rouge
+- Champa Vert
+combats: 100
+monstres_combattus: 388
+sessions:
+- 29.216666666666665
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Quantités et prix des ressources de la zone issus de l’export Atlas fourni par Doob. Les 275 Éklâmes inférieures sont valorisées à 70 kamas par unité, comme dans les autres fiches. Kamas de combat, équipements et éventuel contenu des tonneaux non renseignés et non inclus. Date du relevé des prix non précisée. Rattachement au rapport 5 provisoire ; prospection reprise des réglages courants de la team.'
+drops:
+- ressource: Lamelle de Champa Bleu
+  monstres: Champa Bleu
+  taux_base: 50
+  quantite: 776
+  prix: 138
+  ventes_30j: 7787
+- ressource: Lamelle de Champa Marron
+  monstres: Champa Marron
+  taux_base: 50
+  quantite: 776
+  prix: 365
+  ventes_30j: 13809
+- ressource: Lamelle de Champa Rouge
+  monstres: Champa Rouge
+  taux_base: 50
+  quantite: 800
+  prix: 178
+  ventes_30j: 9059
+- ressource: Lamelle de Champa Vert
+  monstres: Champa Vert
+  taux_base: 50
+  quantite: 760
+  prix: 518
+  ventes_30j: 13453
+- ressource: Champignon Luidegît
+  monstres: Champas
+  taux_base: 8.3
+  quantite: 1142
+  prix: 552
+  ventes_30j: 16943
+- ressource: Viande Minérale
+  monstres: Champas — sous condition du métier de chasseur
+  taux_base: 50
+  quantite: 3112
+  prix: 28
+  ventes_30j: 189011
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 275
+  prix: 70
+  ventes_30j: 701095
