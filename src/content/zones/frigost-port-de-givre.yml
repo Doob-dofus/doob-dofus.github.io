@@ -8,6 +8,7 @@ monstres:
 - Crabe Hijacob
 - Chachachovage
 - Gélikan
+date_prix: '2026-11-22'
 combats: 100
 monstres_combattus: 480
 sessions:
@@ -15,7 +16,7 @@ sessions:
 kamas_combats: 0
 kamas_combats_inconnus: true
 notes: 'Relevé de 100 combats au Port de Givre : données de ressources issues de l’export Atlas et Éklâmes communiquées séparément.
-  Prix HDV Brial et ventes sur 30 jours ; date du relevé à confirmer. Sachets valorisés fermés. Kamas de combat, équipements
+  Prix HDV Brial et ventes sur 30 jours ; prix relevés le 22 novembre 2026. Sachets valorisés fermés. Kamas de combat, équipements
   et contenu éventuel des sachets non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre
   ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants
   de la team, à confirmer.'
