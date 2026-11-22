@@ -1,0 +1,109 @@
+nom: Village des bworks
+region: Amakna
+niveau: 20-50
+statut: mesuree
+rapport: 5
+monstres:
+- Bwork
+- Bwork Archer
+- Bwork Mage
+combats: 100
+monstres_combattus: 395
+sessions:
+- 28.733333333333334
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Données de cette session issues de l’export Atlas. Les Éklâmes inférieures sont valorisées à 70 K l’unité, prix estimé
+  repris du premier relevé et à vérifier. Date des prix à confirmer. Sachets et tonneaux valorisés fermés. Kamas de combat,
+  équipements et contenu éventuel des conteneurs non relevés et non inclus. Taux absents ou variables : projection au prorata
+  des personnages, sans correction de prospection ; prospection de la team reprise des réglages courants, à confirmer.'
+drops:
+- ressource: Bière bwork
+  monstres: Bwork Mage, Bwork Archer, Bwork
+  taux_base: 0
+  quantite: 3027
+  prix: 248
+  ventes_30j: 132322
+- ressource: Capsule Explosive
+  monstres: Bwork Mage
+  taux_base: 0
+  quantite: 879
+  prix: 8
+  ventes_30j: 3073
+- ressource: Casque cassé de Bwork
+  monstres: Bwork
+  taux_base: 0
+  quantite: 579
+  prix: 48
+  ventes_30j: 10842
+- ressource: Ficelle en Lin
+  monstres: Bwork Archer
+  taux_base: 0
+  quantite: 980
+  prix: 4
+  ventes_30j: 6821
+- ressource: Livre du Bwork Mage
+  monstres: Bwork Mage
+  taux_base: 0
+  quantite: 379
+  prix: 137
+  ventes_30j: 3187
+- ressource: Noix de Cajou
+  monstres: Bwork Archer
+  taux_base: 0
+  quantite: 980
+  prix: 264
+  ventes_30j: 155956
+- ressource: Noix de Pécan
+  monstres: Bwork Mage, Bwork
+  taux_base: 48
+  quantite: 1779
+  prix: 114
+  ventes_30j: 159286
+- ressource: Poils de Barbe du Bwork Mage
+  monstres: Bwork Mage
+  taux_base: 48
+  quantite: 980
+  prix: 53
+  ventes_30j: 45171
+- ressource: Sachet de Citrons
+  monstres: Bworks
+  taux_base: 0
+  quantite: 127
+  prix: 129
+  ventes_30j: 33569
+- ressource: Sachet de Haricots
+  monstres: Bworks
+  taux_base: 0
+  quantite: 89
+  prix: 198
+  ventes_30j: 27523
+- ressource: Scalp de Bwork Archer
+  monstres: Bwork Archer
+  taux_base: 0
+  quantite: 379
+  prix: 1457
+  ventes_30j: 94539
+- ressource: Slip de Bwork Archer
+  monstres: Bwork Archer
+  taux_base: 0
+  quantite: 980
+  prix: 3
+  ventes_30j: 12941
+- ressource: Viande Tendre
+  monstres: Bworks — métier de chasseur
+  taux_base: 0
+  quantite: 2965
+  prix: 16
+  ventes_30j: 181695
+- ressource: Épaulière de Bwork
+  monstres: Bwork
+  taux_base: 0
+  quantite: 921
+  prix: 78
+  ventes_30j: 34501
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 379
+  prix: 70

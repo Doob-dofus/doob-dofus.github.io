@@ -111,9 +111,9 @@ const atlasOthers = atlas.filter((r) => !r.zones.length);
       <div class="sec-head center"><div><h2>La cartographie des zones</h2></div></div>
       <div class="atlas">
         {atlasListed.map((r) => (
-          <div class={`reg ${r.done === r.zones.length ? 'done' : ''}`}>
-            <div class="reg-h"><b><a href={`/farm/${r.zones[0].regionSlug}/`}>{r.nom}</a></b><small>{r.niveaux ? r.niveaux + ' · ' : ''}{r.done} / {r.zones.length} zones</small></div>
-            <div class="prog"><i style={`width:${Math.round(r.done / r.zones.length * 100)}%`}></i></div>
+          <div class={`reg ${r.done === r.zones.length && r.nom !== 'Amakna' ? 'done' : ''}`}>
+            <div class="reg-h"><b><a href={`/farm/${r.zones[0].regionSlug}/`}>{r.nom}</a></b><small>{r.niveaux ? r.niveaux + ' · ' : ''}{r.nom === 'Amakna' ? `${r.done} zones mesurées` : `${r.done} / ${r.zones.length} zones`}</small></div>
+            {r.nom !== 'Amakna' && <div class="prog"><i style={`width:${Math.round(r.done / r.zones.length * 100)}%`}></i></div>}
             <div class="zl">{r.zones.map((z) => <a href={z.url}><div><span>{z.nom}{z.measured && (z.anomalie ?? 0) > 0 ? ` ⚠ ${z.anomalie} %` : ''}</span>{z.measured ? <em>{fmt(z.kpi)}</em> : <em class="w">WIP</em>}</div></a>)}</div>
             {r.done < r.zones.length && <span class="wip">{WIP}</span>}
           </div>

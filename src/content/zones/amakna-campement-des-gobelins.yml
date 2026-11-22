@@ -1,0 +1,68 @@
+nom: Campement des gobelins
+region: Amakna
+niveau: 20-50
+statut: mesuree
+rapport: 5
+monstres:
+- Gob-trotteur
+- Gobet
+- Gobaliste
+- Gobaladée
+combats: 100
+monstres_combattus: 387
+sessions:
+- 26.216666666666665
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Données de cette session issues de l’export Atlas. Les Éklâmes inférieures sont valorisées à 70 K l’unité, prix estimé
+  repris du premier relevé et à vérifier. Date des prix à confirmer. Sachets et tonneaux valorisés fermés. Kamas de combat,
+  équipements et contenu éventuel des conteneurs non relevés et non inclus. Taux absents ou variables : projection au prorata
+  des personnages, sans correction de prospection ; prospection de la team reprise des réglages courants, à confirmer.'
+drops:
+- ressource: Pic de Lance de Gobet
+  monstres: Gobet
+  taux_base: 51
+  quantite: 837
+  prix: 183
+  ventes_30j: 15163
+- ressource: Longue-vue de Gob-Trotteur
+  monstres: Gob-trotteur
+  taux_base: 51
+  quantite: 817
+  prix: 310
+  ventes_30j: 24570
+- ressource: Bonnet de Gobaliste
+  monstres: Gobaliste
+  taux_base: 51
+  quantite: 683
+  prix: 121
+  ventes_30j: 9868
+- ressource: Tambour de Gobaladée
+  monstres: Gobaladée
+  taux_base: 51
+  quantite: 752
+  prix: 236
+  ventes_30j: 41537
+- ressource: Canine de Gobelin
+  monstres: Gobelins
+  taux_base: 8.44
+  quantite: 899
+  prix: 142
+  ventes_30j: 13347
+- ressource: Viande Minérale
+  monstres: Gobelins — métier de chasseur
+  taux_base: 0
+  quantite: 3089
+  prix: 28
+  ventes_30j: 189011
+- ressource: Sachet d'Épices
+  monstres: Gobelins
+  taux_base: 0
+  quantite: 105
+  prix: 107
+  ventes_30j: 26215
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 833
+  prix: 70

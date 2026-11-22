@@ -26,7 +26,7 @@ const done = zones.filter((z) => z.measured).map((z) => {
   const est = estimationsOf(z), kc = z.kamas_combats || 0;
   return { ...z, total: drops + est + kc, partDrops: drops, partEst: est, partKc: kc, min: minutes(z.sessions) };
 }).sort((a, b) => b.total - a.total);
-const complete = zones.length > 0 && wip.length === 0;
+const complete = zones.length > 0 && wip.length === 0 && nom !== 'Amakna';
 const T = {
   total: done.reduce((a, z) => a + z.total, 0),
   combats: done.reduce((a, z) => a + (z.combats || 100), 0),
@@ -91,7 +91,7 @@ const pct = (x) => Math.round((x / T.total) * 100);
   <div class="wrap">
     <nav class="crumb" aria-label="Fil d'Ariane"><a href="/#atlas">Cartographie</a><span>›</span>{nom}</nav>
     <div class="page-head">
-      <div class="eyebrow"><i></i>{complete ? 'Rapport de région · 100 % mesurée' : `Région · ${done.length} / ${zones.length} zones mesurées`}{info.niveaux ? ` · ${info.niveaux}` : ''}</div>
+      <div class="eyebrow"><i></i>{complete ? 'Rapport de région · 100 % mesurée' : `Région · ${done.length} zones mesurées`}{info.niveaux ? ` · ${info.niveaux}` : ''}</div>
       <h1>{nom}{complete && <span class="rg-done">Région bouclée ✓</span>}</h1>
       {done.length > 0 && <p>{done.length} zone{done.length > 1 ? 's' : ''}, {fmt(T.combats)} combats et {hm(T.min)} de farm en B8 sur {site.serveur} : <b>{fmt(T.total)} kamas</b> de butin estimé. La meilleure zone, {best.nom}, rapporte {(best.total / worst.total).toFixed(0)} fois plus que la moins rentable, {worst.nom}.</p>}
     </div>

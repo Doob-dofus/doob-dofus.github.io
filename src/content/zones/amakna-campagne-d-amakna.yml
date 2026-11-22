@@ -1,0 +1,86 @@
+nom: Campagne d'Amakna
+region: Amakna
+niveau: 0-20
+statut: mesuree
+rapport: 5
+monstres:
+- Arakne
+- Champ Champ
+- Moskito
+- Campagnoll
+combats: 100
+monstres_combattus: 390
+sessions:
+- 27.216666666666665
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Données de cette session issues de l’export Atlas. Les Éklâmes inférieures sont valorisées à 70 K l’unité, prix estimé
+  repris du premier relevé et à vérifier. Date des prix à confirmer. Sachets et tonneaux valorisés fermés. Kamas de combat,
+  équipements et contenu éventuel des conteneurs non relevés et non inclus. Taux absents ou variables : projection au prorata
+  des personnages, sans correction de prospection ; prospection de la team reprise des réglages courants, à confirmer.'
+drops:
+- ressource: Patte d'Arakne
+  monstres: Arakne
+  taux_base: 55
+  quantite: 896
+  prix: 193
+  ventes_30j: 47587
+- ressource: Patte d'Arakne Magique
+  monstres: Arakne
+  taux_base: 9.2
+  quantite: 279
+  prix: 1773
+  ventes_30j: 19867
+- ressource: Épine du Champ Champ
+  monstres: Champ Champ
+  taux_base: 55
+  quantite: 848
+  prix: 80
+  ventes_30j: 45842
+- ressource: Sporme du Champ Champ
+  monstres: Champ Champ
+  taux_base: 9.2
+  quantite: 252
+  prix: 1195
+  ventes_30j: 18249
+- ressource: Tonneau de Jus Goûtu
+  monstres: Champ Champ
+  taux_base: 0
+  quantite: 158
+  prix: 610
+  ventes_30j: 5527
+- ressource: Ailes de Moskito
+  monstres: Moskito
+  taux_base: 55
+  quantite: 736
+  prix: 449
+  ventes_30j: 57274
+- ressource: Sourcil de Moskito
+  monstres: Moskito
+  taux_base: 9.2
+  quantite: 206
+  prix: 191
+  ventes_30j: 9349
+- ressource: Graine de Pavot
+  monstres: Campagnoll
+  taux_base: 55
+  quantite: 640
+  prix: 60
+  ventes_30j: 34887
+- ressource: Bois Vermoulu
+  monstres: Campagnoll
+  taux_base: 9.2
+  quantite: 203
+  prix: 1165
+  ventes_30j: 17033
+- ressource: Viande Faisandée
+  monstres: Arakne, Champ Champ, Moskito, Campagnoll — métier de chasseur
+  taux_base: 0
+  quantite: 3120
+  prix: 39
+  ventes_30j: 222095
+- ressource: Éklâme inférieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 393
+  prix: 70
