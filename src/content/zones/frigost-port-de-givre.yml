@@ -1,0 +1,94 @@
+nom: Port de Givre
+region: Île de Frigost
+niveau: à confirmer
+statut: mesuree
+rapport: 6
+monstres:
+- Rat Bougri
+- Crabe Hijacob
+- Chachachovage
+- Gélikan
+combats: 100
+monstres_combattus: 480
+sessions:
+- 64.58333333333333
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Relevé de 100 combats au Port de Givre : données de ressources issues de l’export Atlas et Éklâmes communiquées séparément.
+  Prix HDV Brial et ventes sur 30 jours ; date du relevé à confirmer. Sachets valorisés fermés. Kamas de combat, équipements
+  et contenu éventuel des sachets non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre
+  ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants
+  de la team, à confirmer.'
+drops:
+- ressource: Bec de Gélikan
+  monstres: Gélikan
+  taux_base: 6.36
+  quantite: 359
+  prix: 1664
+  ventes_30j: 3453
+- ressource: Eau calme
+  monstres: Rat Bougri, Crabe Hijacob, Chachachovage, Gélikan
+  taux_base: 0
+  quantite: 135
+  prix: 67
+  ventes_30j: 127305
+- ressource: Étoffe de Rat Bougri
+  monstres: Rat Bougri
+  taux_base: 36
+  quantite: 855
+  prix: 60
+  ventes_30j: 9400
+- ressource: Œil de Crabe Hijacob
+  monstres: Crabe Hijacob
+  taux_base: 6.52
+  quantite: 380
+  prix: 1206
+  ventes_30j: 4471
+- ressource: Patte de Rat Bougri
+  monstres: Rat Bougri
+  taux_base: 6.04
+  quantite: 267
+  prix: 1482
+  ventes_30j: 3897
+- ressource: Pince de Crabe Hijacob
+  monstres: Crabe Hijacob
+  taux_base: 39
+  quantite: 1180
+  prix: 129
+  ventes_30j: 12260
+- ressource: Plume de Gélikan
+  monstres: Gélikan
+  taux_base: 38
+  quantite: 1119
+  prix: 213
+  ventes_30j: 12898
+- ressource: Poil de Chachachovage
+  monstres: Chachachovage
+  taux_base: 37
+  quantite: 721
+  prix: 891
+  ventes_30j: 34405
+- ressource: Sachet de Graisse Gélatineuse
+  monstres: Rat Bougri, Crabe Hijacob, Chachachovage, Gélikan
+  taux_base: 1
+  quantite: 227
+  prix: 304
+  ventes_30j: 10053
+- ressource: Sternum de Chachachovage
+  monstres: Chachachovage
+  taux_base: 6.2
+  quantite: 239
+  prix: 525
+  ventes_30j: 4918
+- ressource: Viande Exsudative
+  monstres: Tous les monstres — sous condition du métier de chasseur
+  taux_base: 0
+  quantite: 4158
+  prix: 103
+  ventes_30j: 325680
+- ressource: Éklâme ordinaire
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 534
+  prix: 129
+  ventes_30j: 878628
