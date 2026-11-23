@@ -1,5 +1,91 @@
 nom: Champs de glace
 region: Île de Frigost
-niveau: à confirmer
-statut: wip
-monstres: []
+niveau: 110-120
+statut: mesuree
+rapport: 6
+monstres:
+- Boufmouth
+- Bouftonmouth
+- Boufmouth de guerre
+- Boufmouth légendaire
+date_prix: '2026-11-23'
+combats: 100
+monstres_combattus: 484
+sessions:
+- 89.88333333333334
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Relevé de 100 combats aux Champs de glace : ressources issues de l’export Atlas reçu le 23 novembre 2026 et Éklâmes communiquées séparément. Prix HDV Brial et ventes sur 30 jours. Sachets d’Aubergines valorisés fermés ; leur contenu n’est pas ajouté. Kamas de combat et équipements non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants de la team, à confirmer.'
+drops:
+- ressource: Clavicule de Boufmouth
+  monstres: Boufmouth
+  taux_base: 5.48
+  quantite: 306
+  prix: 433
+  ventes_30j: 9573
+- ressource: Corne de Boufmouth de guerre
+  monstres: Boufmouth de guerre
+  taux_base: 31
+  quantite: 596
+  prix: 167
+  ventes_30j: 31349
+- ressource: Cuir de Bouftonmouth
+  monstres: Bouftonmouth
+  taux_base: 5.96
+  quantite: 504
+  prix: 1866
+  ventes_30j: 21087
+- ressource: Eau calme
+  monstres: Boufmouth, Bouftonmouth, Boufmouth de guerre, Boufmouth légendaire
+  taux_base: 0
+  quantite: 1899
+  prix: 67
+  ventes_30j: 127305
+- ressource: Laine de Boufmouth
+  monstres: Boufmouth
+  taux_base: 33
+  quantite: 1132
+  prix: 522
+  ventes_30j: 66337
+- ressource: Laine de Boufmouth légendaire
+  monstres: Boufmouth légendaire
+  taux_base: 30
+  quantite: 557
+  prix: 1021
+  ventes_30j: 37309
+- ressource: Oreille de Bouftonmouth
+  monstres: Bouftonmouth
+  taux_base: 36
+  quantite: 1794
+  prix: 47
+  ventes_30j: 20164
+- ressource: Queue du Boufmouth légendaire
+  monstres: Boufmouth légendaire
+  taux_base: 4.92
+  quantite: 155
+  prix: 662
+  ventes_30j: 3250
+- ressource: Sachet d'Aubergines
+  monstres: Boufmouth, Bouftonmouth, Boufmouth de guerre, Boufmouth légendaire
+  taux_base: 1
+  quantite: 153
+  prix: 609
+  ventes_30j: 20417
+- ressource: Viande Saignante
+  monstres: Tous les monstres — sous condition du métier de chasseur
+  taux_base: 0
+  quantite: 4211
+  prix: 84
+  ventes_30j: 136950
+- ressource: Œil de Boufmouth de guerre
+  monstres: Boufmouth de guerre
+  taux_base: 5.16
+  quantite: 161
+  prix: 589
+  ventes_30j: 6287
+- ressource: Éklâme supérieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 289
+  prix: 225
+  ventes_30j: 245048
