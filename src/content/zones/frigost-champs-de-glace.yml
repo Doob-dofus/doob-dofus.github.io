@@ -3,6 +3,7 @@ region: Île de Frigost
 niveau: 110-120
 statut: mesuree
 rapport: 6
+anomalie: 52
 monstres:
 - Boufmouth
 - Bouftonmouth
@@ -15,7 +16,7 @@ sessions:
 - 89.88333333333334
 kamas_combats: 0
 kamas_combats_inconnus: true
-notes: 'Relevé de 100 combats aux Champs de glace : ressources issues de l’export Atlas reçu le 23 novembre 2026 et Éklâmes communiquées séparément. Prix HDV Brial et ventes sur 30 jours. Sachets d’Aubergines valorisés fermés ; leur contenu n’est pas ajouté. Kamas de combat et équipements non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants de la team, à confirmer.'
+notes: 'Relevé de 100 combats aux Champs de glace : ressources issues de l’export Atlas reçu le 23 novembre 2026 et Éklâmes communiquées séparément. Prix HDV Brial et ventes sur 30 jours. Sachets d’Aubergines valorisés fermés ; leur contenu n’est pas ajouté. Kamas de combat et équipements non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants de la team, à confirmer. Pourcentage d’anomalie communiqué de mémoire, à confirmer.'
 drops:
 - ressource: Clavicule de Boufmouth
   monstres: Boufmouth

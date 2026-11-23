@@ -3,6 +3,7 @@ region: Île de Frigost
 niveau: 90-100
 statut: mesuree
 rapport: 6
+anomalie: 39
 monstres:
 - Rat Bougri
 - Crabe Hijacob
@@ -19,7 +20,7 @@ notes: 'Relevé de 100 combats au Port de Givre : données de ressources issues 
   Prix HDV Brial et ventes sur 30 jours ; prix relevés le 22 novembre 2026. Sachets valorisés fermés. Kamas de combat, équipements
   et contenu éventuel des sachets non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre
   ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants
-  de la team, à confirmer.'
+  de la team, à confirmer. Pourcentage d’anomalie communiqué de mémoire, à confirmer.'
 drops:
 - ressource: Bec de Gélikan
   monstres: Gélikan

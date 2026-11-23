@@ -3,6 +3,7 @@ region: Île de Frigost
 niveau: 90-100
 statut: mesuree
 rapport: 6
+anomalie: 43
 monstres:
 - Rat Bougri
 - Crabe Hijacob
@@ -15,7 +16,7 @@ sessions:
 - 64.66666666666667
 kamas_combats: 0
 kamas_combats_inconnus: true
-notes: 'Relevé de 100 combats à La Bourgade : ressources issues de l’export Atlas et Éklâmes communiquées séparément. Prix HDV Brial et ventes sur 30 jours relevés le 23 novembre 2026, sauf Éklâmes : prix de 129 K et volume de ventes repris du relevé du 22 novembre. Sachets valorisés fermés. Kamas de combat, équipements et contenu éventuel des sachets non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants de la team, à confirmer.'
+notes: 'Relevé de 100 combats à La Bourgade : ressources issues de l’export Atlas et Éklâmes communiquées séparément. Prix HDV Brial et ventes sur 30 jours relevés le 23 novembre 2026, sauf Éklâmes : prix de 129 K et volume de ventes repris du relevé du 22 novembre. Sachets valorisés fermés. Kamas de combat, équipements et contenu éventuel des sachets non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants de la team, à confirmer. Pourcentage d’anomalie communiqué de mémoire, à confirmer.'
 drops:
 - ressource: Bec de Gélikan
   monstres: Gélikan
