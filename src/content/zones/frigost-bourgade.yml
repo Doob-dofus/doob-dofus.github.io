@@ -1,5 +1,91 @@
 nom: La Bourgade
 region: Île de Frigost
-niveau: à confirmer
-statut: wip
-monstres: []
+niveau: 90-100
+statut: mesuree
+rapport: 6
+monstres:
+- Rat Bougri
+- Crabe Hijacob
+- Chachachovage
+- Gélikan
+date_prix: '2026-11-23'
+combats: 100
+monstres_combattus: 508
+sessions:
+- 64.66666666666667
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Relevé de 100 combats à La Bourgade : ressources issues de l’export Atlas et Éklâmes communiquées séparément. Prix HDV Brial et ventes sur 30 jours relevés le 23 novembre 2026, sauf Éklâmes : prix de 129 K et volume de ventes repris du relevé du 22 novembre. Sachets valorisés fermés. Kamas de combat, équipements et contenu éventuel des sachets non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre ; projection simplifiée au prorata des personnages, sans correction de prospection. Prospection reprise des réglages courants de la team, à confirmer.'
+drops:
+- ressource: Bec de Gélikan
+  monstres: Gélikan
+  taux_base: 6.36
+  quantite: 220
+  prix: 1664
+  ventes_30j: 3453
+- ressource: Eau calme
+  monstres: Rat Bougri, Crabe Hijacob, Chachachovage, Gélikan
+  taux_base: 0
+  quantite: 164
+  prix: 67
+  ventes_30j: 127305
+- ressource: Étoffe de Rat Bougri
+  monstres: Rat Bougri
+  taux_base: 36
+  quantite: 1148
+  prix: 60
+  ventes_30j: 9400
+- ressource: Œil de Crabe Hijacob
+  monstres: Crabe Hijacob
+  taux_base: 6.52
+  quantite: 200
+  prix: 1206
+  ventes_30j: 4471
+- ressource: Patte de Rat Bougri
+  monstres: Rat Bougri
+  taux_base: 6.04
+  quantite: 285
+  prix: 1482
+  ventes_30j: 3897
+- ressource: Pince de Crabe Hijacob
+  monstres: Crabe Hijacob
+  taux_base: 39
+  quantite: 800
+  prix: 129
+  ventes_30j: 12260
+- ressource: Plume de Gélikan
+  monstres: Gélikan
+  taux_base: 38
+  quantite: 982
+  prix: 213
+  ventes_30j: 12898
+- ressource: Poil de Chachachovage
+  monstres: Chachachovage
+  taux_base: 37
+  quantite: 1147
+  prix: 891
+  ventes_30j: 34405
+- ressource: Sachet de Graisse Gélatineuse
+  monstres: Rat Bougri, Crabe Hijacob, Chachachovage, Gélikan
+  taux_base: 1
+  quantite: 156
+  prix: 304
+  ventes_30j: 10053
+- ressource: Sternum de Chachachovage
+  monstres: Chachachovage
+  taux_base: 6.2
+  quantite: 291
+  prix: 525
+  ventes_30j: 4918
+- ressource: Viande Exsudative
+  monstres: Tous les monstres — sous condition du métier de chasseur
+  taux_base: 0
+  quantite: 4079
+  prix: 103
+  ventes_30j: 325680
+- ressource: Éklâme ordinaire
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 970
+  prix: 129
+  ventes_30j: 878628
