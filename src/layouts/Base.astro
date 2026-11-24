@@ -26,6 +26,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   {site.donnees_exemple && <div class="mock">Site en préparation — les chiffres affichés sont des exemples</div>}
   <Header current={current} />
   <main id="top"><slot /></main>
-  <Footer />
+  <Footer current={current} />
 </body>
 </html>
