@@ -1,5 +1,103 @@
 nom: Pins perdus
 region: Île de Frigost
-niveau: à confirmer
-statut: wip
-monstres: []
+niveau: 130
+statut: mesuree
+rapport: 6
+monstres:
+- Écumouth
+- Smilomouth
+- Sanglacier
+- Fricochère
+- Kaniglou
+combats: 100
+monstres_combattus: 506
+sessions:
+- 114.55
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Relevé de 100 combats : ressources issues de l’export Atlas reçu le 24 novembre 2026 et 510 Éklâmes supérieures communiquées séparément. Date exacte des prix HDV Brial à confirmer ; prix et ventes sur 30 jours issus de l’export, sauf Éklâmes : prix de 225 K et volume de 245 048 ventes repris du relevé des Champs de glace, à confirmer. Sachets d’Oignons valorisés fermés ; leur contenu n’est pas ajouté. Kamas de combat et équipements non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre, projection simplifiée au prorata des personnages. Prospection de la team et pourcentage d’anomalie à confirmer.'
+drops:
+- ressource: Queue d'Écumouth
+  monstres: Écumouth
+  taux_base: 32
+  quantite: 160
+  prix: 332
+  ventes_30j: 12149
+- ressource: Gland de l'Écumouth
+  monstres: Écumouth
+  taux_base: 5.28
+  quantite: 30
+  prix: 8068
+  ventes_30j: 3000
+- ressource: Dent de Smilomouth
+  monstres: Smilomouth
+  taux_base: 5.08
+  quantite: 179
+  prix: 3371
+  ventes_30j: 5923
+- ressource: Poils de Smilomouth
+  monstres: Smilomouth
+  taux_base: 30
+  quantite: 722
+  prix: 3149
+  ventes_30j: 40132
+- ressource: Défense du Sanglacier
+  monstres: Sanglacier
+  taux_base: 4.88
+  quantite: 165
+  prix: 3511
+  ventes_30j: 5847
+- ressource: Cuir du Sanglacier
+  monstres: Sanglacier
+  taux_base: 29
+  quantite: 756
+  prix: 182
+  ventes_30j: 19805
+- ressource: Œil torve de Fricochère
+  monstres: Fricochère
+  taux_base: 4.56
+  quantite: 153
+  prix: 958
+  ventes_30j: 2670
+- ressource: Oreille percée du Fricochère
+  monstres: Fricochère
+  taux_base: 27
+  quantite: 754
+  prix: 87
+  ventes_30j: 6184
+- ressource: Oreille de Kaniglou
+  monstres: Kaniglou
+  taux_base: 26
+  quantite: 1322
+  prix: 73
+  ventes_30j: 17318
+- ressource: Étoffe de Kaniglou
+  monstres: Kaniglou
+  taux_base: 4.28
+  quantite: 259
+  prix: 646
+  ventes_30j: 3343
+- ressource: Eau calme
+  monstres: Écumouth, Smilomouth, Sanglacier, Fricochère, Kaniglou
+  taux_base: 0
+  quantite: 768
+  prix: 67
+  ventes_30j: 127305
+- ressource: Sachet d'Oignons
+  monstres: Écumouth, Smilomouth, Sanglacier, Fricochère, Kaniglou
+  taux_base: 1
+  quantite: 168
+  prix: 3069
+  ventes_30j: 8199
+- ressource: Viande Persillée
+  monstres: Tous les monstres — sous condition du métier de chasseur
+  taux_base: 0
+  quantite: 3713
+  prix: 122
+  ventes_30j: 139366
+- ressource: Éklâme supérieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 510
+  prix: 225
+  ventes_30j: 245048
