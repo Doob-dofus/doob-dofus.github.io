@@ -4,6 +4,7 @@ const { current } = Astro.props;
 const links = [
   ['classement', 'Classement', '/#classement'],
   ['atlas', 'Cartographie', '/#atlas'],
+  ['elevage', 'Élevage', '/elevage/'],
   ['rapports', 'Rapports', '/rapports/'],
   ['team', 'Ma team', '/team/'],
   ['contact', 'Contact', '/contact/'],
@@ -26,3 +27,16 @@ const links = [
     {links.map(([k, label, href]) => <a href={href} aria-current={current === k ? 'page' : undefined}>{label}</a>)}
   </nav>
 </header>
+
+<style>
+  .nav { gap: 12px; }
+  .links a { padding: 10px 9px; white-space: nowrap; }
+  .nav .btn { white-space: nowrap; }
+  @media (max-width: 1100px) {
+    .links { display: none; }
+    .mnav { display: flex; gap: 4px; overflow-x: auto; padding: 0 16px 10px; scrollbar-width: none; }
+    .mnav::-webkit-scrollbar { display: none; }
+    .mnav a { flex: none; padding: 8px 12px; border-radius: 8px; color: var(--muted); font-size: 14px; border: 1px solid var(--border); }
+    .mnav a[aria-current="page"] { color: var(--text); background: var(--raised); border-color: var(--violet); }
+  }
+</style>

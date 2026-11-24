@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/elevage.css';
+---
+<Base title="Élevage — F.A.R.M. par Doob" description="Les croisements utiles et le suivi de tes succès d’élevage sur DOFUS." current="elevage">
+  <div class="elevage-app"><div class="wrap">
+<section class="hero"><div class="herotxt"><div class="eyebrow">Le guide des croisements</div><h1>L’élevage, sans prise de tête.</h1><p>Retrouve les parents à accoupler pour progresser de génération en génération.</p></div></section>
+<div class="intro"><div><h2>Choisis ton parcours</h2><p>Choisis une génération, puis coche les montures obtenues.</p></div><div class="family" role="group" aria-label="Famille de montures"><button type="button" data-family="Dragodindes" aria-pressed="true">Dragodindes</button><button type="button" data-family="Muldos" aria-pressed="false">Muldos</button><button type="button" data-family="Volkornes" aria-pressed="false">Volkornes</button></div></div>
+<section class="panel" aria-label="Filtres de parcours"><div class="filters"><div class="field"><span class="label">Génération cible</span><div id="gens" class="gens" role="group" aria-label="Génération cible"></div></div><div class="field"><label for="search">Monture ou parent</label><input id="search" type="search" placeholder="Ex. : Amande, Indigo…" autocomplete="off"><p class="helper">Recherche une couleur, puis clique sur un parent pour remonter son arbre.</p></div></div><p class="progress" id="progress" aria-live="polite"></p><label class="tracking"><input id="pending" type="checkbox"> Masquer les montures déjà validées</label></section>
+<div class="summary"><div><h3 id="resulttitle">Croisements</h3><span id="count" aria-live="polite"></span></div><button class="reset" id="reset" type="button">Réinitialiser</button></div><div class="results" id="results"></div>
+<aside class="notice"><strong>À garder en tête</strong><p>Le résultat d’un accouplement n’est pas garanti : la généalogie intervient. Utilise deux montures fertiles de sexes opposés ; les deux parents deviennent stériles après l’accouplement, quel que soit leur type.</p><p>Le catalogue couvre les couleurs disponibles dans nos données de travail, de G1 à G10. Les cases sont enregistrées dans ce navigateur si la sauvegarde locale est autorisée, sans synchronisation avec le jeu. Les croisements et le périmètre exact des succès restent à vérifier en jeu.</p></aside>
+<div class="footer"><p>Les captures sauvages et les naissances par couleur sont repérées ici ; le succès des 1 000 naissances n’est pas comptabilisé. Données de travail : croisements à vérifier en jeu. Croisements préparés à partir du <a href="https://docs.google.com/spreadsheets/d/1fx1G4UKa2Pb6_H4BRrKXgVk-xrTVP153VWEP7ZBsECQ/edit">tableau Élevage</a>.</p><p>Sources de travail : <a href="https://www.dofuspourlesnoobs.com/les-dragodindes.html">Dofus pour les Noobs</a> et <a href="https://github.com/polo13410/Kamadvice/blob/main/dofus_data/breeding.json">Kamadvice</a>. Données à vérifier en jeu.</p></div>
+  </div></div>
+  <script is:inline src="/elevage/elevage.js" defer></script>
+</Base>
