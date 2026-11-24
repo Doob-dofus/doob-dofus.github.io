@@ -3,6 +3,7 @@ region: Île de Frigost
 niveau: à confirmer
 statut: mesuree
 rapport: 6
+anomalie: 15
 monstres:
 - Timansot
 - Mansobèse
@@ -19,8 +20,7 @@ kamas_combats_inconnus: true
 notes: 'Relevé de 100 combats : ressources, prix et ventes sur 30 jours issus de l’export Atlas communiqué le 24 novembre
   2026 ; 556 Éklâmes supérieures et deux équipements pour une valeur globale de 859 969 K communiqués séparément. Prix et
   ventes des Éklâmes repris du relevé des Champs de glace du 23 novembre : 225 K et 245 048 ventes sur 30 jours, à confirmer.
-  Tonneaux valorisés fermés, contenu non ajouté. Kamas de combat non relevés et non inclus. Bonus d’anomalie et prospection
-  à confirmer. Eau calme et viande : taux de base variables selon le monstre, projection simplifiée au prorata des personnages.
+  Tonneaux valorisés fermés, contenu non ajouté. Kamas de combat non relevés et non inclus. Bonus d’anomalie : 15 %. Prospection à confirmer. Eau calme et viande : taux de base variables selon le monstre, projection simplifiée au prorata des personnages.
   Toutes les valeurs HDV sont des estimations, pas des ventes réalisées.'
 estimations:
 - libelle: Équipements
