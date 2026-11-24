@@ -1,5 +1,113 @@
 nom: Lac gelé
 region: Île de Frigost
 niveau: à confirmer
-statut: wip
-monstres: []
+statut: mesuree
+rapport: 6
+monstres:
+- Timansot
+- Mansobèse
+- Mamansot
+- Shamansot
+- Fu Mansot
+date_prix: '2026-11-24'
+combats: 100
+monstres_combattus: 578
+sessions:
+- 120.16666666666667
+kamas_combats: 0
+kamas_combats_inconnus: true
+notes: 'Relevé de 100 combats : ressources, prix et ventes sur 30 jours issus de l’export Atlas communiqué le 24 novembre
+  2026 ; 556 Éklâmes supérieures et deux équipements pour une valeur globale de 859 969 K communiqués séparément. Prix et
+  ventes des Éklâmes repris du relevé des Champs de glace du 23 novembre : 225 K et 245 048 ventes sur 30 jours, à confirmer.
+  Tonneaux valorisés fermés, contenu non ajouté. Kamas de combat non relevés et non inclus. Bonus d’anomalie et prospection
+  à confirmer. Eau calme et viande : taux de base variables selon le monstre, projection simplifiée au prorata des personnages.
+  Toutes les valeurs HDV sont des estimations, pas des ventes réalisées.'
+estimations:
+- libelle: Équipements
+  quantite: 2
+  valeur: 859969
+drops:
+- ressource: Bec du Timansot
+  monstres: Timansot
+  taux_base: 5.28
+  quantite: 342
+  prix: 1326
+  ventes_30j: 12139
+- ressource: Plume du Timansot
+  monstres: Timansot
+  taux_base: 32
+  quantite: 1814
+  prix: 77
+  ventes_30j: 34972
+- ressource: Aile de Mansobèse
+  monstres: Mansobèse
+  taux_base: 4.92
+  quantite: 191
+  prix: 1588
+  ventes_30j: 11195
+- ressource: Peau de Mansobèse
+  monstres: Mansobèse
+  taux_base: 30
+  quantite: 884
+  prix: 119
+  ventes_30j: 22095
+- ressource: Huile de Mamansot
+  monstres: Mamansot
+  taux_base: 4.68
+  quantite: 85
+  prix: 1498
+  ventes_30j: 11745
+- ressource: Duvet de Mamansot
+  monstres: Mamansot
+  taux_base: 28
+  quantite: 456
+  prix: 2228
+  ventes_30j: 78349
+- ressource: Arête géante du Shamansot
+  monstres: Shamansot
+  taux_base: 4.56
+  quantite: 81
+  prix: 695
+  ventes_30j: 4088
+- ressource: Poil de barbe du Shamansot
+  monstres: Shamansot
+  taux_base: 27
+  quantite: 390
+  prix: 990
+  ventes_30j: 48959
+- ressource: Queue du Fu Mansot
+  monstres: Fu Mansot
+  taux_base: 26
+  quantite: 869
+  prix: 170
+  ventes_30j: 15593
+- ressource: Oreille du Fu Mansot
+  monstres: Fu Mansot
+  taux_base: 4.32
+  quantite: 164
+  prix: 654
+  ventes_30j: 4738
+- ressource: Eau calme
+  monstres: Timansot, Mansobèse, Mamansot, Shamansot, Fu Mansot
+  taux_base: 0
+  quantite: 851
+  prix: 67
+  ventes_30j: 127305
+- ressource: Tonneau d'Eau Potable
+  monstres: Timansot, Mansobèse, Mamansot, Shamansot, Fu Mansot
+  taux_base: 1
+  quantite: 191
+  prix: 2147
+  ventes_30j: 6696
+- ressource: Viande Macérée
+  monstres: Tous les monstres — sous condition du métier de chasseur
+  taux_base: 0
+  quantite: 4445
+  prix: 122
+  ventes_30j: 124380
+- ressource: Éklâme supérieure
+  monstres: Tous les monstres — taux variable de 1 à 4 %, non influencé par la prospection
+  taux_base: 2.5
+  quantite: 556
+  prix: 225
+  ventes_30j: 245048
