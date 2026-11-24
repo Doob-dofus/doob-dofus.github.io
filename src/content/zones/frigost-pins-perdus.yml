@@ -3,6 +3,7 @@ region: Île de Frigost
 niveau: 130
 statut: mesuree
 rapport: 6
+anomalie: 30
 monstres:
 - Écumouth
 - Smilomouth
@@ -15,7 +16,7 @@ sessions:
 - 114.55
 kamas_combats: 0
 kamas_combats_inconnus: true
-notes: 'Relevé de 100 combats : ressources issues de l’export Atlas reçu le 24 novembre 2026 et 510 Éklâmes supérieures communiquées séparément. Date exacte des prix HDV Brial à confirmer ; prix et ventes sur 30 jours issus de l’export, sauf Éklâmes : prix de 225 K et volume de 245 048 ventes repris du relevé des Champs de glace, à confirmer. Sachets d’Oignons valorisés fermés ; leur contenu n’est pas ajouté. Kamas de combat et équipements non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre, projection simplifiée au prorata des personnages. Prospection de la team et pourcentage d’anomalie à confirmer.'
+notes: 'Relevé de 100 combats : ressources issues de l’export Atlas reçu le 24 novembre 2026 et 510 Éklâmes supérieures communiquées séparément. Date exacte des prix HDV Brial à confirmer ; prix et ventes sur 30 jours issus de l’export, sauf Éklâmes : prix de 225 K et volume de 245 048 ventes repris du relevé des Champs de glace, à confirmer. Sachets d’Oignons valorisés fermés ; leur contenu n’est pas ajouté. Kamas de combat et équipements non relevés et non inclus. Eau calme et viande : taux de base variables selon le monstre, projection simplifiée au prorata des personnages. Prospection de la team à confirmer.'
 drops:
 - ressource: Queue d'Écumouth
   monstres: Écumouth
